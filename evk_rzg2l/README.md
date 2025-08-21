@@ -150,7 +150,7 @@ Change the value for ENABLE_REMOTEPROC defined in **src/platform_info.h** from 0
     ```
     root@smarc-rzg2l:~# echo start > /sys/class/remoteproc/remoteproc0/state
     [   93.703255] remoteproc remoteproc0: powering up cm33
-    [   93.796548] remoteproc remoteproc0: Booting fw image rzg2l_cm33_rpmsg_linux-rtos_demo_ch0.elf, size 1032012
+    [   93.796548] remoteproc remoteproc0: Booting fw image rzg2l_cm33_rpmsg_linux-rtos_example.elf, size 1032012
     [   93.806451] remoteproc remoteproc0: unsupported resource 4
     [   93.816511] rproc-virtio rproc-virtio.1.auto: assigned reserved memory node vdev0buffer@43200000
     [   93.825650] rproc-virtio rproc-virtio.1.auto: registered virtio0 (type 7)
