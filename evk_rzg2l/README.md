@@ -51,9 +51,11 @@ For more information to set up your development environment, refer to the follow
 The **rzg2l_cm33_rpmsg_linux-rtos_example** outputs the message tranfer progress between CPU cores to the console.
 
 ### Hardware setup
-1. Connect SEGGER J-Link to RZ/G2L SMARC EVK. For details, please refer to [Getting Started with Flexible Software Package](https://www.renesas.com/en/document/apn/rzg2l-getting-started-with-flexible-software-package)
-2. Connect Pmod USBUART to the upper side of Pmod 1 of SMARC Carrier Board as shown below for securing the console for the program running on CM33.
-3. Insert micro SD card containing kernel image, device tree, rootfs support for multi-os communication into CN10 connector on the board.<br>
+1. Connect USB Type Micro-AB cable to SER3_UART Connector (CN14).
+2. Insert micro SD card containing kernel image, device tree, rootfs support for multi-os communication into CN10 connector on the board.
+3. Connect Pmod USBUART to the upper side of Pmod 1 of SMARC Carrier Board as shown below for securing the console for the program running on CM33.
+4. Connect SEGGER J-Link to RZ/G2L SMARC EVK. For details, please refer to [Getting Started with Flexible Software Package](https://www.renesas.com/en/document/apn/rzg2l-getting-started-with-flexible-software-package)
+5. Connect USB-PD Power Charger to USB Type-C Connector (CN6).<br>
 <img src=./git_images/connection-board.png width="720">
 
 ### CM33 sample project setup
