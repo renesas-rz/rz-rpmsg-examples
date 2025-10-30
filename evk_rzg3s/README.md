@@ -63,7 +63,7 @@ The **`<device>_rpmsg_<com_type>_example`** outputs the message tranfer progress
 2. Insert micro SD card containing kernel image, device tree, rootfs support for multi-os communication into SDIO connector on the board.
 3. Connect Pmod USBUART to the upper side of Pmod 1 of SMARC Carrier Board as shown below for securing the console for the program running on CM33.
 4. Connect SEGGER J-Link to RZ/G3S SMARC EVK. For details, please refer to [Getting Started with Flexible Software Package](https://www.renesas.com/en/document/apn/rzg2l-getting-started-with-flexible-software-package)
-5. Connect USB-PD Power Charger to USB Type-C Connector (CN6).<br>
+5. Connect USB-PD Power Charger to USB_C_PWR_IN.<br>
 <img src=./git_images/connection-board.png width="720">
 
 ### CM33 sample project setup
@@ -111,7 +111,7 @@ The **`<device>_rpmsg_<com_type>_example`** outputs the message tranfer progress
 1. Copy the binary files generated at step 4 of [CM33 sample project Setup](#cm33-sample-project-setup) section to microSD card.
 2. Insert the microSD card into SMARC Carrier Board.
 3. Turn on SMARC EVK by pressing the Power button for a few seconds.
-4. Hit any key to stop autoboot within 3 seconds after the following message is shown in the console connected to CN14 of SMRAC Carrier Board:
+4. Hit any key to stop autoboot within 3 seconds after the following message is shown in the console connected to SER3_UART of SMARC Carrier Board:
     ```
     U-Boot 2024.07 (Sep 10 2025 - 18:07:39 +0000)
 
@@ -134,13 +134,31 @@ The **`<device>_rpmsg_<com_type>_example`** outputs the message tranfer progress
     ```
 
 5. Load the binary files you copied at step 1 from microSD card to RAM by executing the commands stated below on the console. Here, **N** stands for the partition number in which you stored the binary files.
+- For CM33:
     ```
 	 => dcache off
 	 => mmc dev 1
-	 => fatload mmc 1:1 0x00060000 <device>_rpmsg_<com_type>_example_secure_vector.bin
-	 => fatload mmc 1:1 0x00060890 <device>_rpmsg_<com_type>_example_secure_code.bin
-	 => fatload mmc 1:1 0x10060800 <device>_rpmsg_<com_type>_example_non_secure_vector.bin
-	 => fatload mmc 1:1 0x10060840 <device>_rpmsg_<com_type>_example_non_secure_code.bin
+	 => fatload mmc 1:N 0x00023000 rzg3s_cm33_rpmsg_linux-rtos_example_secure_vector.bin
+	 => fatload mmc 1:N 0x00023890 rzg3s_cm33_rpmsg_linux-rtos_example_secure_code.bin
+	 => fatload mmc 1:N 0x10023800 rzg3s_cm33_rpmsg_linux-rtos_example_non_secure_vector.bin
+	 => fatload mmc 1:N 0x10023840 rzg3s_cm33_rpmsg_linux-rtos_example_non_secure_code.bin
+	 => mw.l 0x11020844 0x0001312C
+	 => mw.l 0x11020848 0x0001312C
+	 => mw.l 0x1102084C 0x00023000
+	 => mw.l 0x11020850 0x10023800
+	 => mw.l 0x11010504 0x00010001
+	 => mw.l 0x11010804 0x00040004
+	 => mw.l 0x11010804 0x00070007
+	 => dcache on
+    ```
+- For CM33_FPU:
+    ```
+	 => dcache off
+	 => mmc dev 1
+	 => fatload mmc 1:N 0x00060000 rzg3s_cm33_fpu_rpmsg_linux-rtos_example_secure_vector.bin
+	 => fatload mmc 1:N 0x00060890 rzg3s_cm33_fpu_rpmsg_linux-rtos_example_secure_code.bin
+	 => fatload mmc 1:N 0x10060800 rzg3s_cm33_fpu_rpmsg_linux-rtos_example_non_secure_vector.bin
+	 => fatload mmc 1:N 0x10060840 rzg3s_cm33_fpu_rpmsg_linux-rtos_example_non_secure_code.bin
 	 => mw.l 0x11020884 0x0001312C
 	 => mw.l 0x11020888 0x0001312C
 	 => mw.l 0x1102088C 0x00060000
@@ -232,7 +250,7 @@ The **`<device>_rpmsg_<com_type>_example`** outputs the message tranfer progress
 	Please send ! ('.' & CR stop load)
 	```
     Send the data of `fip-smarc-rzg3s.srec` from terminal software after the message `please send !` is shown. After successfully downloading the binary, please enter `y`.
-5. After writing two loader files normally, change the serial communication protocol speed from `921600` bps to `115200`. Finally, turn off the power of the board by pressing SW9.
+5. After writing two loader files normally, change the serial communication protocol speed from `921600` bps to `115200`. Finally, turn off the power of the board.
 
 6. Refer to **4.2 CM33 Sample Program Setup** and follow the procedure including the item **Optional for CM33 cold boot support** of [Quick Start Guide for RZ/G3S Multi-OS Package
 ](https://www.renesas.com/en/document/qsg/quick-start-guide-rzg3s-multi-os-package?queryID=7ab971994a78b67e7960deb0e56f081b). Do not follow the procedure **Optional for remoteproc support** at this time.
