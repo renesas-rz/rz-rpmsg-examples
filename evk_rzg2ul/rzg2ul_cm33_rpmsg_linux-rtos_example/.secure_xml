@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<raConfiguration version="12">
+  <generalSettings>
+    <option key="#Board#" value="board.rzg2ul_smarc"/>
+    <option key="CPU" value="RZG2UL"/>
+    <option key="Core" value="CM33_0"/>
+    <option key="#TargetName#" value="R9A07G043U11GBG_CM33"/>
+    <option key="#TargetARCHITECTURE#" value="cortex-m33"/>
+    <option key="#DeviceCommand#" value="R9A07G043U11GBG_CM33"/>
+    <option key="#RTOS#" value="rtos.awsfreertos"/>
+    <option key="#pinconfiguration#" value="R9A07G043U11GBG_CM33.pincfg"/>
+    <option key="#FSPVersion#" value="3.1.0"/>
+    <option key="#ConfigurationFragments#" value="Renesas##BSP##Board##rzg2ul_smarc##"/>
+    <option key="#SELECTED_TOOLCHAIN#" value="gcc-arm-embedded"/>
+    <option key="#ToolchainVersion#" value="13.3.1.arm-13-24"/>
+  </generalSettings>
+  <raBspConfiguration/>
+  <raClockConfiguration>
+    <node id="board.clock.osc.freq" mul="24000000" option="_edit"/>
+    <node id="board.clock.iclk.freq" mul="1000000000" option="_edit"/>
+    <node id="board.clock.i2clk.freq" mul="200000000" option="_edit"/>
+    <node id="board.clock.s0clk.freq" mul="12000" option="_edit"/>
+    <node id="board.clock.spi0clk.freq" mul="200000000" option="_edit"/>
+    <node id="board.clock.spi1clk.freq" mul="100000000" option="_edit"/>
+    <node id="board.clock.sd0clk.freq" mul="533000000" option="_edit"/>
+    <node id="board.clock.sd1clk.freq" mul="533000000" option="_edit"/>
+    <node id="board.clock.m0clk.freq" mul="200000000" option="_edit"/>
+    <node id="board.clock.m2clk.freq" mul="266500000" option="_edit"/>
+    <node id="board.clock.m3clk.freq" mul="3000000000" option="_edit"/>
+    <node id="board.clock.hpclk.freq" mul="250000000" option="_edit"/>
+    <node id="board.clock.tsuclk.freq" mul="80000000" option="_edit"/>
+    <node id="board.clock.ztclk.freq" mul="100000000" option="_edit"/>
+    <node id="board.clock.p0clk.freq" mul="100000000" option="_edit"/>
+    <node id="board.clock.p1clk.freq" mul="200000000" option="_edit"/>
+    <node id="board.clock.p2clk.freq" mul="100000000" option="_edit"/>
+    <node id="board.clock.atclk.freq" mul="400000000" option="_edit"/>
+  </raClockConfiguration>
+  <raPinConfiguration>
+    <pincfg active="true" name="" symbol="">
+      <configSetting altId="can0.can0_rx.p1_2" configurationId="can0.can0_rx" peripheral="CAN0"/>
+      <configSetting altId="can0.can0_tx.p1_1" configurationId="can0.can0_tx" peripheral="CAN0"/>
+      <configSetting altId="can1.can1_rx.p2_1" configurationId="can1.can1_rx" peripheral="CAN1"/>
+      <configSetting altId="can1.can1_tx.p2_0" configurationId="can1.can1_tx" peripheral="CAN1"/>
+      <configSetting altId="irq.irq2.p5_1" configurationId="irq.irq2" peripheral="IRQ"/>
+      <configSetting altId="irq.irq6.p18_4" configurationId="irq.irq6" peripheral="IRQ"/>
+      <configSetting altId="riic0.riic0_scl.riic0_scl" configurationId="riic0.riic0_scl" peripheral="RIIC0"/>
+      <configSetting altId="riic0.riic0_sda.riic0_sda" configurationId="riic0.riic0_sda" peripheral="RIIC0"/>
+      <configSetting altId="riic1.riic1_scl.riic1_scl" configurationId="riic1.riic1_scl" peripheral="RIIC1"/>
+      <configSetting altId="riic1.riic1_sda.riic1_sda" configurationId="riic1.riic1_sda" peripheral="RIIC1"/>
+      <configSetting altId="rspi0.rspi0_ck.p1_0" configurationId="rspi0.rspi0_ck" peripheral="RSPI0"/>
+      <configSetting altId="rspi0.rspi0_miso.p2_3" configurationId="rspi0.rspi0_miso" peripheral="RSPI0"/>
+      <configSetting altId="rspi0.rspi0_mosi.p2_2" configurationId="rspi0.rspi0_mosi" peripheral="RSPI0"/>
+      <configSetting altId="rspi0.rspi0_ssl.p1_3" configurationId="rspi0.rspi0_ssl" peripheral="RSPI0"/>
+      <configSetting altId="rspi1.rspi1_ck.p4_0" configurationId="rspi1.rspi1_ck" peripheral="RSPI1"/>
+      <configSetting altId="rspi1.rspi1_miso.p4_2" configurationId="rspi1.rspi1_miso" peripheral="RSPI1"/>
+      <configSetting altId="rspi1.rspi1_mosi.p4_1" configurationId="rspi1.rspi1_mosi" peripheral="RSPI1"/>
+      <configSetting altId="rspi1.rspi1_ssl.p4_3" configurationId="rspi1.rspi1_ssl" peripheral="RSPI1"/>
+    </pincfg>
+  </raPinConfiguration>
+</raConfiguration>
