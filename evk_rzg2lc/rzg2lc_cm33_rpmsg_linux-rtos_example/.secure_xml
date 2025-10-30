@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<raConfiguration version="12">
+  <generalSettings>
+    <option key="#Board#" value="board.rzg2lc_smarc"/>
+    <option key="CPU" value="RZG2LC"/>
+    <option key="Core" value="CM33_0"/>
+    <option key="#TargetName#" value="R9A07G044C22GBG_CM33"/>
+    <option key="#TargetARCHITECTURE#" value="cortex-m33"/>
+    <option key="#DeviceCommand#" value="R9A07G044C22GBG_CM33"/>
+    <option key="#RTOS#" value="rtos.awsfreertos"/>
+    <option key="#pinconfiguration#" value="R9A07G044C22GBG_CM33.pincfg"/>
+    <option key="#FSPVersion#" value="3.1.0"/>
+    <option key="#ConfigurationFragments#" value="Renesas##BSP##Board##rzg2lc_smarc##"/>
+    <option key="#SELECTED_TOOLCHAIN#" value="gcc-arm-embedded"/>
+    <option key="#ToolchainVersion#" value="13.3.1.arm-13-24"/>
+  </generalSettings>
+  <raBspConfiguration/>
+  <raClockConfiguration>
+    <node id="board.clock.osc.freq" mul="24000000" option="_edit"/>
+    <node id="board.clock.iclk.freq" mul="1200000000" option="_edit"/>
+    <node id="board.clock.i2clk.freq" mul="200000000" option="_edit"/>
+    <node id="board.clock.gclk.freq" mul="500000000" option="_edit"/>
+    <node id="board.clock.s0clk.freq" mul="12000" option="_edit"/>
+    <node id="board.clock.spi0clk.freq" mul="200000000" option="_edit"/>
+    <node id="board.clock.spi1clk.freq" mul="100000000" option="_edit"/>
+    <node id="board.clock.sd0clk.freq" mul="533000000" option="_edit"/>
+    <node id="board.clock.sd1clk.freq" mul="533000000" option="_edit"/>
+    <node id="board.clock.m0clk.freq" mul="200000000" option="_edit"/>
+    <node id="board.clock.m1clk.freq" mul="3000000000" option="_edit"/>
+    <node id="board.clock.m2clk.freq" mul="266500000" option="_edit"/>
+    <node id="board.clock.m3clk.freq" mul="3000000000" option="_edit"/>
+    <node id="board.clock.m4clk.freq" mul="16656000" option="_edit"/>
+    <node id="board.clock.hpclk.freq" mul="250000000" option="_edit"/>
+    <node id="board.clock.tsuclk.freq" mul="80000000" option="_edit"/>
+    <node id="board.clock.ztclk.freq" mul="100000000" option="_edit"/>
+    <node id="board.clock.p0clk.freq" mul="100000000" option="_edit"/>
+    <node id="board.clock.p1clk.freq" mul="200000000" option="_edit"/>
+    <node id="board.clock.p2clk.freq" mul="100000000" option="_edit"/>
+    <node id="board.clock.atclk.freq" mul="400000000" option="_edit"/>
+  </raClockConfiguration>
+  <raPinConfiguration>
+    <pincfg active="true" name="" symbol="">
+      <configSetting altId="gpt3.gtioc3a.p41_0" configurationId="gpt3.gtioc3a" peripheral="GPT3"/>
+      <configSetting altId="gpt4.gtioc4a.p43_0" configurationId="gpt4.gtioc4a" peripheral="GPT4"/>
+      <configSetting altId="gpt7.gtioc7a.p44_2" configurationId="gpt7.gtioc7a" peripheral="GPT7"/>
+      <configSetting altId="gpt7.gtioc7b.p44_3" configurationId="gpt7.gtioc7b" peripheral="GPT7"/>
+      <configSetting altId="irq.irq7.p43_3" configurationId="irq.irq7" peripheral="IRQ"/>
+      <configSetting altId="riic0.riic0_scl.riic0_scl" configurationId="riic0.riic0_scl" peripheral="RIIC0"/>
+      <configSetting altId="riic0.riic0_sda.riic0_sda" configurationId="riic0.riic0_sda" peripheral="RIIC0"/>
+      <configSetting altId="riic1.riic1_scl.riic1_scl" configurationId="riic1.riic1_scl" peripheral="RIIC1"/>
+      <configSetting altId="riic1.riic1_sda.riic1_sda" configurationId="riic1.riic1_sda" peripheral="RIIC1"/>
+      <configSetting altId="riic2.riic2_scl.p42_4" configurationId="riic2.riic2_scl" peripheral="RIIC2"/>
+      <configSetting altId="riic2.riic2_sda.p42_3" configurationId="riic2.riic2_sda" peripheral="RIIC2"/>
+      <configSetting altId="scif1.scif1_rxd.p40_1" configurationId="scif1.scif1_rxd" isUsedByDriver="true" peripheral="SCIF1"/>
+      <configSetting altId="scif1.scif1_txd.p40_0" configurationId="scif1.scif1_txd" isUsedByDriver="true" peripheral="SCIF1"/>
+    </pincfg>
+  </raPinConfiguration>
+</raConfiguration>
