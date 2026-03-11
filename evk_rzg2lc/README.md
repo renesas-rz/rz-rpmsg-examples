@@ -31,14 +31,14 @@ and FreeRTOS/BareMetal runs on the Cortex-M33, with support for Inter-Processor 
 |Hardware|Version|
 |----|----|
 |[RZ/G2LC-EVKIT](https://www.renesas.com/en/design-resources/boards-kits/rz-g2lc-evkit)|-|
-|[Segger J-link](https://www.segger.com/products/debug-probes/j-link/)| J-Link BASE v11.0 (J-Link DLL v7.96j) |
+|[Segger J-link](https://www.segger.com/products/debug-probes/j-link/)| J-Link BASE v11.0 (J-Link DLL v8.60) |
 
 
 |Software|Version|
 |----|----|
-|e<sup>2</sup> studio|2025-07 (25.7.0)|
+|e<sup>2</sup> studio|2025-12 (25.12.0)|
 |GNU ARM Embedded 13.3-Rel1|13.3.1.arm-13-24|
-|RZ/G FSP|3.1.0|
+|RZ FSP|4.0.0|
 |Tera Term|-|
 
 
@@ -59,7 +59,7 @@ The **rzg2lc_cm33_rpmsg_linux-rtos_example** outputs the message tranfer progres
 <img src=./git_images/connection-board.png width="720">
 
 ### CM33 sample project setup
-1. Open e2 studio 2025-07, import **rzg2lc_cm33_rpmsg_linux-rtos_example** from this repo to your workspace.
+1. Open e2 studio 2025-12, import **rzg2lc_cm33_rpmsg_linux-rtos_example** from this repo to your workspace.
 2. (Optional for configuring RPMsg channel)
 By default, RPMsg channel 0 is configured to be used on CM33. If you would like to use channel 1, please open the property of **MainTask#0** on FSP Smart Configurator, specify 1 for **Thread Context**, and push **General Project Content** button to reflect the change to the source code.
 <img src=./git_images/change_RPMsg_channel.png width="720"><br>
