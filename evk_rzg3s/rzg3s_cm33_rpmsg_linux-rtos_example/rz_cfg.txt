@@ -26,6 +26,7 @@ FSP Configuration
     C Runtime Initialization : Enabled
     Early BSP Initialization : Disabled
     
+  RZ all Common
   Clocks
     PLL1 1100000000Hz
     ICLK Div /1
@@ -164,7 +165,7 @@ FSP Configuration
       P13_1 D3 GPT0_GTIOC0B - H - "Peripheral mode" - - "CANFD0: CAN0_TX; GPT0: GTIOC0B; MTU4: MTIOC4B; RSPI4: RSPI4_MOSI; SCIF0: SCIF0_RXD; SCIF1: SCIF1_RXD; USB1: USB1_OVRCUR" - IO - - 
       P13_2 E2 - - - - Disabled - - "CANFD0: CAN0_RX; IRQ: IRQ2; MTU4: MTIOC4C; PCIe: PCI_RST_OUT_B; RSPI4: RSPI4_MISO; SCIF0: SCIF0_SCK" - None - - 
       P13_3 E1 - - - - Disabled - - "CANFD0: CAN0_TX_DATARATE_EN; IRQ: IRQ3; MTU4: MTIOC4D; PCIe: PCI_CLKREQ_B; RSPI4: RSPI4_SSL; SCIF0: SCIF0_CTS_N" - None - - 
-      P13_4 D2 RSPI3_RSPI3_CK - HH - "Peripheral mode" - - "CANFD0: CAN0_RX_DATARATE_EN; GPT6: GTIOC6A; POE: POE0_N; RSPI3: RSPI3_CK; SCIF0: SCIF0_RTS_N" - IO - - 
+      P13_4 D2 - - - - Disabled - - "CANFD0: CAN0_RX_DATARATE_EN; GPT6: GTIOC6A; POE: POE0_N; RSPI3: RSPI3_CK; SCIF0: SCIF0_RTS_N" - None - - 
       P14_0 F2 SCIF1_SCIF1_TXD - HH - "Peripheral mode" - - "CANFD1: CAN1_TX; GPT1: GTIOC1A; GPT6: GTIOC6B; MTU5: MTIC5U; POE: POE4_N; RSPI3: RSPI3_MOSI; SCIF1: SCIF1_TXD; SCIg0: SCI0_RXD" - O - - 
       P14_1 D1 SCIF1_SCIF1_RXD - HH - "Peripheral mode" - - "CANFD1: CAN1_RX; GPT1: GTIOC1B; MTU5: MTIC5V; POE: POE8_N; RSPI3: RSPI3_MISO; SCIF1: SCIF1_RXD; SCIg0: SCI0_TXD; SD2: SD2_CD" - I - - 
       P14_2 F1 CANFD1_CAN1_TX_DATARATE_EN - H - "Peripheral mode" - - "ADC: ADC_TRG; CANFD1: CAN1_TX_DATARATE_EN; MTU5: MTIC5W; POE: POE10_N; RSPI3: RSPI3_SSL; SCIF1: SCIF1_SCK; SCIg0: SCI0_SCK; SD2: SD2_WP" - O - - 
@@ -524,7 +525,7 @@ FSP Configuration
       P13_1 D3 - - M - Disabled - - "CANFD0: CAN0_TX; GPT0: GTIOC0B; MTU4: MTIOC4B; RSPI4: RSPI4_MOSI; SCIF0: SCIF0_RXD; SCIF1: SCIF1_RXD; USB1: USB1_OVRCUR" - IO - - 
       P13_2 E2 - - - - Disabled - - "CANFD0: CAN0_RX; IRQ: IRQ2; MTU4: MTIOC4C; PCIe: PCI_RST_OUT_B; RSPI4: RSPI4_MISO; SCIF0: SCIF0_SCK" - None - - 
       P13_3 E1 - - - - Disabled - - "CANFD0: CAN0_TX_DATARATE_EN; IRQ: IRQ3; MTU4: MTIOC4D; PCIe: PCI_CLKREQ_B; RSPI4: RSPI4_SSL; SCIF0: SCIF0_CTS_N" - None - - 
-      P13_4 D2 - - M - Disabled - - "CANFD0: CAN0_RX_DATARATE_EN; GPT6: GTIOC6A; POE: POE0_N; RSPI3: RSPI3_CK; SCIF0: SCIF0_RTS_N" - IO - - 
+      P13_4 D2 - - - - Disabled - - "CANFD0: CAN0_RX_DATARATE_EN; GPT6: GTIOC6A; POE: POE0_N; RSPI3: RSPI3_CK; SCIF0: SCIF0_RTS_N" - None - - 
       P14_0 F2 - - M - Disabled - - "CANFD1: CAN1_TX; GPT1: GTIOC1A; GPT6: GTIOC6B; MTU5: MTIC5U; POE: POE4_N; RSPI3: RSPI3_MOSI; SCIF1: SCIF1_TXD; SCIg0: SCI0_RXD" - O - - 
       P14_1 D1 - - M - Disabled - - "CANFD1: CAN1_RX; GPT1: GTIOC1B; MTU5: MTIC5V; POE: POE8_N; RSPI3: RSPI3_MISO; SCIF1: SCIF1_RXD; SCIg0: SCI0_TXD; SD2: SD2_CD" - I - - 
       P14_2 F1 - - M - Disabled - - "ADC: ADC_TRG; CANFD1: CAN1_TX_DATARATE_EN; MTU5: MTIC5W; POE: POE10_N; RSPI3: RSPI3_SSL; SCIF1: SCIF1_SCK; SCIg0: SCI0_SCK; SD2: SD2_WP" - O - - 
@@ -788,17 +789,15 @@ FSP Configuration
     Parameter Checking: Default (BSP)
     Memory-mapping Support: Prefetch Function: Disable
     
+  Module "Message Handling Unit in NonSecure (r_mhu_ns)"
+    Parameter Checking: Default (BSP)
+    
   Module "UART (r_scif_uart)"
     Parameter Checking: Default (BSP)
     DMAC Support: Disabled
     RS485 Flow (Driver Enable) Control Support: Disabled
     
-  Module "all"
-  Module "open-amp"
-  Module "libmetal"
-  Module "Message Handling Unit in NonSecure (r_mhu_ns)"
-    Parameter Checking: Default (BSP)
-    
+  Module "OpenAMP(freertos)"
   FreeRTOS
     General: Custom FreeRTOSConfig.h: 
     General: Use MPU: Disabled
@@ -833,18 +832,21 @@ FSP Configuration
     General: Num Thread Local Storage Pointers: 5
     General: Stack Depth Type: uint32_t
     General: Message Buffer Length Type: size_t
-    Memory Allocation: Support Static Allocation: Enabled
-    Memory Allocation: Support Dynamic Allocation: Enabled
-    Memory Allocation: Total Heap Size: 32768
-    Memory Allocation: Application Allocated Heap: Enabled
+    Memory Allocations: Support Static Allocation: Enabled
+    Memory Allocations: Support Dynamic Allocation: Enabled
+    Memory Allocations: Total Heap Size: 40960
+    Memory Allocations: Application Allocated Heap: Enabled
     Stats: Generate Run Time Stats: Disabled
     Timers: Use Timers: Enabled
     Timers: Timer Task Priority: 3
     Timers: Timer Queue Length: 10
     Timers: Timer Task Stack Depth: 128
     General: Library Max Syscall Interrupt Priority: Priority 1
-    General: Assert: assert(x)
+    General: Max Syscall Interrupt Priority: configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY
+    General: Assert: 
     General: Include Application Defined Privileged Functions: Disabled
+    General: Use POSIX errno: Disabled
+    General: Use Application Task Tag: Disabled
     Optional Functions: vTaskPrioritySet() Function: Enabled
     Optional Functions: uxTaskPriorityGet() Function: Enabled
     Optional Functions: vTaskDelete() Function: Enabled
@@ -862,6 +864,7 @@ FSP Configuration
     Optional Functions: xTaskAbortDelay() Function: Disabled
     Optional Functions: xTaskGetHandle() Function: Disabled
     Optional Functions: xTaskResumeFromISR() Function: Enabled
+    Optional Functions: xSemaphoreGetMutexHolder() Function: Disabled
     Logging: Print String Function: 
     Logging: Logging Max Message Length: 192
     Logging: Logging Include Time and Task Name: Disabled
@@ -971,6 +974,14 @@ FSP Configuration
         Extra Features: GTM Mode: Interval timer mode
         
     Instance "FreeRTOS Heap 4"
+    Instance "g_mhu_ns0 Message Handling Unit in NonSecure (r_mhu_ns)"
+      Name: g_mhu_ns0
+      Channel: MHU1
+      Receive Callback: NULL
+      Use OpenAMP: true
+      Receive Interrupt Priority: 12
+      Shared memory address: 0
+      
     Instance "g_uart1 UART (r_scif_uart)"
       General: Name: g_uart1
       General: Channel: 1
@@ -994,41 +1005,7 @@ FSP Configuration
       Interrupts: Receive Interrupt Priority: 14
       Interrupts: Transmit Data Empty Interrupt Priority: 14
       
-    Instance "all"
-      Instance "open-amp"
-      Instance "libmetal"
-    Instance "g_mhu_ns0 Message Handling Unit in NonSecure (r_mhu_ns)"
-      Name: g_mhu_ns0
-      Channel: MHU1
-      Receive Callback: NULL
-      Use OpenAMP: true
-      Receive Interrupt Priority: 12
-      Shared memory address: 0
-      
-    Instance "g_mhu_ns1 Message Handling Unit in NonSecure (r_mhu_ns)"
-      Name: g_mhu_ns1
-      Channel: MHU4
-      Receive Callback: NULL
-      Use OpenAMP: true
-      Receive Interrupt Priority: 12
-      Shared memory address: 0
-      
-    Instance "g_mhu_ns2 Message Handling Unit in NonSecure (r_mhu_ns)"
-      Name: g_mhu_ns2
-      Channel: MHU3
-      Receive Callback: NULL
-      Use OpenAMP: true
-      Receive Interrupt Priority: 12
-      Shared memory address: 0
-      
-    Instance "g_mhu_ns3 Message Handling Unit in NonSecure (r_mhu_ns)"
-      Name: g_mhu_ns3
-      Channel: MHU5
-      Receive Callback: NULL
-      Use OpenAMP: true
-      Receive Interrupt Priority: 12
-      Shared memory address: 0
-      
+    Instance "OpenAMP(freertos)"
   Thread "Blinky Thread"
     Symbol: blinky_thread
     Name: Blinky Thread
@@ -1043,7 +1020,7 @@ FSP Configuration
     Name: MainTask#0
     Stack size (bytes): 1024
     Priority: 1
-    Thread Context: NULL
-    Memory Allocation: Static
+    Thread Context: 0
+    Memory Allocation: Dynamic
     Allocate Secure Context: Enable
     

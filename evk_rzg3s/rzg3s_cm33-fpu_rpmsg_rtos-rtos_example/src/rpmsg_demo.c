@@ -83,7 +83,7 @@ volatile static int evt_svc_unbind[CFG_RPMSG_SVCNO] = {0};
  */
 static int rpmsg_endpoint_cb0 (struct rpmsg_endpoint * cb_rp_ept, void * data, size_t len, uint32_t src, void * priv)
 {
-	/* This function will not be used in this example */
+	/* This function will not be used in this demo */
 	return 0;
 }
 
