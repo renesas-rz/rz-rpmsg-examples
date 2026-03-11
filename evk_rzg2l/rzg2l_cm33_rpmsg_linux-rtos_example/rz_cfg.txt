@@ -24,6 +24,7 @@ FSP Configuration
     C Runtime Initialization : Enabled
     Early BSP Initialization : Disabled
     
+  RZ all Common
   Clocks
     OSC 24000000Hz
     ICLK 1200000000Hz
@@ -983,9 +984,7 @@ FSP Configuration
     DMAC Support: Disabled
     RS485 Flow (Driver Enable) Control Support: Disabled
     
-  Module "all"
-  Module "open-amp"
-  Module "libmetal"
+  Module "OpenAMP(freertos)"
   FreeRTOS
     General: Custom FreeRTOSConfig.h: 
     General: Use MPU: Disabled
@@ -1020,18 +1019,21 @@ FSP Configuration
     General: Num Thread Local Storage Pointers: 5
     General: Stack Depth Type: uint32_t
     General: Message Buffer Length Type: size_t
-    Memory Allocation: Support Static Allocation: Enabled
-    Memory Allocation: Support Dynamic Allocation: Enabled
-    Memory Allocation: Total Heap Size: 40960
-    Memory Allocation: Application Allocated Heap: Enabled
+    Memory Allocations: Support Static Allocation: Enabled
+    Memory Allocations: Support Dynamic Allocation: Enabled
+    Memory Allocations: Total Heap Size: 40960
+    Memory Allocations: Application Allocated Heap: Enabled
     Stats: Generate Run Time Stats: Disabled
     Timers: Use Timers: Enabled
     Timers: Timer Task Priority: 3
     Timers: Timer Queue Length: 10
     Timers: Timer Task Stack Depth: 128
     General: Library Max Syscall Interrupt Priority: Priority 1
-    General: Assert: assert(x)
+    General: Max Syscall Interrupt Priority: configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY
+    General: Assert: 
     General: Include Application Defined Privileged Functions: Disabled
+    General: Use POSIX errno: Disabled
+    General: Use Application Task Tag: Disabled
     Optional Functions: vTaskPrioritySet() Function: Enabled
     Optional Functions: uxTaskPriorityGet() Function: Enabled
     Optional Functions: vTaskDelete() Function: Enabled
@@ -1049,6 +1051,7 @@ FSP Configuration
     Optional Functions: xTaskAbortDelay() Function: Disabled
     Optional Functions: xTaskGetHandle() Function: Disabled
     Optional Functions: xTaskResumeFromISR() Function: Enabled
+    Optional Functions: xSemaphoreGetMutexHolder() Function: Disabled
     Logging: Print String Function: 
     Logging: Logging Max Message Length: 192
     Logging: Logging Include Time and Task Name: Disabled
@@ -1161,9 +1164,7 @@ FSP Configuration
       Interrupts: Receive Interrupt Priority: 14
       Interrupts: Transmit Data Empty Interrupt Priority: 14
       
-    Instance "all"
-      Instance "open-amp"
-      Instance "libmetal"
+    Instance "OpenAMP(freertos)"
   Thread "Blinky Thread"
     Symbol: blinky_thread
     Name: Blinky Thread
