@@ -1,6 +1,6 @@
 # RZ/G2L Cortex-M33 RPMsg example
 
-This is the Cortex-M33 RPMsg example to work with RZ/G2L Multi-OS Package. This example uses RZ/G FSP for FreeRTOS, portable middleware stacks, best in-case HAL drivers, and OpenAMP framework for Asymmetric Multiprocessing systems. By integrating the Multi-OS Package combined with this example, users can efficiently establish a Multi-OS environment wherein Linux operates on the Cortex®-A55
+This is the Cortex-M33 RPMsg example to work with RZ Multi-OS Package. This example uses RZ FSP for FreeRTOS, portable middleware stacks, best in-case HAL drivers, and OpenAMP framework for Asymmetric Multiprocessing systems. By integrating the Multi-OS Package combined with this example, users can efficiently establish a Multi-OS environment wherein Linux operates on the Cortex®-A55
 and FreeRTOS/BareMetal runs on the Cortex-M33, with support for Inter-Processor Communication between these CPU cores.<br>
 <img src=./git_images/block-diagram.png width="720">
 
