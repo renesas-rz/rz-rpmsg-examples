@@ -1,0 +1,64 @@
+/***********************************************************************************************************************
+ * Copyright [2020-2021] Renesas Electronics Corporation and/or its affiliates.  All Rights Reserved.
+ *
+ * This software and documentation are supplied by Renesas Electronics Corporation and/or its affiliates and may only
+ * be used with products of Renesas Electronics Corp. and its affiliates ("Renesas").  No other uses are authorized.
+ * Renesas products are sold pursuant to Renesas terms and conditions of sale.  Purchasers are solely responsible for
+ * the selection and use of Renesas products and Renesas assumes no liability.  No license, express or implied, to any
+ * intellectual property right is granted by Renesas.  This software is protected under all applicable laws, including
+ * copyright laws. Renesas reserves the right to change or discontinue this software and/or this documentation.
+ * THE SOFTWARE AND DOCUMENTATION IS DELIVERED TO YOU "AS IS," AND RENESAS MAKES NO REPRESENTATIONS OR WARRANTIES, AND
+ * TO THE FULLEST EXTENT PERMISSIBLE UNDER APPLICABLE LAW, DISCLAIMS ALL WARRANTIES, WHETHER EXPLICITLY OR IMPLICITLY,
+ * INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT, WITH RESPECT TO THE
+ * SOFTWARE OR DOCUMENTATION.  RENESAS SHALL HAVE NO LIABILITY ARISING OUT OF ANY SECURITY VULNERABILITY OR BREACH.
+ * TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT WILL RENESAS BE LIABLE TO YOU IN CONNECTION WITH THE SOFTWARE OR
+ * DOCUMENTATION (OR ANY PERSON OR ENTITY CLAIMING RIGHTS DERIVED FROM YOU) FOR ANY LOSS, DAMAGES, OR CLAIMS WHATSOEVER,
+ * INCLUDING, WITHOUT LIMITATION, ANY DIRECT, CONSEQUENTIAL, SPECIAL, INDIRECT, PUNITIVE, OR INCIDENTAL DAMAGES; ANY
+ * LOST PROFITS, OTHER ECONOMIC DAMAGE, PROPERTY DAMAGE, OR PERSONAL INJURY; AND EVEN IF RENESAS HAS BEEN ADVISED OF THE
+ * POSSIBILITY OF SUCH LOSS, DAMAGES, CLAIMS OR COSTS.
+ **********************************************************************************************************************/
+
+/**
+ * @file    OpenAMP_RPMsg_cfg.h
+ * @brief   OpenAMP configurations
+ * @date    2020.10.21
+ * @author  Copyright (c) 2020, eForce Co., Ltd. All rights reserved.
+ *
+ ****************************************************************************
+ * @par     History
+ *          - rev 1.0 (2024.05.31)
+ *            Initial version for RZ/T2.
+ ****************************************************************************
+ */
+
+#ifndef OPENAMP_RPMSG_CFG_H_
+#define OPENAMP_RPMSG_CFG_H_
+
+// RPMSG config
+#define APP_EPT_ADDR              (0x0U)
+
+// Memory region reserved between 0xE1000000U - 0xE8FFFFFF for RPMSG
+#define RPMSG_MEM_BASE            (0xE1000000U)
+#define RPMSG_MEM_SIZE            (0x08000000U)
+
+#define VRING_SIZE                (0x100000U)
+#define VRING_SHM_SIZE            (0x300000U)
+
+#define CFG_RPMSG_SVCNO           (0x2U)
+
+// RPMSG channel #0
+#define CFG_RPMSG_SVC_NAME0       "rpmsg-service-0"
+#define CFG_VRING0_BASE0_PA       (0xE1000000U)
+#define CFG_VRING0_BASE0_VA       (0xE1000000U)
+#define CFG_VRING1_BASE0_PA       (0xE1050000U)
+#define CFG_VRING1_BASE0_VA       (0xE1050000U)
+#define CFG_VRING_SIZE0           (VRING_SIZE)
+#define CFG_VRING_ALIGN0          (0x100U)
+#define CFG_RPMSG_NUM_BUFS0       (1U)
+#define CFG_VRING_SHM_BASE0_PA    (0xE1200000U)
+#define CFG_VRING_SHM_BASE0_VA    (0xE1200000U)
+#define CFG_VRING_SHM_SIZE0       (VRING_SHM_SIZE)
+#define CFG_VRING_CTL_NAME0       "E1000000.vring-ctl0"
+#define CFG_VRING_SHM_NAME0       "E1200000.vring-shm0"
+#define VRING_NOTIFYID0           (0U)
+#endif
