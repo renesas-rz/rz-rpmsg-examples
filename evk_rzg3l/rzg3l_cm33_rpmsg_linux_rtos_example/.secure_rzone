@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rzone>
+    <device Dvendor="Renesas" Dname="R9A08G046L46GBG">
+        <processor Pname="CM33" Dcore="Cortex-M33" Dfpu="0" Dmpu="1" Dtz="TZ" Ddsp="0" Dendian="Little-endian" Dclock="200000000" DcoreVersion="r0p4" DnumInterrupts="480" DnumSauRegions="0" info="Cortex-M33"/>
+    </device>
+    <resources>
+        <memories>
+            <memory name="SRAM_CODE_S" type="RAM" start="0x00000000" size="0x10000000" security=""/>
+            <memory name="SRAM_CODE_N" type="RAM" start="0x10000000" size="0x10000000" security=""/>
+            <memory name="SRAM_DATA_S" type="RAM" start="0x20000000" size="0x10000000" security=""/>
+            <memory name="SRAM_DATA_N" type="RAM" start="0x30000000" size="0x10000000" security=""/>
+            <memory name="DDR_S" type="RAM" start="0x60000000" size="0x10000000" security=""/>
+            <memory name="DDR_N" type="RAM" start="0x70000000" size="0x10000000" security=""/>
+            <memory name="XSPIFLASH_S" type="ROM" start="0x80000000" size="0x10000000" security=""/>
+            <memory name="XSPIFLASH_N" type="ROM" start="0x90000000" size="0x10000000" security=""/>
+        </memories>
+        <peripherals/>
+    </resources>
+</rzone>
