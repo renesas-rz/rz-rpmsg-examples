@@ -116,12 +116,12 @@ typedef enum
     BSP_GIC_IGROUPR_G1S  = (1UL << 1)
 } bsp_gic_igroupr_secure_t;
 
-#ifdef __FOR_FSP_DOCUMENT__
- #ifdef __cplusplus
+ #ifdef __FOR_FSP_DOCUMENT__
+  #ifdef __cplusplus
 namespace RZN
 {
+  #endif
  #endif
-#endif
 
 /*******************************************************************************************************************//**
  * @addtogroup RZN_BSP_MCU
@@ -212,11 +212,11 @@ uint32_t R_BSP_GICC_Get_IntIdGrp0(void);
 uint32_t R_BSP_GICC_Get_IntIdGrp1(void);
 
 /** @} (end addtogroup BSP_MCU) */
-#ifdef __FOR_FSP_DOCUMENT__
- #ifdef __cplusplus
+ #ifdef __FOR_FSP_DOCUMENT__
+  #ifdef __cplusplus
 }
+  #endif
  #endif
-#endif
 
 /*******************************************************************************************************************//**
  * @brief      Sets the ISR context associated with the requested IRQ.
@@ -428,4 +428,4 @@ fsp_err_t R_BSP_GroupIrqWrite(bsp_grp_irq_t irq, void (* p_callback)(bsp_grp_irq
 /** Common macro for FSP header files. There is also a corresponding FSP_HEADER macro at the top of this file. */
 FSP_FOOTER
 
-#endif                                 /* BSP_IRQ_CORE_H */
+#endif

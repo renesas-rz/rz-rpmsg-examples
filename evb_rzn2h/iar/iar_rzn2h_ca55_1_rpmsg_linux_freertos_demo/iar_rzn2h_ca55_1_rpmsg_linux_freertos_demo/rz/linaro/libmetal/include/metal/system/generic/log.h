@@ -30,18 +30,23 @@
  */
 
 /*
- * @file    log.h
- * @brief   libmetal log handler definition.
+ * @file    generic/log.h
+ * @brief   Generic libmetal log handler definition.
  */
 
 #ifndef __METAL_METAL_LOG__H__
- #error "Include metal/log.h instead of generic/log.h"
+ #error "Include metal/log.h instead of metal/generic/log.h"
 #endif
 
-#ifdef __cplusplus
+#ifndef __METAL_GENERIC_LOG__H__
+ #define __METAL_GENERIC_LOG__H__
+
+ #ifdef __cplusplus
 extern "C" {
-#endif
+ #endif
 
-#ifdef __cplusplus
+ #ifdef __cplusplus
 }
-#endif
+ #endif
+
+#endif                                 /* __METAL_GENERIC_LOG__H__ */

@@ -6,23 +6,22 @@
 
 /*
  * @file    assert.h
- * @brief   assertion support.
+ * @brief   Generic assertion support.
  */
+
 #ifndef __METAL_ASSERT__H__
- #error "Include metal/assert.h instead of generic/assert.h"
+ #error "Include metal/assert.h instead of metal/generic/assert.h"
 #endif
 
-#ifdef double_assert
- #error recursive2
-#endif
+#ifndef __METAL_GENERIC_ASSERT__H__
+ #define __METAL_GENERIC_ASSERT__H__
 
-#define double_asser
-#include <assert.h>
-
-#undef double_assert
+ #include <assert.h>
 
 /**
- * @brief Assertion macro for bare-metal/FreeRTOS applications.
+ * @brief Assertion macro for bare-metal applications.
  * @param cond Condition to evaluate.
  */
-#define metal_sys_assert(cond)    assert(cond)
+ #define metal_sys_assert(cond)    assert(cond)
+
+#endif                                 /* __METAL_GENERIC_ASSERT__H__ */

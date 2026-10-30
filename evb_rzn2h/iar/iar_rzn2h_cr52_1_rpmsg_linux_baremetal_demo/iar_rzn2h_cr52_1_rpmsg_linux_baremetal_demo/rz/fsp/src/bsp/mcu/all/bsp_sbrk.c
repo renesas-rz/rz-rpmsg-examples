@@ -8,9 +8,9 @@
  * Includes   <System Includes> , "Project Includes"
  **********************************************************************************************************************/
 #if defined(__GNUC__) && !defined(__ARMCC_VERSION)
+ #include "bsp_api.h"
  #include <sys/types.h>
  #include <errno.h>
- #include "bsp_api.h"
 
 /***********************************************************************************************************************
  * Macro definitions
@@ -29,20 +29,17 @@
  **********************************************************************************************************************/
 
 /***********************************************************************************************************************
- * Exported global functions (to be accessed by other files)
- **********************************************************************************************************************/
-
-/***********************************************************************************************************************
  * Private global variables and functions
  **********************************************************************************************************************/
+
 caddr_t _sbrk(int incr);
 
-#ifdef __FOR_FSP_DOCUMENT__
- #ifdef __cplusplus
+ #ifdef __FOR_FSP_DOCUMENT__
+  #ifdef __cplusplus
 namespace RZN
 {
+  #endif
  #endif
-#endif
 
 /*******************************************************************************************************************//**
  * @addtogroup RZN_BSP_MCU
@@ -60,6 +57,7 @@ namespace RZN
  *       malloc() to be 4096. That requires that we have a HEAP of at least 4096 if we are to support malloc().
  * @retval        Address of allocated area if successful, -1 otherwise.
  **********************************************************************************************************************/
+
 caddr_t _sbrk (int incr)
 {
     extern char _Heap_Begin __asm("__HeapBase");  ///< Defined by the linker.
@@ -100,7 +98,7 @@ caddr_t _sbrk (int incr)
  * @} (end addtogroup BSP_MCU)
  *********************************************************************************************************************/
 #ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __cplusplus
 }
-#endif
+ #endif
 #endif

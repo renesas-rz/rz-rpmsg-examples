@@ -91,7 +91,7 @@ LOADER_TEXT_OFFSET                 = (0 == LOADER_PROGRAM_LOCATION_PRV) ? 0x0000
                                      (2 == LOADER_PROGRAM_LOCATION_PRV) ? 0x00001000 : 0;
 LOADER_TEXT_ADDRESS                = LOADER_START + LOADER_TEXT_OFFSET;
 
-/* Specifies the region where the vector table is placed. */
+/* Specifies the region where the vector table is placed. */                                     
 INTVEC_START                       = DEFINED(FSP_STARTUP_LOCATION) ? SYSTEM_RAM_ALIGN_START :     
 									 (1 == IMPLEMENTED_TCM) ? ATCM_PRV_START : SYSTEM_RAM_ALIGN_START;
 INTVEC_LENGTH                      = DEFINED(FSP_STARTUP_LOCATION) ? SYSTEM_RAM_ALIGN_LENGTH :
@@ -135,6 +135,10 @@ MEMORY
     ATCM                   : ORIGIN = ATCM_PRV_START,                   LENGTH = ATCM_PRV_LENGTH
     BTCM                   : ORIGIN = BTCM_PRV_START,                   LENGTH = BTCM_PRV_LENGTH
     SYSTEM_RAM             : ORIGIN = SYSTEM_RAM_ALIGN_START,           LENGTH = SYSTEM_RAM_ALIGN_LENGTH
+    CPU0_ATCM_VIA_AXIS     : ORIGIN = CPU0_ATCM_VIA_AXIS_PRV_START,     LENGTH = CPU0_ATCM_VIA_AXIS_PRV_LENGTH
+    CPU0_BTCM_VIA_AXIS     : ORIGIN = CPU0_BTCM_VIA_AXIS_PRV_START,     LENGTH = CPU0_BTCM_VIA_AXIS_PRV_LENGTH
+    CPU1_ATCM_VIA_AXIS     : ORIGIN = CPU1_ATCM_VIA_AXIS_PRV_START,     LENGTH = CPU1_ATCM_VIA_AXIS_PRV_LENGTH
+    CPU1_BTCM_VIA_AXIS     : ORIGIN = CPU1_BTCM_VIA_AXIS_PRV_START,     LENGTH = CPU1_BTCM_VIA_AXIS_PRV_LENGTH
     SYSTEM_RAM_MIRROR      : ORIGIN = SYSTEM_RAM_MIRROR_PRV_START,      LENGTH = SYSTEM_RAM_MIRROR_PRV_LENGTH
     xSPI0_CS0_SPACE_MIRROR : ORIGIN = xSPI0_CS0_SPACE_MIRROR_PRV_START, LENGTH = xSPI0_CS0_SPACE_MIRROR_PRV_LENGTH
     xSPI0_CS1_SPACE_MIRROR : ORIGIN = xSPI0_CS1_SPACE_MIRROR_PRV_START, LENGTH = xSPI0_CS1_SPACE_MIRROR_PRV_LENGTH
@@ -170,7 +174,7 @@ MEMORY
     LCDC_FRAME_BUFFER      : ORIGIN = LCDC_FRAME_BUFFER_START,          LENGTH = LCDC_FRAME_BUFFER_LENGTH
     
     OPENAMP_RSCTBL(rw)     : ORIGIN = OPENAMP_RSCTBL_START,             LENGTH = OPENAMP_RSCTBL_LENGTH
-	OPENAMP_VRING(rw)      : ORIGIN = OPENAMP_VRING_START,              LENGTH = OPENAMP_VRING_LENGTH
+    OPENAMP_VRING(rw)      : ORIGIN = OPENAMP_VRING_START,              LENGTH = OPENAMP_VRING_LENGTH
 }
 
 /*============================================================================*/
@@ -241,6 +245,15 @@ SECTIONS
         __loader_bss_end = . ;
 
         KEEP(*(.software_reset)) /* Do not initialize */
+    } > LOADER_DATA_STACK
+
+    /* Place the uninitialized variables. */
+    .noinit (NOLOAD):
+    {
+        . = ALIGN(8);
+        __noinit_start = .;
+        KEEP(*(.noinit*))
+        __noinit_end = .;
     } > LOADER_DATA_STACK
 
 /*-----------------------------------------------*/
@@ -396,6 +409,7 @@ SECTIONS
         *(.data)
 
         *(.rodata*)
+        KEEP(*(.version))
         _erodata = .;
 
         . = ALIGN(8);
@@ -543,7 +557,7 @@ SECTIONS
     __tz_OPENAMP_VRING = ABSOLUTE(OPENAMP_VRING_START);
     . = __tz_OPENAMP_VRING;
 
-    /* OpenAMP VRINGresource table */
+    /* OpenAMP VRING resource table */
     .vring (NOLOAD) :
     {
         PROVIDE(__vring_start = .);

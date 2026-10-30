@@ -1,7 +1,15 @@
 
             /* generated memory regions file - do not edit */
-                            define symbol SYSTEM_RAM_START = 0x10040C60;
-                define symbol SYSTEM_RAM_LENGTH = 0x1BF3A0;
+                            define symbol SYSTEM_RAM_START = 0x1002CCC8;
+                define symbol SYSTEM_RAM_LENGTH = 0x1D3338;
+                define symbol CPU0_ATCM_VIA_AXIS_START = 0x20000000;
+                define symbol CPU0_ATCM_VIA_AXIS_LENGTH = 0x80000;
+                define symbol CPU0_BTCM_VIA_AXIS_START = 0x20100000;
+                define symbol CPU0_BTCM_VIA_AXIS_LENGTH = 0x10000;
+                define symbol CPU1_ATCM_VIA_AXIS_START = 0x21000000;
+                define symbol CPU1_ATCM_VIA_AXIS_LENGTH = 0x80000;
+                define symbol CPU1_BTCM_VIA_AXIS_START = 0x21100000;
+                define symbol CPU1_BTCM_VIA_AXIS_LENGTH = 0x10000;
                 define symbol xSPI0_CS0_SPACE_START = 0x40000000;
                 define symbol xSPI0_CS0_SPACE_LENGTH = 0x8000000;
                 define symbol xSPI0_CS1_SPACE_START = 0x48000000;
@@ -24,6 +32,10 @@
                 define symbol PCIE1_MIRROR_LENGTH = 0x10000000;
                 define symbol DDR_MIRROR0_START = 0xC0000000;
                 define symbol DDR_MIRROR0_LENGTH = 0x40000000;
+                define symbol DDR_MIRROR1_START = 0xE0000000;
+                define symbol DDR_MIRROR1_LENGTH = 0x20000000;
+                define symbol DDR_MIRROR1_CA55_1_START = 0x00000000;
+                define symbol DDR_MIRROR1_CA55_1_LENGTH = 0x0;
                 define symbol DDR_START = 0x200000000;
                 define symbol DDR_LENGTH = 0x200000000;
                 define symbol PCIE0_START = 0x400000000;

@@ -1,4 +1,3 @@
-/* generated pin source file - do not edit */
 #include "bsp_api.h"
 #include "r_ioport_api.h"
 #include "r_ioport.h"
@@ -39,20 +38,24 @@ const ioport_pin_cfg_t g_bsp_pin_cfg_data1[] =
                  (uint32_t) IOPORT_CFG_SCHMITT_TRIGGER_ENABLE |
                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
                  (uint32_t) IOPORT_PIN_P017_PFC_1C_XSPI1_IO3)},
-    {.pin        = BSP_IO_PORT_02_PIN_5,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P025_PFC_29_SD0_PWEN)},
-    {.pin        = BSP_IO_PORT_02_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P026_PFC_29_SD0_IOVS)},
-    {.pin        = BSP_IO_PORT_02_PIN_7,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
+    {.pin     = BSP_IO_PORT_02_PIN_5,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P025_PFC_29_SD0_PWEN)},
+    {.pin     = BSP_IO_PORT_02_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P026_PFC_29_SD0_IOVS)},
+    {.pin     = BSP_IO_PORT_02_PIN_7,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
+                                                  (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW)},
+    {.pin     = BSP_IO_PORT_03_PIN_0,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
+                                                  (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW)},
+    {.pin     = BSP_IO_PORT_03_PIN_1,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
+                                                  (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW)},
+    {.pin     = BSP_IO_PORT_03_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
                                                      (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW)},
-    {.pin        = BSP_IO_PORT_03_PIN_0,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
-                                                     (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW)},
-    {.pin        = BSP_IO_PORT_03_PIN_3,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_PIN_P033_PFC_17_IIC_SCL1)},
-    {.pin        = BSP_IO_PORT_03_PIN_4,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_PIN_P034_PFC_17_IIC_SDA1)},
+    {.pin     = BSP_IO_PORT_03_PIN_3,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_PIN_P033_PFC_17_IIC_SCL1)},
+    {.pin     = BSP_IO_PORT_03_PIN_4,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_PIN_P034_PFC_17_IIC_SDA1)},
     {.pin     = BSP_IO_PORT_05_PIN_1,
      .pin_cfg = ((uint32_t) IOPORT_CFG_DRIVE_HIGH | (uint32_t) IOPORT_CFG_PORT_PERI |
                  (uint32_t) IOPORT_CFG_SCHMITT_TRIGGER_ENABLE |
@@ -118,61 +121,61 @@ const ioport_pin_cfg_t g_bsp_pin_cfg_data1[] =
                  (uint32_t) IOPORT_CFG_SCHMITT_TRIGGER_ENABLE |
                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
                  (uint32_t) IOPORT_PIN_P065_PFC_1C_XSPI0_IO7)},
-    {.pin        = BSP_IO_PORT_06_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_PIN_P066_PFC_1C_XSPI0_RESET0)},
+    {.pin     = BSP_IO_PORT_06_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_PIN_P066_PFC_1C_XSPI0_RESET0)},
     {.pin     = BSP_IO_PORT_08_PIN_1,
      .pin_cfg = ((uint32_t) IOPORT_CFG_DRIVE_HIGH | (uint32_t) IOPORT_CFG_PORT_PERI |
                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
                  (uint32_t) IOPORT_PIN_P081_PFC_01_TMS)},
-    {.pin        = BSP_IO_PORT_08_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_SCHMITT_TRIGGER_ENABLE |
-                                                     (uint32_t) IOPORT_PIN_P082_PFC_01_TDI)},
-    {.pin        = BSP_IO_PORT_08_PIN_3,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_SCHMITT_TRIGGER_ENABLE |
-                                                     (uint32_t) IOPORT_PIN_P083_PFC_01_TCK)},
+    {.pin     = BSP_IO_PORT_08_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_SCHMITT_TRIGGER_ENABLE |
+                                                  (uint32_t) IOPORT_PIN_P082_PFC_01_TDI)},
+    {.pin     = BSP_IO_PORT_08_PIN_3,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_SCHMITT_TRIGGER_ENABLE |
+                                                  (uint32_t) IOPORT_PIN_P083_PFC_01_TCK)},
     {.pin     = BSP_IO_PORT_08_PIN_4,
      .pin_cfg = ((uint32_t) IOPORT_CFG_DRIVE_HIGH | (uint32_t) IOPORT_CFG_PORT_PERI |
                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
                  (uint32_t) IOPORT_PIN_P084_PFC_01_TDO)},
-    {.pin        = BSP_IO_PORT_11_PIN_0,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
-                                                     (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW)},
+    {.pin     = BSP_IO_PORT_11_PIN_0,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
+                                                  (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW)},
     {.pin     = BSP_IO_PORT_12_PIN_0,
      .pin_cfg = ((uint32_t) IOPORT_CFG_DRIVE_HIGH | (uint32_t) IOPORT_CFG_PORT_PERI |
                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
                  (uint32_t) IOPORT_PIN_P120_PFC_29_SD0_CLK)},
-    {.pin        = BSP_IO_PORT_12_PIN_1,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P121_PFC_29_SD0_CMD)},
-    {.pin        = BSP_IO_PORT_12_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P122_PFC_29_SD0_DATA0)},
-    {.pin        = BSP_IO_PORT_12_PIN_3,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P123_PFC_29_SD0_DATA1)},
-    {.pin        = BSP_IO_PORT_12_PIN_4,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P124_PFC_29_SD0_DATA2)},
-    {.pin        = BSP_IO_PORT_12_PIN_5,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P125_PFC_29_SD0_DATA3)},
-    {.pin        = BSP_IO_PORT_12_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P126_PFC_29_SD0_DATA4)},
-    {.pin        = BSP_IO_PORT_12_PIN_7,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P127_PFC_29_SD0_DATA5)},
-    {.pin        = BSP_IO_PORT_13_PIN_0,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P130_PFC_29_SD0_DATA6)},
-    {.pin        = BSP_IO_PORT_13_PIN_1,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P131_PFC_29_SD0_DATA7)},
-    {.pin        = BSP_IO_PORT_13_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P132_PFC_29_SD0_RST)},
+    {.pin     = BSP_IO_PORT_12_PIN_1,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P121_PFC_29_SD0_CMD)},
+    {.pin     = BSP_IO_PORT_12_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P122_PFC_29_SD0_DATA0)},
+    {.pin     = BSP_IO_PORT_12_PIN_3,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P123_PFC_29_SD0_DATA1)},
+    {.pin     = BSP_IO_PORT_12_PIN_4,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P124_PFC_29_SD0_DATA2)},
+    {.pin     = BSP_IO_PORT_12_PIN_5,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P125_PFC_29_SD0_DATA3)},
+    {.pin     = BSP_IO_PORT_12_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P126_PFC_29_SD0_DATA4)},
+    {.pin     = BSP_IO_PORT_12_PIN_7,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P127_PFC_29_SD0_DATA5)},
+    {.pin     = BSP_IO_PORT_13_PIN_0,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P130_PFC_29_SD0_DATA6)},
+    {.pin     = BSP_IO_PORT_13_PIN_1,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P131_PFC_29_SD0_DATA7)},
+    {.pin     = BSP_IO_PORT_13_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P132_PFC_29_SD0_RST)},
     {.pin     = BSP_IO_PORT_13_PIN_4,
      .pin_cfg = ((uint32_t) IOPORT_CFG_DRIVE_HIGH | (uint32_t) IOPORT_CFG_PORT_PERI |
                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
@@ -183,55 +186,55 @@ const ioport_pin_cfg_t g_bsp_pin_cfg_data1[] =
                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
                  (uint32_t) IOPORT_PIN_P135_PFC_14_TXD3_SDA3_MOSI3)},
-    {.pin        = BSP_IO_PORT_14_PIN_3,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
-                                                     (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
-    {.pin        = BSP_IO_PORT_14_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
-                                                     (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
-    {.pin        = BSP_IO_PORT_14_PIN_7,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
-                                                     (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
+    {.pin     = BSP_IO_PORT_14_PIN_3,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
+                                                  (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
+    {.pin     = BSP_IO_PORT_14_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
+                                                  (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
+    {.pin     = BSP_IO_PORT_14_PIN_7,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
+                                                  (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
     {.pin     = BSP_IO_PORT_16_PIN_5,
      .pin_cfg = ((uint32_t) IOPORT_CFG_DRIVE_HIGH | (uint32_t) IOPORT_CFG_PORT_PERI |
                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
                  (uint32_t) IOPORT_PIN_P165_PFC_29_SD1_CLK)},
-    {.pin        = BSP_IO_PORT_16_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P166_PFC_29_SD1_CMD)},
-    {.pin        = BSP_IO_PORT_16_PIN_7,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P167_PFC_29_SD1_DATA0)},
-    {.pin        = BSP_IO_PORT_17_PIN_0,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P170_PFC_29_SD1_DATA1)},
-    {.pin        = BSP_IO_PORT_17_PIN_1,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P171_PFC_29_SD1_DATA2)},
-    {.pin        = BSP_IO_PORT_17_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P172_PFC_29_SD1_DATA3)},
-    {.pin        = BSP_IO_PORT_17_PIN_4,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P174_PFC_29_SD1_CD)},
-    {.pin        = BSP_IO_PORT_17_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P176_PFC_29_SD1_PWEN)},
-    {.pin        = BSP_IO_PORT_17_PIN_7,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P177_PFC_29_SD1_IOVS)},
-    {.pin        = BSP_IO_PORT_18_PIN_1,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
-                                                     (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
+    {.pin     = BSP_IO_PORT_16_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P166_PFC_29_SD1_CMD)},
+    {.pin     = BSP_IO_PORT_16_PIN_7,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P167_PFC_29_SD1_DATA0)},
+    {.pin     = BSP_IO_PORT_17_PIN_0,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P170_PFC_29_SD1_DATA1)},
+    {.pin     = BSP_IO_PORT_17_PIN_1,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P171_PFC_29_SD1_DATA2)},
+    {.pin     = BSP_IO_PORT_17_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P172_PFC_29_SD1_DATA3)},
+    {.pin     = BSP_IO_PORT_17_PIN_4,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P174_PFC_29_SD1_CD)},
+    {.pin     = BSP_IO_PORT_17_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P176_PFC_29_SD1_PWEN)},
+    {.pin     = BSP_IO_PORT_17_PIN_7,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P177_PFC_29_SD1_IOVS)},
+    {.pin     = BSP_IO_PORT_18_PIN_1,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
+                                                  (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
     {.pin     = BSP_IO_PORT_18_PIN_7,
      .pin_cfg = ((uint32_t) IOPORT_CFG_PORT_PERI | (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_PIN_P187_PFC_00_IRQ4)},
@@ -240,26 +243,26 @@ const ioport_pin_cfg_t g_bsp_pin_cfg_data1[] =
                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
                  (uint32_t) IOPORT_PIN_P200_PFC_0F_ETH0_TXCLK)},
-    {.pin        = BSP_IO_PORT_20_PIN_1,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P201_PFC_0F_ETH0_TXD0)},
-    {.pin        = BSP_IO_PORT_20_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P202_PFC_0F_ETH0_TXD1)},
-    {.pin        = BSP_IO_PORT_20_PIN_3,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P203_PFC_0F_ETH0_TXD2)},
-    {.pin        = BSP_IO_PORT_20_PIN_4,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P204_PFC_0F_ETH0_TXD3)},
-    {.pin        = BSP_IO_PORT_20_PIN_5,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P205_PFC_0F_ETH0_TXEN)},
+    {.pin     = BSP_IO_PORT_20_PIN_1,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P201_PFC_0F_ETH0_TXD0)},
+    {.pin     = BSP_IO_PORT_20_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P202_PFC_0F_ETH0_TXD1)},
+    {.pin     = BSP_IO_PORT_20_PIN_3,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P203_PFC_0F_ETH0_TXD2)},
+    {.pin     = BSP_IO_PORT_20_PIN_4,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P204_PFC_0F_ETH0_TXD3)},
+    {.pin     = BSP_IO_PORT_20_PIN_5,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P205_PFC_0F_ETH0_TXEN)},
     {.pin     = BSP_IO_PORT_20_PIN_6,
      .pin_cfg = ((uint32_t) IOPORT_CFG_PORT_PERI | (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_PIN_P206_PFC_0F_ETH0_RXCLK)},
@@ -275,23 +278,23 @@ const ioport_pin_cfg_t g_bsp_pin_cfg_data1[] =
     {.pin     = BSP_IO_PORT_21_PIN_2,
      .pin_cfg = ((uint32_t) IOPORT_CFG_PORT_PERI | (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_PIN_P212_PFC_0F_ETH0_RXD3)},
-    {.pin        = BSP_IO_PORT_21_PIN_3,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_PIN_P213_PFC_0F_ETH0_RXDV)},
-    {.pin        = BSP_IO_PORT_21_PIN_4,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_PIN_P214_PFC_10_GMAC0_MDC)},
-    {.pin        = BSP_IO_PORT_21_PIN_5,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_PIN_P215_PFC_10_GMAC0_MDIO)},
-    {.pin        = BSP_IO_PORT_21_PIN_7,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P217_PFC_02_ETH0_REFCLK)},
-    {.pin        = BSP_IO_PORT_22_PIN_1,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P221_PFC_0F_ETH0_TXER)},
+    {.pin     = BSP_IO_PORT_21_PIN_3,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_PIN_P213_PFC_0F_ETH0_RXDV)},
+    {.pin     = BSP_IO_PORT_21_PIN_4,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_PIN_P214_PFC_10_GMAC0_MDC)},
+    {.pin     = BSP_IO_PORT_21_PIN_5,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_PIN_P215_PFC_10_GMAC0_MDIO)},
+    {.pin     = BSP_IO_PORT_21_PIN_7,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P217_PFC_02_ETH0_REFCLK)},
+    {.pin     = BSP_IO_PORT_22_PIN_1,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P221_PFC_0F_ETH0_TXER)},
     {.pin     = BSP_IO_PORT_22_PIN_2,
      .pin_cfg = ((uint32_t) IOPORT_CFG_PORT_PERI | (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_PIN_P222_PFC_0F_ETH0_RXER)},
@@ -301,37 +304,37 @@ const ioport_pin_cfg_t g_bsp_pin_cfg_data1[] =
     {.pin     = BSP_IO_PORT_22_PIN_4,
      .pin_cfg = ((uint32_t) IOPORT_CFG_PORT_PERI | (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_PIN_P224_PFC_0F_ETH0_COL)},
-    {.pin        = BSP_IO_PORT_22_PIN_7,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
-                                                     (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
-    {.pin        = BSP_IO_PORT_23_PIN_0,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
-                                                     (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
+    {.pin     = BSP_IO_PORT_22_PIN_7,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
+                                                  (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
+    {.pin     = BSP_IO_PORT_23_PIN_0,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
+                                                  (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
     {.pin     = BSP_IO_PORT_24_PIN_5,
      .pin_cfg = ((uint32_t) IOPORT_CFG_DRIVE_UHIGH | (uint32_t) IOPORT_CFG_PORT_PERI |
                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
                  (uint32_t) IOPORT_PIN_P245_PFC_0F_ETH1_TXCLK)},
-    {.pin        = BSP_IO_PORT_24_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P246_PFC_0F_ETH1_TXD0)},
-    {.pin        = BSP_IO_PORT_24_PIN_7,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P247_PFC_0F_ETH1_TXD1)},
-    {.pin        = BSP_IO_PORT_25_PIN_0,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P250_PFC_0F_ETH1_TXD2)},
-    {.pin        = BSP_IO_PORT_25_PIN_1,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P251_PFC_0F_ETH1_TXD3)},
-    {.pin        = BSP_IO_PORT_25_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P252_PFC_0F_ETH1_TXEN)},
+    {.pin     = BSP_IO_PORT_24_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P246_PFC_0F_ETH1_TXD0)},
+    {.pin     = BSP_IO_PORT_24_PIN_7,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P247_PFC_0F_ETH1_TXD1)},
+    {.pin     = BSP_IO_PORT_25_PIN_0,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P250_PFC_0F_ETH1_TXD2)},
+    {.pin     = BSP_IO_PORT_25_PIN_1,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P251_PFC_0F_ETH1_TXD3)},
+    {.pin     = BSP_IO_PORT_25_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P252_PFC_0F_ETH1_TXEN)},
     {.pin     = BSP_IO_PORT_25_PIN_3,
      .pin_cfg = ((uint32_t) IOPORT_CFG_PORT_PERI | (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_PIN_P253_PFC_0F_ETH1_RXCLK)},
@@ -347,23 +350,23 @@ const ioport_pin_cfg_t g_bsp_pin_cfg_data1[] =
     {.pin     = BSP_IO_PORT_25_PIN_7,
      .pin_cfg = ((uint32_t) IOPORT_CFG_PORT_PERI | (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_PIN_P257_PFC_0F_ETH1_RXD3)},
-    {.pin        = BSP_IO_PORT_26_PIN_0,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_PIN_P260_PFC_0F_ETH1_RXDV)},
-    {.pin        = BSP_IO_PORT_26_PIN_1,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_PIN_P261_PFC_10_GMAC1_MDC)},
-    {.pin        = BSP_IO_PORT_26_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_PIN_P262_PFC_10_GMAC1_MDIO)},
-    {.pin        = BSP_IO_PORT_26_PIN_4,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P264_PFC_02_ETH1_REFCLK)},
-    {.pin        = BSP_IO_PORT_26_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P266_PFC_0F_ETH1_TXER)},
+    {.pin     = BSP_IO_PORT_26_PIN_0,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_PIN_P260_PFC_0F_ETH1_RXDV)},
+    {.pin     = BSP_IO_PORT_26_PIN_1,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_PIN_P261_PFC_10_GMAC1_MDC)},
+    {.pin     = BSP_IO_PORT_26_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_PIN_P262_PFC_10_GMAC1_MDIO)},
+    {.pin     = BSP_IO_PORT_26_PIN_4,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P264_PFC_02_ETH1_REFCLK)},
+    {.pin     = BSP_IO_PORT_26_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P266_PFC_0F_ETH1_TXER)},
     {.pin     = BSP_IO_PORT_26_PIN_7,
      .pin_cfg = ((uint32_t) IOPORT_CFG_PORT_PERI | (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_PIN_P267_PFC_0F_ETH1_RXER)},
@@ -373,10 +376,10 @@ const ioport_pin_cfg_t g_bsp_pin_cfg_data1[] =
     {.pin     = BSP_IO_PORT_27_PIN_1,
      .pin_cfg = ((uint32_t) IOPORT_CFG_PORT_PERI | (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_PIN_P271_PFC_0F_ETH1_COL)},
-    {.pin        = BSP_IO_PORT_27_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_INPUT |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
-    {.pin        = BSP_IO_PORT_27_PIN_3,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_INPUT |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
+    {.pin     = BSP_IO_PORT_27_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_INPUT |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
+    {.pin     = BSP_IO_PORT_27_PIN_3,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_INPUT |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
     {.pin     = BSP_IO_PORT_27_PIN_4,
      .pin_cfg = ((uint32_t) IOPORT_CFG_DRIVE_HIGH | (uint32_t) IOPORT_CFG_PORT_PERI |
                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
@@ -387,33 +390,33 @@ const ioport_pin_cfg_t g_bsp_pin_cfg_data1[] =
                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
                  (uint32_t) IOPORT_PIN_P275_PFC_14_TXD0_SDA0_MOSI0)},
-    {.pin        = BSP_IO_PORT_27_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_INPUT |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
+    {.pin     = BSP_IO_PORT_27_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_INPUT |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
     {.pin     = BSP_IO_PORT_29_PIN_1,
      .pin_cfg = ((uint32_t) IOPORT_CFG_DRIVE_UHIGH | (uint32_t) IOPORT_CFG_PORT_PERI |
                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
                  (uint32_t) IOPORT_PIN_P291_PFC_0F_ETH2_TXCLK)},
-    {.pin        = BSP_IO_PORT_29_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P292_PFC_0F_ETH2_TXD0)},
-    {.pin        = BSP_IO_PORT_29_PIN_3,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P293_PFC_0F_ETH2_TXD1)},
-    {.pin        = BSP_IO_PORT_29_PIN_4,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P294_PFC_0F_ETH2_TXD2)},
-    {.pin        = BSP_IO_PORT_29_PIN_5,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P295_PFC_0F_ETH2_TXD3)},
-    {.pin        = BSP_IO_PORT_29_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P296_PFC_0F_ETH2_TXEN)},
+    {.pin     = BSP_IO_PORT_29_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P292_PFC_0F_ETH2_TXD0)},
+    {.pin     = BSP_IO_PORT_29_PIN_3,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P293_PFC_0F_ETH2_TXD1)},
+    {.pin     = BSP_IO_PORT_29_PIN_4,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P294_PFC_0F_ETH2_TXD2)},
+    {.pin     = BSP_IO_PORT_29_PIN_5,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P295_PFC_0F_ETH2_TXD3)},
+    {.pin     = BSP_IO_PORT_29_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P296_PFC_0F_ETH2_TXEN)},
     {.pin     = BSP_IO_PORT_29_PIN_7,
      .pin_cfg = ((uint32_t) IOPORT_CFG_PORT_PERI | (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_PIN_P297_PFC_0F_ETH2_RXCLK)},
@@ -429,31 +432,31 @@ const ioport_pin_cfg_t g_bsp_pin_cfg_data1[] =
     {.pin     = BSP_IO_PORT_30_PIN_3,
      .pin_cfg = ((uint32_t) IOPORT_CFG_PORT_PERI | (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_PIN_P303_PFC_0F_ETH2_RXD3)},
-    {.pin        = BSP_IO_PORT_30_PIN_4,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_PIN_P304_PFC_0F_ETH2_RXDV)},
-    {.pin        = BSP_IO_PORT_31_PIN_0,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P310_PFC_02_ETH2_REFCLK)},
+    {.pin     = BSP_IO_PORT_30_PIN_4,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_PIN_P304_PFC_0F_ETH2_RXDV)},
+    {.pin     = BSP_IO_PORT_31_PIN_0,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P310_PFC_02_ETH2_REFCLK)},
     {.pin     = BSP_IO_PORT_31_PIN_1,
      .pin_cfg = ((uint32_t) IOPORT_CFG_PORT_PERI | (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_PIN_P311_PFC_0F_ETH2_RXER)},
-    {.pin        = BSP_IO_PORT_31_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P312_PFC_0F_ETH2_TXER)},
-    {.pin        = BSP_IO_PORT_31_PIN_3,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_INPUT |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
+    {.pin     = BSP_IO_PORT_31_PIN_2,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P312_PFC_0F_ETH2_TXER)},
+    {.pin     = BSP_IO_PORT_31_PIN_3,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_INPUT |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
     {.pin     = BSP_IO_PORT_31_PIN_4,
      .pin_cfg = ((uint32_t) IOPORT_CFG_PORT_PERI | (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_PIN_P314_PFC_0F_ETH2_CRS)},
     {.pin     = BSP_IO_PORT_31_PIN_5,
      .pin_cfg = ((uint32_t) IOPORT_CFG_PORT_PERI | (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_PIN_P315_PFC_0F_ETH2_COL)},
-    {.pin        = BSP_IO_PORT_31_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
-                                                     (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
+    {.pin     = BSP_IO_PORT_31_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_PORT_DIRECTION_OUTPUT |
+                                                  (uint32_t) IOPORT_CFG_PORT_OUTPUT_LOW |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY)},
     {.pin     = BSP_IO_PORT_33_PIN_2,
      .pin_cfg = ((uint32_t) IOPORT_CFG_DRIVE_UHIGH | (uint32_t) IOPORT_CFG_PORT_PERI |
                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
@@ -498,10 +501,10 @@ const ioport_pin_cfg_t g_bsp_pin_cfg_data1[] =
     {.pin     = BSP_IO_PORT_34_PIN_5,
      .pin_cfg = ((uint32_t) IOPORT_CFG_PORT_PERI | (uint32_t) IOPORT_CFG_REGION_NSAFETY |
                  (uint32_t) IOPORT_PIN_P345_PFC_0F_ETH3_RXDV)},
-    {.pin        = BSP_IO_PORT_34_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
-                                                     (uint32_t) IOPORT_CFG_REGION_NSAFETY |
-                                                     (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
-                                                     (uint32_t) IOPORT_PIN_P346_PFC_02_ETH3_REFCLK)},
+    {.pin     = BSP_IO_PORT_34_PIN_6,.pin_cfg  = ((uint32_t) IOPORT_CFG_DRIVE_MID | (uint32_t) IOPORT_CFG_PORT_PERI |
+                                                  (uint32_t) IOPORT_CFG_REGION_NSAFETY |
+                                                  (uint32_t) IOPORT_CFG_SLEW_RATE_FAST |
+                                                  (uint32_t) IOPORT_PIN_P346_PFC_02_ETH3_REFCLK)},
 };
 
 const ioport_cfg_t g_bsp_pin_cfg1 =

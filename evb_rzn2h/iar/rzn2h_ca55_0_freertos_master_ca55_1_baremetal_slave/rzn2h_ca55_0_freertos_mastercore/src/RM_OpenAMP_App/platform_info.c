@@ -112,14 +112,12 @@ extern struct remoteproc_ops rzn2_proc_ops;
 /* RPMsg virtio shared buffer pool */
 static struct rpmsg_virtio_shm_pool shpool;
 
-#ifndef FREERTOSCONFIG_H_
-static inline void virtio_clear_status (void * rsc_table) {
+static inline void virtio_clear_status (void * rsc_table)
+{
     struct remote_resource_table * rt = (struct remote_resource_table *) rsc_table;
 
     rt->rpmsg_vdev.status = 0x0;
 }
-
-#endif
 
 static struct remoteproc * platform_create_proc (int proc_index, int rsc_index)
 {

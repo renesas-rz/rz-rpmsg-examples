@@ -5,7 +5,7 @@
 */
 
 #ifndef BSP_ELC_H
-#define BSP_ELC_H
+ #define BSP_ELC_H
 
 /***********************************************************************************************************************
  * Includes   <System Includes> , "Project Includes"
@@ -22,12 +22,12 @@ FSP_HEADER
  * Typedef definitions
  **********************************************************************************************************************/
 
-#ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __FOR_FSP_DOCUMENT__
+  #ifdef __cplusplus
 namespace RZT
 {
-#endif
-#endif
+  #endif
+ #endif
 
 /*******************************************************************************************************************//**
  * @addtogroup RZT_BSP_MCU_RZT2H
@@ -735,8 +735,10 @@ typedef enum e_elc_event_rzt2h
     ELC_EVENT_ADC122_GCADI                             = (710), // ADC122 A/D scanend interrupt forGroup C
     ELC_EVENT_ADC122_CMPAI                             = (711), // ADC122 Window Acompare match
     ELC_EVENT_ADC122_CMPBI                             = (712), // ADC122 Window Bcompare match
-    ELC_EVENT_TSU0_ADI                                 = (713), // A/D conversion-end
-    ELC_EVENT_TSU0_ADCMPI                              = (714), // Window comparematch
+    ELC_EVENT_TSU0_ADI                                 = (713), // DEPRECATED, do not use
+    ELC_EVENT_TSU0_TSUADI                              = (713), // A/D conversion-end
+    ELC_EVENT_TSU0_ADCMPI                              = (714), // DEPRECATED, do not use
+    ELC_EVENT_TSU0_TSUADCMPI                           = (714), // Window compare match
     ELC_EVENT_SHOST_INT                                = (715), // SHOSTIF interrupt
     ELC_EVENT_ENCIF00_INT0                             = (716), // ENCIF00 combinedinterrupt 0
     ELC_EVENT_ENCIF00_INT1                             = (717), // ENCIF00 combinedinterrupt 1
@@ -985,11 +987,11 @@ typedef enum e_elc_event_rzt2h
 } elc_event_t;
 
 /** @} (end addtogroup BSP_MCU_RZT2H) */
-#ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __FOR_FSP_DOCUMENT__
+  #ifdef __cplusplus
 }
-#endif
-#endif
+  #endif
+ #endif
 
 /***********************************************************************************************************************
  * Exported global variables

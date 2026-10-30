@@ -18,20 +18,39 @@
  **********************************************************************************************************************/
 
 /* Private definition to set address expander values. */
-  #define BSP_PRV_ADX_DDRMIR1_BITS     (24)
-  #define BSP_PRV_ADX_DDRMIR0_BITS     (16)
-  #define BSP_PRV_ADX_PCIE1MIR_BITS    (8)
-  #define BSP_PRV_ADX_PCIE0MIR_BITS    (0)
+  #if (12U == BSP_FEATURE_ADDRESS_EXPANDER_ADXCTL_NUM)
 
-  #define BSP_PRV_STARTUP_ADX(index)                                               \
+   #define BSP_PRV_ADX_DDRMIR1_BITS    (24)
+   #define BSP_PRV_ADX_DDRMIR0_BITS    (16)
+   #define BSP_PRV_ADX_PCIEMIR_BITS    (0)
+
+   #define BSP_PRV_STARTUP_ADX(index)                                            \
+    (BSP_CFG_ADX ## index ## _DDR_MIRROR1_ADDRESS << BSP_PRV_ADX_DDRMIR1_BITS) | \
+    (BSP_CFG_ADX ## index ## _DDR_MIRROR0_ADDRESS << BSP_PRV_ADX_DDRMIR0_BITS) | \
+    (BSP_CFG_ADX ## index ## _PCIE_MIRROR_ADDRESS << BSP_PRV_ADX_PCIEMIR_BITS)
+
+   #define BSP_PRV_STARTUP_ADX_NO_PCIE(index)                                    \
+    (BSP_CFG_ADX ## index ## _DDR_MIRROR1_ADDRESS << BSP_PRV_ADX_DDRMIR1_BITS) | \
+    (BSP_CFG_ADX ## index ## _DDR_MIRROR0_ADDRESS << BSP_PRV_ADX_DDRMIR0_BITS)
+
+  #elif (13U == BSP_FEATURE_ADDRESS_EXPANDER_ADXCTL_NUM)
+
+   #define BSP_PRV_ADX_DDRMIR1_BITS     (24)
+   #define BSP_PRV_ADX_DDRMIR0_BITS     (16)
+   #define BSP_PRV_ADX_PCIE1MIR_BITS    (8)
+   #define BSP_PRV_ADX_PCIE0MIR_BITS    (0)
+
+   #define BSP_PRV_STARTUP_ADX(index)                                              \
     (BSP_CFG_ADX ## index ## _DDR_MIRROR1_ADDRESS << BSP_PRV_ADX_DDRMIR1_BITS) |   \
     (BSP_CFG_ADX ## index ## _DDR_MIRROR0_ADDRESS << BSP_PRV_ADX_DDRMIR0_BITS) |   \
     (BSP_CFG_ADX ## index ## _PCIE1_MIRROR_ADDRESS << BSP_PRV_ADX_PCIE1MIR_BITS) | \
     (BSP_CFG_ADX ## index ## _PCIE0_MIRROR_ADDRESS << BSP_PRV_ADX_PCIE0MIR_BITS)
 
-  #define BSP_PRV_STARTUP_ADX_NO_PCIE(index)                                     \
+   #define BSP_PRV_STARTUP_ADX_NO_PCIE(index)                                    \
     (BSP_CFG_ADX ## index ## _DDR_MIRROR1_ADDRESS << BSP_PRV_ADX_DDRMIR1_BITS) | \
     (BSP_CFG_ADX ## index ## _DDR_MIRROR0_ADDRESS << BSP_PRV_ADX_DDRMIR0_BITS)
+
+  #endif
 
 /***********************************************************************************************************************
  * Typedef definitions
@@ -68,7 +87,9 @@ void bsp_address_expander_init (void)
     R_ADXC1->ADXCTL9  = BSP_PRV_STARTUP_ADX_NO_PCIE(9);
     R_ADXC1->ADXCTL10 = BSP_PRV_STARTUP_ADX_NO_PCIE(10);
     R_ADXC1->ADXCTL11 = BSP_PRV_STARTUP_ADX_NO_PCIE(11);
+  #if (13U <= BSP_FEATURE_ADDRESS_EXPANDER_ADXCTL_NUM)
     R_ADXC1->ADXCTL12 = BSP_PRV_STARTUP_ADX_NO_PCIE(12);
+  #endif
 
     R_BSP_RegisterProtectEnable(BSP_REG_PROTECT_SYSTEM);
 }

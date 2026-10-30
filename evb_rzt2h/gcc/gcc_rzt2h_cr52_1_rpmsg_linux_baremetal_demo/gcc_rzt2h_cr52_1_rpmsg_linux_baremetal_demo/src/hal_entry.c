@@ -45,8 +45,8 @@ void hal_entry (void)
     /* DDR expand address */
     R_ADXC0->ADXCTL1 = 0x1e000000;
 
-    LPRINTF("***************  CR52_1 BAREMETAL  ****************\n", 0);
-    LPRINTF("***************************************************\n");
+    LPRINTF("***************  CR52_1 BAREMETAL  ******************\n", 0);
+    LPRINTF("*****************************************************\n");
 
     /* Initialize ICU driver for sw_reset_callback*/
     g_icu_inter_cpu_irq11.p_api->open(g_icu_inter_cpu_irq11.p_ctrl, g_icu_inter_cpu_irq11.p_cfg);
@@ -60,6 +60,7 @@ void hal_entry (void)
     }
 
     ret = platform_init(proc_id, rsc_id, &platform);
+
     if (ret)
     {
         LPERROR("Failed to create remoteproc device.\n");
@@ -70,7 +71,8 @@ void hal_entry (void)
         do
         {
             /* RTOS is Master, but this setting must remote in this release. */
-            rpdev = platform_create_rpmsg_vdev(platform, 0x0U, VIRTIO_DEV_SLAVE, NULL, NULL);
+            rpdev = platform_create_rpmsg_vdev(platform, 0x0U, VIRTIO_DEV_DEVICE, NULL, NULL);
+
             if (!rpdev)
             {
                 LPERROR("Fail, platform_create_rpmsg_vdev.\n");
@@ -90,12 +92,15 @@ void hal_entry (void)
         } while (RECONNECT_FLG);
     }
 
+#if !RECONNECT_FLG
     platform_cleanup(platform);
     cleanup_system();
 
     /* Closes the icu_inter_cpu_irq */
     g_icu_inter_cpu_irq0.p_api->close(g_icu_inter_cpu_irq0.p_ctrl);
     g_icu_inter_cpu_irq1.p_api->close(g_icu_inter_cpu_irq1.p_ctrl);
+#endif
+
 err2:
     platform_cleanup(platform);
 err1:

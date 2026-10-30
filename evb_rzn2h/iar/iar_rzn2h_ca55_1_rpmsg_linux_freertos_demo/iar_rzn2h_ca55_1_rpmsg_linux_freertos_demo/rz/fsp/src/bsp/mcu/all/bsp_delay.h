@@ -5,28 +5,28 @@
 */
 
 #ifndef BSP_DELAY_H
-#define BSP_DELAY_H
+ #define BSP_DELAY_H
 
 /***********************************************************************************************************************
  * Includes   <System Includes> , "Project Includes"
  **********************************************************************************************************************/
-#if defined(BSP_CFG_CORE_CR52)
- #include "cr/bsp_delay_core.h"
-#elif defined(BSP_CFG_CORE_CA55)
- #include "ca/bsp_delay_core.h"
-#endif
+ #if defined(BSP_CFG_CORE_CR52)
+  #include "cr/bsp_delay_core.h"
+ #elif defined(BSP_CFG_CORE_CA55)
+  #include "ca/bsp_delay_core.h"
+ #endif
 
-#include "bsp_compiler_support.h"
+ #include "bsp_compiler_support.h"
 
 /** Common macro for FSP header files. There is also a corresponding FSP_FOOTER macro at the end of this file. */
 FSP_HEADER
 
-#ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __FOR_FSP_DOCUMENT__
+  #ifdef __cplusplus
 namespace RZN
 {
-#endif
-#endif
+  #endif
+ #endif
 
 /*******************************************************************************************************************//**
  * @addtogroup RZN_BSP_MCU
@@ -35,10 +35,6 @@ namespace RZN
 
 /***********************************************************************************************************************
  * Macro definitions
- **********************************************************************************************************************/
-
-/***********************************************************************************************************************
- * Typedef definitions
  **********************************************************************************************************************/
 
 /** Available delay units for R_BSP_SoftwareDelay(). These are ultimately used to calculate a total # of microseconds */
@@ -51,11 +47,11 @@ typedef enum
 
 /** @} (end addtogroup BSP_MCU) */
 
-#ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __FOR_FSP_DOCUMENT__
+  #ifdef __cplusplus
 }
-#endif
-#endif
+  #endif
+ #endif
 
 /***********************************************************************************************************************
  * Exported global variables

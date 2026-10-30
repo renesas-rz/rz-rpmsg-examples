@@ -59,6 +59,14 @@
      (((BSP_CFG_MPU ## master ## _ENDADD ## region) & \
        BSP_PRV_M_MPU_35BIT_ADDRESS_MASK) >> 28))
 
+ #define BSP_PRV_MASTER_AMPU_STADD(master,                                                          \
+                                   region)     (BSP_CFG_AMPU ## master ## _STADD ## region |        \
+                                                (BSP_CFG_AMPU ## master ## _WRITE ## region << 1) | \
+                                                BSP_CFG_AMPU ## master ## _READ ## region)
+
+ #define BSP_PRV_MASTER_AMPU_ENDADD(master, \
+                                    region)    (BSP_CFG_AMPU ## master ## _ENDADD ## region)
+
  #define BSP_PRV_GLOBAL_SYSTEM_COUNTER_ENABLE    (1)
 
  #if (1 == BSP_FEATURE_BSP_HAS_CR52_CPU1_TCM)
@@ -325,10 +333,10 @@ typedef enum e_bsp_image_info_section
  **********************************************************************************************************************/
 
 #ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __cplusplus
 namespace RZT
 {
-#endif
+ #endif
 #endif
 
 /*******************************************************************************************************************//**
@@ -341,9 +349,9 @@ uint32_t SystemCoreClock = 0U;
 
 /** @} (end addtogroup BSP_MCU) */
 #ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __cplusplus
 }
-#endif
+ #endif
 #endif
 
 #if defined(__ICCARM__)
@@ -888,6 +896,167 @@ const uint32_t g_bsp_master_mpu15_cfg[BSP_PRV_MASTER_MPU_REGION_NUM][2] =
   #endif
 };
  #endif
+ #if (1 == BSP_FEATURE_BSP_MASTER_MPU16_SUPPORTED)
+const uint32_t g_bsp_master_mpu16_cfg[BSP_PRV_MASTER_MPU_REGION_NUM][2] =
+{
+    {BSP_PRV_MASTER_MPU_STADD(16, 0),  BSP_PRV_MASTER_MPU_ENDADD(16, 0) },
+    {BSP_PRV_MASTER_MPU_STADD(16, 1),  BSP_PRV_MASTER_MPU_ENDADD(16, 1) },
+    {BSP_PRV_MASTER_MPU_STADD(16, 2),  BSP_PRV_MASTER_MPU_ENDADD(16, 2) },
+    {BSP_PRV_MASTER_MPU_STADD(16, 3),  BSP_PRV_MASTER_MPU_ENDADD(16, 3) },
+    {BSP_PRV_MASTER_MPU_STADD(16, 4),  BSP_PRV_MASTER_MPU_ENDADD(16, 4) },
+    {BSP_PRV_MASTER_MPU_STADD(16, 5),  BSP_PRV_MASTER_MPU_ENDADD(16, 5) },
+    {BSP_PRV_MASTER_MPU_STADD(16, 6),  BSP_PRV_MASTER_MPU_ENDADD(16, 6) },
+    {BSP_PRV_MASTER_MPU_STADD(16, 7),  BSP_PRV_MASTER_MPU_ENDADD(16, 7) },
+  #if (2 == BSP_FEATURE_BSP_MASTER_MPU_REGION_TYPE)
+    {BSP_PRV_MASTER_MPU_STADD(16, 8),  BSP_PRV_MASTER_MPU_ENDADD(16, 8) },
+    {BSP_PRV_MASTER_MPU_STADD(16, 9),  BSP_PRV_MASTER_MPU_ENDADD(16, 9) },
+    {BSP_PRV_MASTER_MPU_STADD(16, 10), BSP_PRV_MASTER_MPU_ENDADD(16, 10)},
+    {BSP_PRV_MASTER_MPU_STADD(16, 11), BSP_PRV_MASTER_MPU_ENDADD(16, 11)},
+    {BSP_PRV_MASTER_MPU_STADD(16, 12), BSP_PRV_MASTER_MPU_ENDADD(16, 12)},
+    {BSP_PRV_MASTER_MPU_STADD(16, 13), BSP_PRV_MASTER_MPU_ENDADD(16, 13)},
+    {BSP_PRV_MASTER_MPU_STADD(16, 14), BSP_PRV_MASTER_MPU_ENDADD(16, 14)},
+    {BSP_PRV_MASTER_MPU_STADD(16, 15), BSP_PRV_MASTER_MPU_ENDADD(16, 15)},
+  #endif
+};
+ #endif
+ #if (1 == BSP_FEATURE_BSP_MASTER_MPU17_SUPPORTED)
+const uint32_t g_bsp_master_mpu17_cfg[BSP_PRV_MASTER_MPU_REGION_NUM][2] =
+{
+    {BSP_PRV_MASTER_MPU_STADD(17, 0),  BSP_PRV_MASTER_MPU_ENDADD(17, 0) },
+    {BSP_PRV_MASTER_MPU_STADD(17, 1),  BSP_PRV_MASTER_MPU_ENDADD(17, 1) },
+    {BSP_PRV_MASTER_MPU_STADD(17, 2),  BSP_PRV_MASTER_MPU_ENDADD(17, 2) },
+    {BSP_PRV_MASTER_MPU_STADD(17, 3),  BSP_PRV_MASTER_MPU_ENDADD(17, 3) },
+    {BSP_PRV_MASTER_MPU_STADD(17, 4),  BSP_PRV_MASTER_MPU_ENDADD(17, 4) },
+    {BSP_PRV_MASTER_MPU_STADD(17, 5),  BSP_PRV_MASTER_MPU_ENDADD(17, 5) },
+    {BSP_PRV_MASTER_MPU_STADD(17, 6),  BSP_PRV_MASTER_MPU_ENDADD(17, 6) },
+    {BSP_PRV_MASTER_MPU_STADD(17, 7),  BSP_PRV_MASTER_MPU_ENDADD(17, 7) },
+  #if (2 == BSP_FEATURE_BSP_MASTER_MPU_REGION_TYPE)
+    {BSP_PRV_MASTER_MPU_STADD(17, 8),  BSP_PRV_MASTER_MPU_ENDADD(17, 8) },
+    {BSP_PRV_MASTER_MPU_STADD(17, 9),  BSP_PRV_MASTER_MPU_ENDADD(17, 9) },
+    {BSP_PRV_MASTER_MPU_STADD(17, 10), BSP_PRV_MASTER_MPU_ENDADD(17, 10)},
+    {BSP_PRV_MASTER_MPU_STADD(17, 11), BSP_PRV_MASTER_MPU_ENDADD(17, 11)},
+    {BSP_PRV_MASTER_MPU_STADD(17, 12), BSP_PRV_MASTER_MPU_ENDADD(17, 12)},
+    {BSP_PRV_MASTER_MPU_STADD(17, 13), BSP_PRV_MASTER_MPU_ENDADD(17, 13)},
+    {BSP_PRV_MASTER_MPU_STADD(17, 14), BSP_PRV_MASTER_MPU_ENDADD(17, 14)},
+    {BSP_PRV_MASTER_MPU_STADD(17, 15), BSP_PRV_MASTER_MPU_ENDADD(17, 15)},
+  #endif
+};
+ #endif
+ #if (1 == BSP_FEATURE_BSP_MASTER_MPU20_SUPPORTED)
+const uint32_t g_bsp_master_mpu20_cfg[BSP_PRV_MASTER_MPU_REGION_NUM][2] =
+{
+    {BSP_PRV_MASTER_MPU_STADD(20, 0),  BSP_PRV_MASTER_MPU_ENDADD(20, 0) },
+    {BSP_PRV_MASTER_MPU_STADD(20, 1),  BSP_PRV_MASTER_MPU_ENDADD(20, 1) },
+    {BSP_PRV_MASTER_MPU_STADD(20, 2),  BSP_PRV_MASTER_MPU_ENDADD(20, 2) },
+    {BSP_PRV_MASTER_MPU_STADD(20, 3),  BSP_PRV_MASTER_MPU_ENDADD(20, 3) },
+    {BSP_PRV_MASTER_MPU_STADD(20, 4),  BSP_PRV_MASTER_MPU_ENDADD(20, 4) },
+    {BSP_PRV_MASTER_MPU_STADD(20, 5),  BSP_PRV_MASTER_MPU_ENDADD(20, 5) },
+    {BSP_PRV_MASTER_MPU_STADD(20, 6),  BSP_PRV_MASTER_MPU_ENDADD(20, 6) },
+    {BSP_PRV_MASTER_MPU_STADD(20, 7),  BSP_PRV_MASTER_MPU_ENDADD(20, 7) },
+  #if (2 == BSP_FEATURE_BSP_MASTER_MPU_REGION_TYPE)
+    {BSP_PRV_MASTER_MPU_STADD(20, 8),  BSP_PRV_MASTER_MPU_ENDADD(20, 8) },
+    {BSP_PRV_MASTER_MPU_STADD(20, 9),  BSP_PRV_MASTER_MPU_ENDADD(20, 9) },
+    {BSP_PRV_MASTER_MPU_STADD(20, 10), BSP_PRV_MASTER_MPU_ENDADD(20, 10)},
+    {BSP_PRV_MASTER_MPU_STADD(20, 11), BSP_PRV_MASTER_MPU_ENDADD(20, 11)},
+    {BSP_PRV_MASTER_MPU_STADD(20, 12), BSP_PRV_MASTER_MPU_ENDADD(20, 12)},
+    {BSP_PRV_MASTER_MPU_STADD(20, 13), BSP_PRV_MASTER_MPU_ENDADD(20, 13)},
+    {BSP_PRV_MASTER_MPU_STADD(20, 14), BSP_PRV_MASTER_MPU_ENDADD(20, 14)},
+    {BSP_PRV_MASTER_MPU_STADD(20, 15), BSP_PRV_MASTER_MPU_ENDADD(20, 15)},
+  #endif
+};
+ #endif
+ #if (1 == BSP_FEATURE_BSP_MASTER_MPU21_SUPPORTED)
+const uint32_t g_bsp_master_mpu21_cfg[BSP_PRV_MASTER_MPU_REGION_NUM][2] =
+{
+    {BSP_PRV_MASTER_MPU_STADD(21, 0),  BSP_PRV_MASTER_MPU_ENDADD(21, 0) },
+    {BSP_PRV_MASTER_MPU_STADD(21, 1),  BSP_PRV_MASTER_MPU_ENDADD(21, 1) },
+    {BSP_PRV_MASTER_MPU_STADD(21, 2),  BSP_PRV_MASTER_MPU_ENDADD(21, 2) },
+    {BSP_PRV_MASTER_MPU_STADD(21, 3),  BSP_PRV_MASTER_MPU_ENDADD(21, 3) },
+    {BSP_PRV_MASTER_MPU_STADD(21, 4),  BSP_PRV_MASTER_MPU_ENDADD(21, 4) },
+    {BSP_PRV_MASTER_MPU_STADD(21, 5),  BSP_PRV_MASTER_MPU_ENDADD(21, 5) },
+    {BSP_PRV_MASTER_MPU_STADD(21, 6),  BSP_PRV_MASTER_MPU_ENDADD(21, 6) },
+    {BSP_PRV_MASTER_MPU_STADD(21, 7),  BSP_PRV_MASTER_MPU_ENDADD(21, 7) },
+  #if (2 == BSP_FEATURE_BSP_MASTER_MPU_REGION_TYPE)
+    {BSP_PRV_MASTER_MPU_STADD(21, 8),  BSP_PRV_MASTER_MPU_ENDADD(21, 8) },
+    {BSP_PRV_MASTER_MPU_STADD(21, 9),  BSP_PRV_MASTER_MPU_ENDADD(21, 9) },
+    {BSP_PRV_MASTER_MPU_STADD(21, 10), BSP_PRV_MASTER_MPU_ENDADD(21, 10)},
+    {BSP_PRV_MASTER_MPU_STADD(21, 11), BSP_PRV_MASTER_MPU_ENDADD(21, 11)},
+    {BSP_PRV_MASTER_MPU_STADD(21, 12), BSP_PRV_MASTER_MPU_ENDADD(21, 12)},
+    {BSP_PRV_MASTER_MPU_STADD(21, 13), BSP_PRV_MASTER_MPU_ENDADD(21, 13)},
+    {BSP_PRV_MASTER_MPU_STADD(21, 14), BSP_PRV_MASTER_MPU_ENDADD(21, 14)},
+    {BSP_PRV_MASTER_MPU_STADD(21, 15), BSP_PRV_MASTER_MPU_ENDADD(21, 15)},
+  #endif
+};
+ #endif
+ #if (1 == BSP_FEATURE_BSP_MASTER_AMPU0_SUPPORTED)
+const uint32_t g_bsp_master_ampu0_cfg[BSP_PRV_MASTER_MPU_REGION_NUM][2] =
+{
+    {BSP_PRV_MASTER_AMPU_STADD(0, 0),  BSP_PRV_MASTER_AMPU_ENDADD(0, 0) },
+    {BSP_PRV_MASTER_AMPU_STADD(0, 1),  BSP_PRV_MASTER_AMPU_ENDADD(0, 1) },
+    {BSP_PRV_MASTER_AMPU_STADD(0, 2),  BSP_PRV_MASTER_AMPU_ENDADD(0, 2) },
+    {BSP_PRV_MASTER_AMPU_STADD(0, 3),  BSP_PRV_MASTER_AMPU_ENDADD(0, 3) },
+    {BSP_PRV_MASTER_AMPU_STADD(0, 4),  BSP_PRV_MASTER_AMPU_ENDADD(0, 4) },
+    {BSP_PRV_MASTER_AMPU_STADD(0, 5),  BSP_PRV_MASTER_AMPU_ENDADD(0, 5) },
+    {BSP_PRV_MASTER_AMPU_STADD(0, 6),  BSP_PRV_MASTER_AMPU_ENDADD(0, 6) },
+    {BSP_PRV_MASTER_AMPU_STADD(0, 7),  BSP_PRV_MASTER_AMPU_ENDADD(0, 7) },
+  #if (2 == BSP_FEATURE_BSP_MASTER_MPU_REGION_TYPE)
+    {BSP_PRV_MASTER_AMPU_STADD(0, 8),  BSP_PRV_MASTER_AMPU_ENDADD(0, 8) },
+    {BSP_PRV_MASTER_AMPU_STADD(0, 9),  BSP_PRV_MASTER_AMPU_ENDADD(0, 9) },
+    {BSP_PRV_MASTER_AMPU_STADD(0, 10), BSP_PRV_MASTER_AMPU_ENDADD(0, 10)},
+    {BSP_PRV_MASTER_AMPU_STADD(0, 11), BSP_PRV_MASTER_AMPU_ENDADD(0, 11)},
+    {BSP_PRV_MASTER_AMPU_STADD(0, 12), BSP_PRV_MASTER_AMPU_ENDADD(0, 12)},
+    {BSP_PRV_MASTER_AMPU_STADD(0, 13), BSP_PRV_MASTER_AMPU_ENDADD(0, 13)},
+    {BSP_PRV_MASTER_AMPU_STADD(0, 14), BSP_PRV_MASTER_AMPU_ENDADD(0, 14)},
+    {BSP_PRV_MASTER_AMPU_STADD(0, 15), BSP_PRV_MASTER_AMPU_ENDADD(0, 15)},
+  #endif
+};
+ #endif
+ #if (1 == BSP_FEATURE_BSP_MASTER_AMPU1_SUPPORTED)
+const uint32_t g_bsp_master_ampu1_cfg[BSP_PRV_MASTER_MPU_REGION_NUM][2] =
+{
+    {BSP_PRV_MASTER_AMPU_STADD(1, 0),  BSP_PRV_MASTER_AMPU_ENDADD(1, 0) },
+    {BSP_PRV_MASTER_AMPU_STADD(1, 1),  BSP_PRV_MASTER_AMPU_ENDADD(1, 1) },
+    {BSP_PRV_MASTER_AMPU_STADD(1, 2),  BSP_PRV_MASTER_AMPU_ENDADD(1, 2) },
+    {BSP_PRV_MASTER_AMPU_STADD(1, 3),  BSP_PRV_MASTER_AMPU_ENDADD(1, 3) },
+    {BSP_PRV_MASTER_AMPU_STADD(1, 4),  BSP_PRV_MASTER_AMPU_ENDADD(1, 4) },
+    {BSP_PRV_MASTER_AMPU_STADD(1, 5),  BSP_PRV_MASTER_AMPU_ENDADD(1, 5) },
+    {BSP_PRV_MASTER_AMPU_STADD(1, 6),  BSP_PRV_MASTER_AMPU_ENDADD(1, 6) },
+    {BSP_PRV_MASTER_AMPU_STADD(1, 7),  BSP_PRV_MASTER_AMPU_ENDADD(1, 7) },
+  #if (2 == BSP_FEATURE_BSP_MASTER_MPU_REGION_TYPE)
+    {BSP_PRV_MASTER_AMPU_STADD(1, 8),  BSP_PRV_MASTER_AMPU_ENDADD(1, 8) },
+    {BSP_PRV_MASTER_AMPU_STADD(1, 9),  BSP_PRV_MASTER_AMPU_ENDADD(1, 9) },
+    {BSP_PRV_MASTER_AMPU_STADD(1, 10), BSP_PRV_MASTER_AMPU_ENDADD(1, 10)},
+    {BSP_PRV_MASTER_AMPU_STADD(1, 11), BSP_PRV_MASTER_AMPU_ENDADD(1, 11)},
+    {BSP_PRV_MASTER_AMPU_STADD(1, 12), BSP_PRV_MASTER_AMPU_ENDADD(1, 12)},
+    {BSP_PRV_MASTER_AMPU_STADD(1, 13), BSP_PRV_MASTER_AMPU_ENDADD(1, 13)},
+    {BSP_PRV_MASTER_AMPU_STADD(1, 14), BSP_PRV_MASTER_AMPU_ENDADD(1, 14)},
+    {BSP_PRV_MASTER_AMPU_STADD(1, 15), BSP_PRV_MASTER_AMPU_ENDADD(1, 15)},
+  #endif
+};
+ #endif
+ #if (1 == BSP_FEATURE_BSP_MASTER_AMPU2_SUPPORTED)
+const uint32_t g_bsp_master_ampu2_cfg[BSP_PRV_MASTER_MPU_REGION_NUM][2] =
+{
+    {BSP_PRV_MASTER_AMPU_STADD(2, 0),  BSP_PRV_MASTER_AMPU_ENDADD(2, 0) },
+    {BSP_PRV_MASTER_AMPU_STADD(2, 1),  BSP_PRV_MASTER_AMPU_ENDADD(2, 1) },
+    {BSP_PRV_MASTER_AMPU_STADD(2, 2),  BSP_PRV_MASTER_AMPU_ENDADD(2, 2) },
+    {BSP_PRV_MASTER_AMPU_STADD(2, 3),  BSP_PRV_MASTER_AMPU_ENDADD(2, 3) },
+    {BSP_PRV_MASTER_AMPU_STADD(2, 4),  BSP_PRV_MASTER_AMPU_ENDADD(2, 4) },
+    {BSP_PRV_MASTER_AMPU_STADD(2, 5),  BSP_PRV_MASTER_AMPU_ENDADD(2, 5) },
+    {BSP_PRV_MASTER_AMPU_STADD(2, 6),  BSP_PRV_MASTER_AMPU_ENDADD(2, 6) },
+    {BSP_PRV_MASTER_AMPU_STADD(2, 7),  BSP_PRV_MASTER_AMPU_ENDADD(2, 7) },
+  #if (2 == BSP_FEATURE_BSP_MASTER_MPU_REGION_TYPE)
+    {BSP_PRV_MASTER_AMPU_STADD(2, 8),  BSP_PRV_MASTER_AMPU_ENDADD(2, 8) },
+    {BSP_PRV_MASTER_AMPU_STADD(2, 9),  BSP_PRV_MASTER_AMPU_ENDADD(2, 9) },
+    {BSP_PRV_MASTER_AMPU_STADD(2, 10), BSP_PRV_MASTER_AMPU_ENDADD(2, 10)},
+    {BSP_PRV_MASTER_AMPU_STADD(2, 11), BSP_PRV_MASTER_AMPU_ENDADD(2, 11)},
+    {BSP_PRV_MASTER_AMPU_STADD(2, 12), BSP_PRV_MASTER_AMPU_ENDADD(2, 12)},
+    {BSP_PRV_MASTER_AMPU_STADD(2, 13), BSP_PRV_MASTER_AMPU_ENDADD(2, 13)},
+    {BSP_PRV_MASTER_AMPU_STADD(2, 14), BSP_PRV_MASTER_AMPU_ENDADD(2, 14)},
+    {BSP_PRV_MASTER_AMPU_STADD(2, 15), BSP_PRV_MASTER_AMPU_ENDADD(2, 15)},
+  #endif
+};
+ #endif
 #endif
 
 #if (1U < BSP_FEATURE_BSP_CR52_CORE_NUM) || (1U < BSP_FEATURE_BSP_CA55_CORE_NUM)
@@ -1146,6 +1315,34 @@ void bsp_master_mpu_init (void)
         R_MPU15->RGN[region_num].STADD  = g_bsp_master_mpu15_cfg[region_num][0];
         R_MPU15->RGN[region_num].ENDADD = g_bsp_master_mpu15_cfg[region_num][1];
  #endif
+ #if (1 == BSP_FEATURE_BSP_MASTER_MPU16_SUPPORTED)
+        R_MPU16->RGN[region_num].STADD  = g_bsp_master_mpu16_cfg[region_num][0];
+        R_MPU16->RGN[region_num].ENDADD = g_bsp_master_mpu16_cfg[region_num][1];
+ #endif
+ #if (1 == BSP_FEATURE_BSP_MASTER_MPU17_SUPPORTED)
+        R_MPU17->RGN[region_num].STADD  = g_bsp_master_mpu17_cfg[region_num][0];
+        R_MPU17->RGN[region_num].ENDADD = g_bsp_master_mpu17_cfg[region_num][1];
+ #endif
+ #if (1 == BSP_FEATURE_BSP_MASTER_MPU20_SUPPORTED)
+        R_MPU20->RGN[region_num].STADD  = g_bsp_master_mpu20_cfg[region_num][0];
+        R_MPU20->RGN[region_num].ENDADD = g_bsp_master_mpu20_cfg[region_num][1];
+ #endif
+ #if (1 == BSP_FEATURE_BSP_MASTER_MPU21_SUPPORTED)
+        R_MPU21->RGN[region_num].STADD  = g_bsp_master_mpu21_cfg[region_num][0];
+        R_MPU21->RGN[region_num].ENDADD = g_bsp_master_mpu21_cfg[region_num][1];
+ #endif
+ #if (1 == BSP_FEATURE_BSP_MASTER_AMPU0_SUPPORTED)
+        R_AMPU0->RGN[region_num].STADD  = g_bsp_master_ampu0_cfg[region_num][0];
+        R_AMPU0->RGN[region_num].ENDADD = g_bsp_master_ampu0_cfg[region_num][1];
+ #endif
+ #if (1 == BSP_FEATURE_BSP_MASTER_AMPU1_SUPPORTED)
+        R_AMPU1->RGN[region_num].STADD  = g_bsp_master_ampu1_cfg[region_num][0];
+        R_AMPU1->RGN[region_num].ENDADD = g_bsp_master_ampu1_cfg[region_num][1];
+ #endif
+ #if (1 == BSP_FEATURE_BSP_MASTER_AMPU2_SUPPORTED)
+        R_AMPU2->RGN[region_num].STADD  = g_bsp_master_ampu2_cfg[region_num][0];
+        R_AMPU2->RGN[region_num].ENDADD = g_bsp_master_ampu2_cfg[region_num][1];
+ #endif
     }
 
     /* Enable register protection for Master-MPU related registers. */
@@ -1172,10 +1369,10 @@ void bsp_global_system_counter_init (void)
 #endif
 
 #ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __cplusplus
 namespace RZT
 {
-#endif
+ #endif
 #endif
 
 /*******************************************************************************************************************//**
@@ -1243,9 +1440,9 @@ BSP_ATTRIBUTE_STACKLESS void R_BSP_WarmStart_StackLess (void)
 
 /** @} (end addtogroup BSP_MCU) */
 #ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __cplusplus
 }
-#endif
+ #endif
 #endif
 
 #if BSP_CFG_C_RUNTIME_INIT
@@ -1570,7 +1767,7 @@ void bsp_application_bss_init (void)
         uintptr_t secondary_atcm_cr521_size = (uintptr_t) BSP_PRV_SECTION_SECONDARY_ATCM_CR521_ROM_END -
                                               (uintptr_t) BSP_PRV_SECTION_SECONDARY_ATCM_CR521_ROM_START;
 
-        if (0 != secondary_atcm_cr521_size)
+        if ((0 != secondary_atcm_cr521_size) && (0 != R_TCMAW->CPU1HALT))
         {
             /* Initialize the TCM of CR52_1. */
             bsp_tcm_init_via_axis();
@@ -1777,6 +1974,8 @@ void bsp_cpu_reset_release (void)
             target_core_enum = BSP_RESET_CA55_1;
         }
     }
+
+   #if (2U < BSP_FEATURE_BSP_CA55_CORE_NUM)
     else if (BSP_PRIV_ASSIGNMENT_CPU_CA55_2 == image_info_cpu)
     {
         if (0 != R_SYSC_S->SWR552)
@@ -1793,6 +1992,7 @@ void bsp_cpu_reset_release (void)
             target_core_enum = BSP_RESET_CA55_3;
         }
     }
+   #endif
 
     if (0 != target_core_enum)
     {

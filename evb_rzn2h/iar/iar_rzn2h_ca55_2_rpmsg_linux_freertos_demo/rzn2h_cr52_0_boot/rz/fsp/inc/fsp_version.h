@@ -34,7 +34,7 @@ namespace RZN
  #define FSP_VERSION_MAJOR (4U)
 
 /** FSP pack minor version. */
- #define FSP_VERSION_MINOR (0U)
+ #define FSP_VERSION_MINOR (2U)
 
 /** FSP pack patch version. */
  #define FSP_VERSION_PATCH (0U)
@@ -43,10 +43,10 @@ namespace RZN
  #define FSP_VERSION_BUILD           (0U)
 
 /** Public FSP version name. */
- #define FSP_VERSION_STRING          ("4.0.0")
+ #define FSP_VERSION_STRING          ("4.2.0")
 
 /** Unique FSP version ID. */
- #define FSP_VERSION_BUILD_STRING    ("Built with RZ/N Flexible Software Package version 4.0.0")
+ #define FSP_VERSION_BUILD_STRING    ("Built with RZ/N Flexible Software Package version 4.2.0")
 
 /**********************************************************************************************************************
  * Typedef definitions
@@ -68,7 +68,7 @@ union st_fsp_pack_version
     } version_id_b;
 };
 
-/** FSP Pack version structure Please refer to the struct st_fsp_pack_version. */
+/** FSP Pack version structure. Please refer to the struct st_fsp_pack_version. */
 typedef union st_fsp_pack_version fsp_pack_version_t;
 
 /** @} */

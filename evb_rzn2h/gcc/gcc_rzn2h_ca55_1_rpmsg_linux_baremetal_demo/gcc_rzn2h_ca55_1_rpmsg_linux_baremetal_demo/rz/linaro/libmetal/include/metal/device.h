@@ -23,7 +23,8 @@ extern "C" {
  #endif
 
 /** \defgroup device Bus Abstraction
- *  @{ */
+ *  @{
+ */
 
  #ifndef METAL_MAX_DEVICE_REGIONS
   #define METAL_MAX_DEVICE_REGIONS    32
@@ -62,7 +63,7 @@ struct metal_device
 {
     const char       * name;                                  /**< Device name */
     struct metal_bus * bus;                                   /**< Bus that contains device */
-    unsigned           num_regions;                           /**< Number of I/O regions in
+    unsigned int       num_regions;                           /**< Number of I/O regions in
                                                                * device */
     struct metal_io_region regions[METAL_MAX_DEVICE_REGIONS]; /**< Array of
                                                                * I/O regions in device*/
@@ -76,14 +77,14 @@ struct metal_device
  * @param[in]   bus Pre-initialized bus structure.
  * @return 0 on success, or -errno on failure.
  */
-extern int metal_bus_register(struct metal_bus * bus);
+int metal_bus_register(struct metal_bus * bus);
 
 /**
  * @brief   Unregister a libmetal bus.
  * @param[in]   bus Pre-registered bus structure.
  * @return 0 on success, or -errno on failure.
  */
-extern int metal_bus_unregister(struct metal_bus * bus);
+int metal_bus_unregister(struct metal_bus * bus);
 
 /**
  * @brief   Find a libmetal bus by name.
@@ -91,7 +92,7 @@ extern int metal_bus_unregister(struct metal_bus * bus);
  * @param[out]  bus Returned bus handle.
  * @return 0 on success, or -errno on failure.
  */
-extern int metal_bus_find(const char * name, struct metal_bus ** bus);
+int metal_bus_find(const char * name, struct metal_bus ** bus);
 
 /**
  * @brief   Statically register a generic libmetal device.
@@ -108,7 +109,7 @@ extern int metal_bus_find(const char * name, struct metal_bus ** bus);
  * @param[in]   device  Generic device.
  * @return 0 on success, or -errno on failure.
  */
-extern int metal_register_generic_device(struct metal_device * device);
+int metal_register_generic_device(struct metal_device * device);
 
 /**
  * @brief   Open a libmetal device by name.
@@ -117,13 +118,13 @@ extern int metal_register_generic_device(struct metal_device * device);
  * @param[out]  device      Returned device handle.
  * @return 0 on success, or -errno on failure.
  */
-extern int metal_device_open(const char * bus_name, const char * dev_name, struct metal_device ** device);
+int metal_device_open(const char * bus_name, const char * dev_name, struct metal_device ** device);
 
 /**
  * @brief   Close a libmetal device.
  * @param[in]   device      Device handle.
  */
-extern void metal_device_close(struct metal_device * device);
+void metal_device_close(struct metal_device * device);
 
 /**
  * @brief   Get an I/O region accessor for a device region.
@@ -132,7 +133,7 @@ extern void metal_device_close(struct metal_device * device);
  * @param[in]   index       Region index.
  * @return I/O accessor handle, or NULL on failure.
  */
-static inline struct metal_io_region * metal_device_io_region (struct metal_device * device, unsigned index)
+static inline struct metal_io_region * metal_device_io_region (struct metal_device * device, unsigned int index)
 {
     return index < device->num_regions ?
            &device->regions[index] :
@@ -142,19 +143,19 @@ static inline struct metal_io_region * metal_device_io_region (struct metal_devi
 /** @} */
 
  #ifdef METAL_INTERNAL
-extern int metal_generic_dev_sys_open(struct metal_device * dev);
-extern int metal_generic_dev_open(struct metal_bus * bus, const char * dev_name, struct metal_device ** device);
-extern int metal_generic_dev_dma_map(struct metal_bus    * bus,
-                                     struct metal_device * device,
-                                     uint32_t              dir,
-                                     struct metal_sg     * sg_in,
-                                     int                   nents_in,
-                                     struct metal_sg     * sg_out);
-extern void metal_generic_dev_dma_unmap(struct metal_bus    * bus,
-                                        struct metal_device * device,
-                                        uint32_t              dir,
-                                        struct metal_sg     * sg,
-                                        int                   nents);
+int metal_generic_dev_sys_open(struct metal_device * dev);
+int metal_generic_dev_open(struct metal_bus * bus, const char * dev_name, struct metal_device ** device);
+int metal_generic_dev_dma_map(struct metal_bus    * bus,
+                              struct metal_device * device,
+                              uint32_t              dir,
+                              struct metal_sg     * sg_in,
+                              int                   nents_in,
+                              struct metal_sg     * sg_out);
+void metal_generic_dev_dma_unmap(struct metal_bus    * bus,
+                                 struct metal_device * device,
+                                 uint32_t              dir,
+                                 struct metal_sg     * sg,
+                                 int                   nents);
 
  #endif                                /* METAL_INTERNAL */
 

@@ -22,6 +22,7 @@
 
 #define KEY_POS      0
 #define VALUE_POS    1
+#define KEY_OPTION_NUM  2
 
 /* Global variable endpoint */
 static struct rpmsg_endpoint rp_ept[CFG_RPMSG_SVCNO] = {0};
@@ -53,7 +54,7 @@ extern void cleanup_system(void);
 extern int  init_system(void);
 
 /**
- * This function initializes the remote process msg service unbind.
+ * This function handles cleanup processing when an RPMsg service and endpoint is unbound.
  *
  * @param[out] ept  Pointer to the endpoint of rpmsg.
  *
@@ -69,7 +70,7 @@ void rpmsg_service_unbind (struct rpmsg_endpoint * ept)
 }
 
 /**
- * This function initializes the remote process msg service ubind.
+ * This function is called when an RPMsg service is bound.
  *
  * @param[out] rdev  Pointer to the device of remote process msg.
  * @param[out] name  Pointer to the name of device.
@@ -87,13 +88,13 @@ void rpmsg_service_bind (struct rpmsg_device * rdev, const char * name, uint32_t
 }
 
 /**
- * This function initializes the remote process msg service callback.
+ * This function is the receive callback for an RPMsg endpoint.
  *
- * @param[out] cb_rp_ept  Pointer to the endpoint of epmsg.
- * @param[out] data       Pointer to the recieved data
- * @param[in] len         Lenght of the recived data
- * @param[in] src         Source of the rpmsg
- * @param[out] priv       previous of the rpmsg
+ * @param[out] cb_rp_ept  Pointer to the endpoint of rpmsg.
+ * @param[out] data       Pointer to the received data.
+ * @param[in] len         Length of the received data.
+ * @param[in] src         Source of the rpmsg.
+ * @param[out] priv       Previous of the rpmsg. 
  *
  * Returns FSP_SUCCESS.
  */
@@ -130,7 +131,7 @@ int rpmsg_service_cb0 (struct rpmsg_endpoint * cb_rp_ept, void * data, size_t le
 }
 
 /**
- * This function initializes polling in loop.
+ * This function performs OpenAMP polling processing in a caller context.
  *
  * Returns FSP_SUCCESS.
  */
@@ -142,7 +143,7 @@ fsp_err_t RM_OpenAMP_Polling (void)
 }
 
 /**
- * This function initializes Readata from callback function
+ * This function reads the stored data value associated with the specified option.
  *
  * @param[in] option      Point option of input value option
  * @param[out] value      Point option of output value
@@ -158,15 +159,21 @@ fsp_err_t RM_OpenAMP_Read (rm_openamp_options_t * option, uint32_t * value)
 }
 
 /**
- * This function initializes write data to other core
+ * This function writes a key and value pair to the other core using RPMsg.
  *
- * @param[in] option      Point option of input value option
- * @param[in] value       Point option of input value
+ * @param[in] option      Point option of input value option. Input values are limited to 0 and 1.
+ * @param[in] value       Point option of input value.
  *
  * Returns FSP_SUCCESS.
+ * Returns FSP_ERR_INVALID_ARGUMENT.
  */
 fsp_err_t RM_OpenAMP_Write (rm_openamp_options_t * option, uint32_t * value)
 {
+    if (* option >= KEY_OPTION_NUM)
+    {
+        return FSP_ERR_INVALID_ARGUMENT;
+    } 
+
     static uint32_t keyOption[] =
     {
         OPENAMP_KEY_DUTY,
@@ -192,7 +199,7 @@ fsp_err_t RM_OpenAMP_Write (rm_openamp_options_t * option, uint32_t * value)
 }
 
 /**
- * This function initializes OpenAMP close
+ * This function closes OpenAMP and releases related resources. 
  *
  *
  * Returns FSP_SUCCESS.
@@ -218,13 +225,14 @@ fsp_err_t RM_OpenAMP_Close (void)
 }
 
 /**
- * This function initializes OpenAMP open
+ * This function initializes OpenAMP and creates endpoints.
  *
  * @param[in] role        Master/Slave role
  * @param[in] proc_id     Number process ID
  * @param[in] rsc_id      Number resource ID
  *
  * Returns FSP_SUCCESS.
+ * Returns FSP_ERR_ABORTED.
  */
 fsp_err_t RM_OpenAMP_Open (unsigned int role, unsigned long proc_id, unsigned long rsc_id)
 {
@@ -233,6 +241,7 @@ fsp_err_t RM_OpenAMP_Open (unsigned int role, unsigned long proc_id, unsigned lo
     if (ret)
     {
         LPERROR("Failed to init remoteproc device.\n");
+        return FSP_ERR_ABORTED;
     }
     else
     {
@@ -241,6 +250,7 @@ fsp_err_t RM_OpenAMP_Open (unsigned int role, unsigned long proc_id, unsigned lo
         if (ret)
         {
             LPERROR("Failed to create remoteproc device.\n");
+            return FSP_ERR_ABORTED;
         }
         else
         {
@@ -265,7 +275,7 @@ fsp_err_t RM_OpenAMP_Open (unsigned int role, unsigned long proc_id, unsigned lo
             {
                 LPERROR("Failed to create RPMsg endpoint.\n");
 
-                return ret;
+                return FSP_ERR_ABORTED;
             }
 
             LPRINTF("RPMSG endpoint has created.\n");

@@ -1,13 +1,10 @@
 /*
  * Copyright (c) 2015, Xilinx Inc. and Contributors. All rights reserved.
- * Copyright (c) 2020, eForce.Co.Ltd
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
 #include <metal/errno.h>
-
-// #include <errno.h>
 #include <string.h>
 #include <metal/device.h>
 #include <metal/log.h>
@@ -40,8 +37,7 @@ int metal_dma_map (struct metal_device * dev,
     }
     else
     {
-        /* If it is device write or device r/w,
-         * apply memory r/w fence. */
+        /* If it is device write or r/w, apply memory r/w fence. */
         atomic_thread_fence(memory_order_acq_rel);
     }
 
@@ -60,8 +56,7 @@ void metal_dma_unmap (struct metal_device * dev, uint32_t dir, struct metal_sg *
     }
     else
     {
-        /* If it is device write or device r/w,
-         * apply memory r/w fence. */
+        /*If it is device write or r/w, apply memory r/w fence */
         atomic_thread_fence(memory_order_acq_rel);
     }
 

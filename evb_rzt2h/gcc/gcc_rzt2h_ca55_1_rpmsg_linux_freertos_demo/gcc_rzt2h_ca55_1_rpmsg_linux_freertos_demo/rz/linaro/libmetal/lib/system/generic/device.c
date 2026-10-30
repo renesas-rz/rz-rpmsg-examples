@@ -1,13 +1,12 @@
 /*
  * Copyright (c) 2017, Xilinx Inc. and Contributors. All rights reserved.
- * Copyright (c) 2018, eForce Co,Ltd. and Contributors. All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
 /*
- * @file    device.c
- * @brief   libmetal device operations.
+ * @file    generic/device.c
+ * @brief   Generic libmetal device operations.
  */
 
 #include <metal/device.h>

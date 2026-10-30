@@ -99,6 +99,7 @@ err:
 
 void rzt2_callback (icu_inter_cpu_irq_callback_args_t * p_args)
 {
+    FSP_PARAMETER_NOT_USED(p_args);
     unsigned int val = 0U;
 
     /* Get a massage from the mailbox */
@@ -126,8 +127,8 @@ static int rzt2_enable_interrupt (struct remoteproc * rproc, struct metal_device
     if (!ipi.registered)
     {
         /* Register interrupt handler and enable interrupt for RZ/T2 */
-        irq_vect = (uintptr_t) ipi_dev->irq_info;
-        ret      = metal_irq_register((int) irq_vect, 0, ipi_dev, rproc);
+        irq_vect = (unsigned int)(uintptr_t) ipi_dev->irq_info;
+        ret      = metal_irq_register((int) irq_vect, 0, rproc);
         if (ret)
         {
             LPRINTF("metal_irq_register() failed with %d", ret);
@@ -145,26 +146,19 @@ static void rzt2_disable_interrupt (struct remoteproc * rproc)
 {
     (void) rproc;
     struct metal_device * dev;
-    int ret;
 
     dev = ipi.dev;
     if (dev)
     {
-        metal_irq_disable((uintptr_t) dev->irq_info);
-        ret = metal_irq_unregister((int) dev->irq_info, NULL, NULL, NULL);
-        if (ret)
-        {
-            LPRINTF("metal_irq_unregister() failed with %d", ret);
-
-            return;
-        }
+        metal_irq_disable((unsigned int)(uintptr_t) dev->irq_info);
+        metal_irq_unregister((int)(uintptr_t) dev->irq_info);
 
         metal_device_close(dev);
         ipi.registered = 0;
     }
 }
 
-static struct remoteproc * rzt2_proc_init (struct remoteproc * rproc, struct remoteproc_ops * ops, void * arg)
+static struct remoteproc * rzt2_proc_init (struct remoteproc * rproc, const struct remoteproc_ops * ops, void * arg)
 {
     struct remoteproc_priv * prproc = arg;
     struct metal_device    * dev;
@@ -257,6 +251,7 @@ static void rzt2_proc_remove (struct remoteproc * rproc)
 
 static int rzt2_proc_notify (struct remoteproc * rproc, uint32_t id)
 {
+    FSP_PARAMETER_NOT_USED(id);
     struct remoteproc_priv * prproc = rproc->priv;
 
     *((uint32_t *) (SHM_DEV_BASE + SHM_TX_OFFSET(MBX_TX_CH))) = prproc->notify_id;

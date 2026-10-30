@@ -19,7 +19,8 @@ extern "C" {
  #endif
 
 /** \defgroup cache CACHE Interfaces
- *  @{ */
+ *  @{
+ */
 
 /**
  * @brief flush specified data cache

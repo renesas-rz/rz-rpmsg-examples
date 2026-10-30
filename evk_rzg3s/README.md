@@ -10,7 +10,7 @@ and FreeRTOS/BareMetal runs on the Cortex-M33, with support for Inter-Processor 
 	- [Getting Started](#getting-started)
     	- [Sample Projects](#sample-projects)
 		- [Development Environment](#development-environment)
-	- [Demo rzg3s\_cm33\_rpmsg\_linux-rtos\_example](#demo-device_rpmsg_com_type_example)
+	- [Demo rzg3s\_cm33\_rpmsg\_linux_rtos\_example](#demo-device_rpmsg_com_type_example)
     	- [Hardware setup](#hardware-setup)
     	- [CM33 sample project setup](#cm33-sample-project-setup)
    		- [CM33 sample program invocation](#cm33-sample-program-invocation)
@@ -21,28 +21,29 @@ and FreeRTOS/BareMetal runs on the Cortex-M33, with support for Inter-Processor 
             - [CM33 sample program invocation with cold boot support](#cm33-sample-program-invocation-with-cold-boot-support)
 		- [CA55 sample program invocation](#ca55-sample-program-invocation)
 		- [Overview of sample program behavior](#overview-of-sample-program-behavior)
+    - [Assignment of peripherals](#assignment-of-peripherals)
 
 ## Getting Started
 ### Sample Projects
 |No.|Program File|Descriptions|
 |----|----|----|
-|1|rzg3s_cm33_rpmsg_linux-rtos_example|Sample project to check the Inter-Processor Communication in multi-OS environment.
-|2|rzg3s_cm33_fpu_rpmsg_linux-rtos_example|Sample project to check the Inter-Processor Communication in multi-OS environment.
-|3|rzg3s_cm33_rpmsg_rtos-rtos_example|Sample project to check the Inter-Processor Communication between two RTOS cores in a multi-core RTOS environment.
-|4|rzg3s_cm33_fpu_rpmsg_rtos-rtos_example|Sample project to check the Inter-Processor Communication between two RTOS cores in a multi-core RTOS environment.
+|1|rzg3s_cm33_rpmsg_linux_rtos_example|Sample project to check the Inter-Processor Communication in multi-OS environment.
+|2|rzg3s_cm33_fpu_rpmsg_linux_rtos_example|Sample project to check the Inter-Processor Communication in multi-OS environment.
+|3|rzg3s_cm33_rpmsg_rtos_rtos_example|Sample project to check the Inter-Processor Communication between two RTOS cores in a multi-core RTOS environment.
+|4|rzg3s_cm33_fpu_rpmsg_rtos_rtos_example|Sample project to check the Inter-Processor Communication between two RTOS cores in a multi-core RTOS environment.
 
 ### Development Environment
 |Hardware|Version|
 |----|----|
 |[RZ/G3S-EVKIT](https://www.renesas.com/en/design-resources/boards-kits/rz-g3s-evkit )|-|
-|[Segger J-link](https://www.segger.com/products/debug-probes/j-link/)| J-Link BASE v11.0 (J-Link DLL v8.60) |
+|[Segger J-link](https://www.segger.com/products/debug-probes/j-link/)| J-Link BASE v11.0 (J-Link DLL v9.44) |
 
 
 |Software|Version|
 |----|----|
-|e<sup>2</sup> studio|2025-12 (25.12.0)|
+|e<sup>2</sup> studio|2026-07 (R20260717-1302)|
 |GNU ARM Embedded 13.3-Rel1|13.3.1.arm-13-24|
-|RZ FSP|4.0.0|
+|RZ FSP|4.2.0|
 |Tera Term|-|
 
 
@@ -53,8 +54,8 @@ For more information to set up your development environment, refer to the follow
 ## Demo **`<device>_rpmsg_<com_type>_example`**
 1. `<device>` should be either `rzg3s_cm33` or `rzg3s_cm33_fpu`
 2. `<com_type>` should be one of the following:
-    - `linux-rtos` (for Linux ↔ RTOS communication)
-    - `rtos-rtos` (for RTOS ↔ RTOS communication)
+    - `linux_rtos` (for Linux ↔ RTOS communication)
+    - `rtos_rtos` (for RTOS ↔ RTOS communication)
 
 The **`<device>_rpmsg_<com_type>_example`** outputs the message tranfer progress between CPU cores to the console.
 
@@ -67,7 +68,7 @@ The **`<device>_rpmsg_<com_type>_example`** outputs the message tranfer progress
 <img src=./git_images/connection-board.png width="720">
 
 ### CM33 sample project setup
-1. Open e² studio 2025-12 and import the following projects from this repository into your workspace: `<device>_rpmsg_<com_type>_example`
+1. Open e² studio and import the following projects from this repository into your workspace: `<device>_rpmsg_<com_type>_example`
 2. (Optional for configuring RPMsg channel) By default, RPMsg channel 0 is configured to be used on CM33. If you would like to use channel 1, please open the property of **MainTask#0** on FSP Smart Configurator, specify 1 for **Thread Context**, and push **General Project Content** button to reflect the change to the source code.
 
     <img src=./git_images/change_RPMsg_channel.png width="720"><br>
@@ -138,10 +139,10 @@ The **`<device>_rpmsg_<com_type>_example`** outputs the message tranfer progress
     ```
 	 => dcache off
 	 => mmc dev 1
-	 => fatload mmc 1:N 0x00023000 rzg3s_cm33_rpmsg_linux-rtos_example_secure_vector.bin
-	 => fatload mmc 1:N 0x00023890 rzg3s_cm33_rpmsg_linux-rtos_example_secure_code.bin
-	 => fatload mmc 1:N 0x10023800 rzg3s_cm33_rpmsg_linux-rtos_example_non_secure_vector.bin
-	 => fatload mmc 1:N 0x10023840 rzg3s_cm33_rpmsg_linux-rtos_example_non_secure_code.bin
+	 => fatload mmc 1:N 0x00023000 rzg3s_cm33_rpmsg_linux_rtos_example_secure_vector.bin
+	 => fatload mmc 1:N 0x00023890 rzg3s_cm33_rpmsg_linux_rtos_example_secure_code.bin
+	 => fatload mmc 1:N 0x10023800 rzg3s_cm33_rpmsg_linux_rtos_example_non_secure_vector.bin
+	 => fatload mmc 1:N 0x10023840 rzg3s_cm33_rpmsg_linux_rtos_example_non_secure_code.bin
 	 => mw.l 0x11020844 0x0001312C
 	 => mw.l 0x11020848 0x0001312C
 	 => mw.l 0x1102084C 0x00023000
@@ -155,10 +156,10 @@ The **`<device>_rpmsg_<com_type>_example`** outputs the message tranfer progress
     ```
 	 => dcache off
 	 => mmc dev 1
-	 => fatload mmc 1:N 0x00060000 rzg3s_cm33_fpu_rpmsg_linux-rtos_example_secure_vector.bin
-	 => fatload mmc 1:N 0x00060890 rzg3s_cm33_fpu_rpmsg_linux-rtos_example_secure_code.bin
-	 => fatload mmc 1:N 0x10060800 rzg3s_cm33_fpu_rpmsg_linux-rtos_example_non_secure_vector.bin
-	 => fatload mmc 1:N 0x10060840 rzg3s_cm33_fpu_rpmsg_linux-rtos_example_non_secure_code.bin
+	 => fatload mmc 1:N 0x00060000 rzg3s_cm33_fpu_rpmsg_linux_rtos_example_secure_vector.bin
+	 => fatload mmc 1:N 0x00060890 rzg3s_cm33_fpu_rpmsg_linux_rtos_example_secure_code.bin
+	 => fatload mmc 1:N 0x10060800 rzg3s_cm33_fpu_rpmsg_linux_rtos_example_non_secure_vector.bin
+	 => fatload mmc 1:N 0x10060840 rzg3s_cm33_fpu_rpmsg_linux_rtos_example_non_secure_code.bin
 	 => mw.l 0x11020884 0x0001312C
 	 => mw.l 0x11020888 0x0001312C
 	 => mw.l 0x1102088C 0x00060000
@@ -168,6 +169,9 @@ The **`<device>_rpmsg_<com_type>_example`** outputs the message tranfer progress
 	 => mw.l 0x11010804 0x07000700
 	 => dcache on
     ```
+
+- **Note**: If N = 1, using “fatload”. If N = 2, using "ext4load”. 
+
 6. CM33 sample program is now started.
 
 #### CM33 sample program invocation with remoteproc
@@ -185,15 +189,17 @@ The **`<device>_rpmsg_<com_type>_example`** outputs the message tranfer progress
     ```
     root@smarc-rzg3s:~# echo start > /sys/class/remoteproc/remoteproc0/state
     [ 152.569813] remoteproc remoteproc0: powering up cm33
-    [ 152.647167] remoteproc remoteproc0: Booting fw image rzg3s_cm33_rpmsg_linux-rtos_example.elf, size 1068216
-    [ 152.657050] remoteproc remoteproc0: unsupported resource 4
-    [ 152.669150] remoteproc0#vdev0buffer: assigned reserved memory node vdev0buffer@0x43200000
-    [ 152.682507] remoteproc0#vdev0buffer: registered virtio1 (type 7)
+    [ 152.647167] remoteproc remoteproc0: Booting fw image rzg3s_cm33_rpmsg_linux_rtos_example.elf, size 1068216
+    [ 152.669150] rproc-virtio rproc-virtio.1.auto: assigned reserved memory node vdev0buffer@0x43200000
+    [ 152.682507] rproc-virtio rproc-virtio.1.auto: registered virtio0 (type 7)
     [ 152.692313] remoteproc remoteproc0: remote processor cm33 is now up
     ```
     **Note**: `remoteprocX` can be either `remoteproc0` or `remoteproc1`.
     - When you would like to trigger **CM33** execution, `remoteproc0` should be specified.
     - Also, `remoteproc1` should be specified for triggering **CM33_FPU** execution.
+
+    Note: The firmware components are stored in the file system at /lib/firmware folder. Please replace it if any 
+updates to firmware.
 
 #### CM33 sample program invocation with BL2 of Trusted Firmware-A
 1. Re-program the resultant BL2 and FIP binary files using FlashWriter by following **4.3 Download Flash Writer to RAM** of [SMARC EVK of RZ/G3S Linux Startup Guide](https://www.renesas.com/en/document/gde/smarc-evk-rzg3s-linux-start-guide-rev106?queryID=b43f812bac9bf1c0c633e68a3c6ea99e)
@@ -377,3 +383,13 @@ The **`<device>_rpmsg_<com_type>_example`** outputs the message tranfer progress
     creating remoteproc virtio
     initializing rpmsg vdev
     ```
+
+## Assignment of peripherals
+Table below shows the expected assignment of peripherals to sub core (CM33) on this example project while all other devices remain assigned to the Linux (main core) side.
+
+**Peripherals assignment on RZ/G3S Multi-OS Example Project:**
+
+  |Peripherals|Main core (CA55)|Sub core (CM33)|Remarks|
+  |----|----|----|----|
+  |GTM|ch0, ch3-7|ch1-2 |0001-Set-SCIF1-and-OSTM1-OSTM2-as-critical-clock.patch<br>0002-Disabled-OSTM1-OSTM2-SCIF1-for-the-use-on-the-target.patch|
+  |SCIF|ch0, ch2-4|ch1|0001-Set-SCIF1-and-OSTM1-OSTM2-as-critical-clock.patch<br>0002-Disabled-OSTM1-OSTM2-SCIF1-for-the-use-on-the-target.patch|

@@ -52,8 +52,8 @@
 #define VIRTIO_ID_RPMSG_         (7U)
 
 #define NUM_VRINGS               (2U)
-#define NUM_TABLE_ENTRIES        (2U)
-#define NO_RESOURCE_ENTRIES      (2U)
+#define NUM_TABLE_ENTRIES        (1U)
+#define NO_RESOURCE_ENTRIES      (1U)
 
 /* Resource table UIO device */
 #define CFG_RSCTBL_DEV_NAME      "E0000000.rsctbl"
@@ -71,9 +71,6 @@ struct remote_resource_table
     unsigned int reserved[2];
     unsigned int offset[NO_RESOURCE_ENTRIES];
 
-    /* rproc memory entry */
-    struct fw_rsc_rproc_mem rproc_mem;
-
     /* rpmsg vdev entry */
     struct fw_rsc_vdev       rpmsg_vdev;
     struct fw_rsc_vdev_vring rpmsg_vring0;
@@ -86,7 +83,7 @@ struct remote_resource_table
  * IAR compiler does not allow array of zero length in struct definition
  * so the definition of fw_rsc_vdev must be overriden.
  */
-OPENAMP_PACKED_BEGIN
+METAL_PACKED_BEGIN
 struct my_fw_rsc_vdev
 {
     uint32_t                 type;
@@ -99,10 +96,10 @@ struct my_fw_rsc_vdev
     uint8_t                  num_of_vrings;
     uint8_t                  reserved[2];
     struct fw_rsc_vdev_vring vring[NUM_VRINGS];
-} OPENAMP_PACKED_END;
+} METAL_PACKED_END;
 
 /* Resource table for the given remote */
-OPENAMP_PACKED_BEGIN
+METAL_PACKED_BEGIN
 struct remote_resource_table
 {
     unsigned int version;
@@ -110,13 +107,12 @@ struct remote_resource_table
     unsigned int reserved[2];
     unsigned int offset[NO_RESOURCE_ENTRIES];
 
-    /* rproc memory entry */
-    struct fw_rsc_rproc_mem rproc_mem;
-
     /* rpmsg vdev entry */
     struct my_fw_rsc_vdev rpmsg_vdev;
-} OPENAMP_PACKED_END;
+} METAL_PACKED_END;
 #endif
+
+void init_resource_table (void);
 
 void * get_resource_table(int rsc_id, unsigned int * len);
 

@@ -35,6 +35,35 @@
  **********************************************************************************************************************/
 
 /***********************************************************************************************************************
+ * Private function prototypes
+ **********************************************************************************************************************/
+
+/** Prototype of initialization function called before main.  This prototype sets the weak association of this
+ * function to an internal example implementation. If this function is defined in the application code, the
+ * application code version is used. */
+
+void bsp_init(void * p_args) WEAK_INIT_ATTRIBUTE;
+
+void bsp_init_internal(void * p_args); /// Default initialization function
+
+#if ((1 == BSP_CFG_ERROR_LOG) || (1 == BSP_CFG_ASSERT))
+
+/** Prototype of function called before errors are returned in FSP code if BSP_CFG_ERROR_LOG is set to 1.  This
+ * prototype sets the weak association of this function to an internal example implementation. */
+
+void fsp_error_log(fsp_err_t err, const char * file, int32_t line) WEAK_ERROR_ATTRIBUTE;
+
+void fsp_error_log_internal(fsp_err_t err, const char * file, int32_t line); /// Default error logger function
+
+#endif
+#if BSP_FEATURE_TZ_VERSION == 2 && BSP_TZ_SECURE_BUILD == 1
+static bool bsp_valid_register_check(uint32_t               register_address,
+                                     uint32_t const * const p_register_table,
+                                     uint32_t               register_table_length);
+
+#endif
+
+/***********************************************************************************************************************
  * Exported global variables (to be accessed by other files)
  **********************************************************************************************************************/
 
@@ -42,14 +71,14 @@
 #if (1 == BSP_FEATURE_CGC_SCKCR_TYPE)
 const uint32_t g_bsp_system_clock_select_ckio[][2] =
 {
-    {BSP_PRV_CKIO_FREQ_100_MHZ,       BSP_PRV_CKIO_FREQ_75_MHZ       }, // CKIO = 000b
-    {BSP_PRV_CKIO_FREQ_66_7_MHZ,      BSP_PRV_CKIO_FREQ_50_MHZ       }, // CKIO = 001b
-    {BSP_PRV_CKIO_FREQ_50_MHZ,        BSP_PRV_CKIO_FREQ_37_5_MHZ     }, // CKIO = 010b
-    {BSP_PRV_CKIO_FREQ_40_MHZ,        BSP_PRV_CKIO_FREQ_30_MHZ       }, // CKIO = 011b
-    {BSP_PRV_CKIO_FREQ_33_3_MHZ,      BSP_PRV_CKIO_FREQ_25_MHZ       }, // CKIO = 100b
-    {BSP_PRV_CKIO_FREQ_28_6_MHZ,      BSP_PRV_CKIO_FREQ_21_4_MHZ     }, // CKIO = 101b
-    {BSP_PRV_CKIO_FREQ_25_MHZ,        BSP_PRV_CKIO_FREQ_18_75_MHZ    }, // CKIO = 110b
-    {BSP_PRV_CKIO_FREQ_NOT_SUPPORTED, BSP_PRV_CKIO_FREQ_NOT_SUPPORTED}, // CKIO = 111b
+    {BSP_PRV_CKIO_FREQ_100_MHZ,       BSP_PRV_CKIO_FREQ_75_MHZ                     }, // CKIO = 000b
+    {BSP_PRV_CKIO_FREQ_66_7_MHZ,      BSP_PRV_CKIO_FREQ_50_MHZ                     }, // CKIO = 001b
+    {BSP_PRV_CKIO_FREQ_50_MHZ,        BSP_PRV_CKIO_FREQ_37_5_MHZ                   }, // CKIO = 010b
+    {BSP_PRV_CKIO_FREQ_40_MHZ,        BSP_PRV_CKIO_FREQ_30_MHZ                     }, // CKIO = 011b
+    {BSP_PRV_CKIO_FREQ_33_3_MHZ,      BSP_PRV_CKIO_FREQ_25_MHZ                     }, // CKIO = 100b
+    {BSP_PRV_CKIO_FREQ_28_6_MHZ,      BSP_PRV_CKIO_FREQ_21_4_MHZ                   }, // CKIO = 101b
+    {BSP_PRV_CKIO_FREQ_25_MHZ,        BSP_PRV_CKIO_FREQ_18_75_MHZ                  }, // CKIO = 110b
+    {BSP_PRV_CKIO_FREQ_NOT_SUPPORTED, BSP_PRV_CKIO_FREQ_NOT_SUPPORTED              }, // CKIO = 111b
 };
 #elif (2 == BSP_FEATURE_CGC_SCKCR_TYPE)
 const uint32_t g_bsp_system_clock_select_ckio[] =
@@ -68,14 +97,14 @@ const uint32_t g_bsp_system_clock_select_ckio[] =
 /* System clock frequency information for XSPI_CLK */
 const uint32_t g_bsp_system_clock_select_xspi_clk[][2] =
 {
-    {BSP_PRV_XSPI_CLK_FREQ_NOT_SUPPORTED, BSP_PRV_XSPI_CLK_FREQ_150_MHZ      }, // FSELXSPIn = 000b
-    {BSP_PRV_XSPI_CLK_FREQ_NOT_SUPPORTED, BSP_PRV_XSPI_CLK_FREQ_NOT_SUPPORTED}, // FSELXSPIn = 001b
-    {BSP_PRV_XSPI_CLK_FREQ_133_3_MHZ,     BSP_PRV_XSPI_CLK_FREQ_NOT_SUPPORTED}, // FSELXSPIn = 010b
-    {BSP_PRV_XSPI_CLK_FREQ_100_MHZ,       BSP_PRV_XSPI_CLK_FREQ_75_MHZ       }, // FSELXSPIn = 011b
-    {BSP_PRV_XSPI_CLK_FREQ_50_MHZ,        BSP_PRV_XSPI_CLK_FREQ_37_5_MHZ     }, // FSELXSPIn = 100b
-    {BSP_PRV_XSPI_CLK_FREQ_25_MHZ,        BSP_PRV_XSPI_CLK_FREQ_NOT_SUPPORTED}, // FSELXSPIn = 101b
-    {BSP_PRV_XSPI_CLK_FREQ_12_5_MHZ,      BSP_PRV_XSPI_CLK_FREQ_NOT_SUPPORTED}, // FSELXSPIn = 110b
-    {BSP_PRV_XSPI_CLK_FREQ_NOT_SUPPORTED, BSP_PRV_XSPI_CLK_FREQ_NOT_SUPPORTED}, // FSELXSPIn = 111b
+    {BSP_PRV_XSPI_CLK_FREQ_NOT_SUPPORTED, BSP_PRV_XSPI_CLK_FREQ_150_MHZ                    }, // FSELXSPIn = 000b
+    {BSP_PRV_XSPI_CLK_FREQ_NOT_SUPPORTED, BSP_PRV_XSPI_CLK_FREQ_NOT_SUPPORTED              }, // FSELXSPIn = 001b
+    {BSP_PRV_XSPI_CLK_FREQ_133_3_MHZ,     BSP_PRV_XSPI_CLK_FREQ_NOT_SUPPORTED              }, // FSELXSPIn = 010b
+    {BSP_PRV_XSPI_CLK_FREQ_100_MHZ,       BSP_PRV_XSPI_CLK_FREQ_75_MHZ                     }, // FSELXSPIn = 011b
+    {BSP_PRV_XSPI_CLK_FREQ_50_MHZ,        BSP_PRV_XSPI_CLK_FREQ_37_5_MHZ                   }, // FSELXSPIn = 100b
+    {BSP_PRV_XSPI_CLK_FREQ_25_MHZ,        BSP_PRV_XSPI_CLK_FREQ_NOT_SUPPORTED              }, // FSELXSPIn = 101b
+    {BSP_PRV_XSPI_CLK_FREQ_12_5_MHZ,      BSP_PRV_XSPI_CLK_FREQ_NOT_SUPPORTED              }, // FSELXSPIn = 110b
+    {BSP_PRV_XSPI_CLK_FREQ_NOT_SUPPORTED, BSP_PRV_XSPI_CLK_FREQ_NOT_SUPPORTED              }, // FSELXSPIn = 111b
 };
 
 /* System clock frequency information for SPI_CLK */
@@ -136,39 +165,20 @@ static BSP_DONT_REMOVE const uint8_t g_fsp_version_string[] BSP_PLACE_IN_SECTION
 static BSP_DONT_REMOVE const uint8_t g_fsp_version_build_string[] BSP_PLACE_IN_SECTION(FSP_SECTION_VERSION) =
     FSP_VERSION_BUILD_STRING;
 
-/***********************************************************************************************************************
- * Private function prototypes
- **********************************************************************************************************************/
-
-/** Prototype of initialization function called before main.  This prototype sets the weak association of this
- * function to an internal example implementation. If this function is defined in the application code, the
- * application code version is used. */
-
-void bsp_init(void * p_args) WEAK_INIT_ATTRIBUTE;
-
-void bsp_init_internal(void * p_args); /// Default initialization function
-
-#if ((1 == BSP_CFG_ERROR_LOG) || (1 == BSP_CFG_ASSERT))
-
-/** Prototype of function called before errors are returned in FSP code if BSP_CFG_ERROR_LOG is set to 1.  This
- * prototype sets the weak association of this function to an internal example implementation. */
-
-void fsp_error_log(fsp_err_t err, const char * file, int32_t line) WEAK_ERROR_ATTRIBUTE;
-
-void fsp_error_log_internal(fsp_err_t err, const char * file, int32_t line); /// Default error logger function
-
-#endif
-
 #ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __cplusplus
 namespace RZN
 {
-#endif
+ #endif
 #endif
 
 /*******************************************************************************************************************//**
  * @addtogroup RZN_BSP_MCU
  * @{
+ **********************************************************************************************************************/
+
+/***********************************************************************************************************************
+ * Private global variables and functions
  **********************************************************************************************************************/
 
 /*******************************************************************************************************************//**
@@ -213,9 +223,9 @@ void fsp_error_log_internal (fsp_err_t err, const char * file, int32_t line)
 
 /** @} (end addtogroup BSP_MCU) */
 #ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __cplusplus
 }
-#endif
+ #endif
 #endif
 
 /*******************************************************************************************************************//**
@@ -233,7 +243,8 @@ void bsp_init_internal (void * p_args)
  * Default implementation of assert for AC6.
  **********************************************************************************************************************/
 __attribute__((weak, noreturn))
-void __aeabi_assert (const char * expr, const char * file, int line) {
+void __aeabi_assert (const char * expr, const char * file, int line)
+{
     FSP_PARAMETER_NOT_USED(expr);
     FSP_PARAMETER_NOT_USED(file);
     FSP_PARAMETER_NOT_USED(line);
@@ -243,6 +254,46 @@ void __aeabi_assert (const char * expr, const char * file, int line) {
         /* Do nothing. */
     }
 }
+
+#elif defined(__ICCARM__)
+
+/*******************************************************************************************************************//**
+ * Default implementation of assert for IAR.
+ **********************************************************************************************************************/
+__WEAK __NO_RETURN void __aeabi_assert (const char * mess, const char * file, int line)
+{
+    FSP_PARAMETER_NOT_USED(mess);
+    FSP_PARAMETER_NOT_USED(file);
+    FSP_PARAMETER_NOT_USED(line);
+    while (1)
+    {
+        /* Do nothing. */
+    }
+}
+
+#elif defined(__GNUC__)
+
+/* The default assert implementation for GCC brings in printing/formatting code.  FSP overrides the default assert
+ * behavior to reduce code size. */
+
+ #if !BSP_CFG_USE_STANDARD_ASSERT
+
+/*******************************************************************************************************************//**
+ * Default implementation of assert for GCC.
+ **********************************************************************************************************************/
+BSP_WEAK_REFERENCE void __assert_func (const char * file, int line, const char * func, const char * expr)
+{
+    FSP_PARAMETER_NOT_USED(file);
+    FSP_PARAMETER_NOT_USED(line);
+    FSP_PARAMETER_NOT_USED(func);
+    FSP_PARAMETER_NOT_USED(expr);
+    while (1)
+    {
+        /* Do nothing. */
+    }
+}
+
+ #endif
 
 #endif
 
@@ -285,10 +336,10 @@ void bsp_prv_free (void * ptr)
 }
 
 #ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __cplusplus
 namespace RZN
 {
-#endif
+ #endif
 #endif
 
 /*******************************************************************************************************************//**
@@ -311,7 +362,7 @@ __WEAK void R_BSP_FspAssert (void)
 /** @} (end addtogroup BSP_MCU) */
 
 #ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __cplusplus
 }
-#endif
+ #endif
 #endif

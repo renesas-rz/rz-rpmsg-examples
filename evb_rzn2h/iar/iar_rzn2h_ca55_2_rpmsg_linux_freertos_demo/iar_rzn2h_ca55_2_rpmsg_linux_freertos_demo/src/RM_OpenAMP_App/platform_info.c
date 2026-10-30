@@ -67,12 +67,6 @@
  #define _rproc_wait()    __WFI()
 #endif
 
-/* Variables */
-/* IPI dedicated task */
-#ifdef FREERTOSCONFIG_H_               /* FreeRTOS */
-static TaskHandle_t ipi_tsk_id[CFG_RPMSG_SVCNO] = {0, 0};
-#endif
-
 /* IPI(MBX) information */
 struct ipi_info ipi =
 {
@@ -160,7 +154,9 @@ static struct remoteproc * platform_create_proc (int proc_index, int rsc_index)
     int                      ret;
     struct remoteproc      * rproc_inst;
     struct remoteproc_priv * rproc_priv;
+#ifndef FREERTOSCONFIG_H_
     metal_phys_addr_t        pa;
+#endif
 
     /* Allocate and initialize remoteproc_priv instance */
     rproc_priv = metal_allocate_memory(sizeof(struct remoteproc_priv));
@@ -195,7 +191,7 @@ static struct remoteproc * platform_create_proc (int proc_index, int rsc_index)
      */
 #ifndef FREERTOSCONFIG_H_
     rsc_size  = sizeof(struct remote_resource_table);
-    pa        = CFG_RSCTBL_MEM_PA + rsc_index * rsc_size;
+    pa        = CFG_RSCTBL_MEM_PA + (uint32_t) rsc_index * (uint32_t) rsc_size;
     rsc_table = remoteproc_mmap(rproc_inst, &pa, NULL, rsc_size, 0, NULL);
     if (!rsc_table)
     {
@@ -359,8 +355,6 @@ void platform_release_rpmsg_vdev (void * platform, struct rpmsg_device * rpdev)
     /* Need to free memory regions already allocated but not used anymore? */
     struct remoteproc          * rproc = platform;
     struct rpmsg_virtio_device * rpmsg_vdev;
-    struct remoteproc_priv     * prproc = rproc->priv;
-    uint32_t semid;
 
     virtio_clear_status(rproc->rsc_table);
     rpmsg_vdev = metal_container_of(rpdev, struct rpmsg_virtio_device, rdev);

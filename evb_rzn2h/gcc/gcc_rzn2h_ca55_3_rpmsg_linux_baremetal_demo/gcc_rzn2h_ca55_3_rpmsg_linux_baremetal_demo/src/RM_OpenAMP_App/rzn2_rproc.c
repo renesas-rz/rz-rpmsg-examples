@@ -51,8 +51,37 @@
 #include <openamp/rpmsg_virtio.h>
 #include "platform_info.h"
 #include "hal_data.h"
+#include <metal/irq_controller.h>
 
 extern struct ipi_info ipi;
+
+/** Enable or disable an IRQ for the libmetal IRQ controller. */
+static void metal_irq_set_enable_wrapper(struct metal_irq_controller * irq_cntr, int irq, unsigned int enable)
+{
+    FSP_PARAMETER_NOT_USED(irq_cntr);
+
+    if (enable == METAL_IRQ_ENABLE)
+    {
+        R_BSP_IrqEnable((IRQn_Type) irq);
+    }
+    else
+    {
+        R_BSP_IrqDisable((IRQn_Type) irq);
+    }
+}
+
+/** Array of IRQs managed by the controller. */
+static struct metal_irq metal_irqs[2];
+
+/** Libmetal IRQ controller configuration. */
+static struct metal_irq_controller metal_cntr_irq = {
+    .irq_base       = 0,
+    .irq_num        = 2,
+    .arg            = NULL,
+    .irq_set_enable = metal_irq_set_enable_wrapper,
+    .irq_register   = NULL,
+    .irqs           = metal_irqs,
+};
 
 /* Inline functions to add accessing address check to corresponding
  * libmetal functions to avoid accessing a reserved region.
@@ -100,10 +129,8 @@ int message_Status;
 
 void rzn2_callback (icu_inter_cpu_irq_callback_args_t * p_args)
 {
+    FSP_PARAMETER_NOT_USED(p_args);
     unsigned int val = 0U;
-#ifdef FREERTOSCONFIG_H_               /* FreeRTOS */
-    signed portBASE_TYPE xHigherPriorityTaskWoken;
-#endif
 
     /* Clear the interrupt: Already done by MHU driver */
 
@@ -138,8 +165,9 @@ static int rzn2_enable_interrupt (struct remoteproc * rproc, struct metal_device
     if (!ipi.registered)
     {
         /* Register interrupt handler and enable interrupt for RZ/N2 CA55 or CR52 */
-        irq_vect = (uintptr_t) ipi_dev->irq_info;
-        ret      = metal_irq_register((int) irq_vect, r_icu_inter_cpu_irq_isr_wrapper, ipi_dev, rproc);
+        irq_vect = (unsigned int)(uintptr_t) ipi_dev->irq_info;
+        metal_irq_register_controller(&metal_cntr_irq);
+        ret      = metal_irq_register((int) irq_vect, r_icu_inter_cpu_irq_isr_wrapper, rproc);
         if (ret)
         {
             LPRINTF("metal_irq_register() failed with %d", ret);
@@ -157,26 +185,19 @@ static void rzn2_disable_interrupt (struct remoteproc * rproc)
 {
     (void) rproc;
     struct metal_device * dev;
-    int ret;
 
     dev = ipi.dev;
     if (dev)
     {
-        metal_irq_disable((uintptr_t) dev->irq_info);
-        ret = metal_irq_unregister((int) dev->irq_info, NULL, NULL, NULL);
-        if (ret)
-        {
-            LPRINTF("metal_irq_unregister() failed with %d", ret);
-
-            return;
-        }
+        metal_irq_disable((unsigned int)(uintptr_t) dev->irq_info);
+        metal_irq_unregister((int)(uintptr_t) dev->irq_info);
 
         metal_device_close(dev);
         ipi.registered = 0;
     }
 }
 
-static struct remoteproc * rzn2_proc_init (struct remoteproc * rproc, struct remoteproc_ops * ops, void * arg)
+static struct remoteproc * rzn2_proc_init (struct remoteproc * rproc, const struct remoteproc_ops * ops, void * arg)
 {
     struct remoteproc_priv * prproc = arg;
     struct metal_device    * dev;
@@ -271,6 +292,7 @@ static void rzn2_proc_remove (struct remoteproc * rproc)
 
 static int rzn2_proc_notify (struct remoteproc * rproc, uint32_t id)
 {
+	FSP_PARAMETER_NOT_USED(id);
     struct remoteproc_priv * prproc = rproc->priv;
 #ifdef __linux__
 

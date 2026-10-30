@@ -27,12 +27,12 @@
 /** Common macro for FSP header files. There is also a corresponding FSP_FOOTER macro at the end of this file. */
 FSP_HEADER
 
-#ifdef __FOR_FSP_DOCUMENT__
- #ifdef __cplusplus
+ #ifdef __FOR_FSP_DOCUMENT__
+  #ifdef __cplusplus
 namespace RZN
 {
+  #endif
  #endif
-#endif
 
 /*******************************************************************************************************************//**
  * @addtogroup RZN_BSP_MCU
@@ -54,6 +54,7 @@ namespace RZN
  #define FSP_CONTEXT_RESTORE
 
  #define BSP_PRV_CPU_FREQ_1000_MHZ              (1000000000U) // CPU frequency is 1000 MHz
+ #define BSP_PRV_CPU_FREQ_600_MHZ               (600000000U)  // CPU frequency is 600 MHz
  #define BSP_PRV_CPU_FREQ_500_MHZ               (500000000U)  // CPU frequency is 500 MHz
  #define BSP_PRV_CPU_FREQ_200_MHZ               (200000000U)  // CPU frequency is 200 MHz
  #define BSP_PRV_CPU_FREQ_150_MHZ               (150000000U)  // CPU frequency is 150 MHz
@@ -134,6 +135,8 @@ namespace RZN
  #define BSP_PRV_XSPI_CLK_FREQ_12_5_MHZ         (12500000U)   // XSPI_CLK frequency is 12.5 MHz
  #define BSP_PRV_XSPI_CLK_FREQ_NOT_SUPPORTED    (0xFFFFFFFFU) // XSPI_CLK frequency is not supported
 
+ #define BSP_PRV_SDHI_IMCLK_FREQ_200_MHz        (200000000U)  // SDHI_IMCLK frequency is 200 MHz
+
 /** Macro to log and return error without an assertion. */
  #ifndef FSP_RETURN
 
@@ -202,6 +205,12 @@ namespace RZN
   #define FSP_HARDWARE_REGISTER_WAIT(reg, required_value)    while (reg != required_value) {__asm volatile ("nop");}
  #endif
 
+/* Read a register and discard the result. */
+ #ifndef FSP_REGISTER_READ
+  #define FSP_REGISTER_READ(A)                               __ASM volatile ("" : : "r" (A));
+
+ #endif
+
 /* Function-like macro used to wait for a condition to be met with timeout,
  * most often used to wait for hardware register updates. */
  #define BSP_HARDWARE_REGISTER_WAIT_WITH_TIMEOUT(reg, required_value, timeout) \
@@ -214,21 +223,22 @@ namespace RZN
         (timeout)--;                                                           \
     }
 
- #ifndef BSP_CFG_IRQ_MASK_LEVEL_FOR_CRITICAL_SECTION
-  #define BSP_CFG_IRQ_MASK_LEVEL_FOR_CRITICAL_SECTION    (0U)
+ #ifdef BSP_CFG_IRQ_MASK_LEVEL_FOR_CRITICAL_SECTION
+  #undef BSP_CFG_IRQ_MASK_LEVEL_FOR_CRITICAL_SECTION
  #endif
+ #define BSP_CFG_IRQ_MASK_LEVEL_FOR_CRITICAL_SECTION    (0U)
 
 /* This macro defines a variable for saving previous mask value */
  #ifndef FSP_CRITICAL_SECTION_DEFINE
 
-  #define FSP_CRITICAL_SECTION_DEFINE              uintptr_t old_mask_level = 0U
+  #define FSP_CRITICAL_SECTION_DEFINE                   uintptr_t old_mask_level = 0U
  #endif
 
 /* These macros abstract methods to save and restore the interrupt state. */
- #define FSP_CRITICAL_SECTION_GET_CURRENT_STATE    __get_ICC_PMR
- #define FSP_CRITICAL_SECTION_SET_STATE            __set_ICC_PMR
- #define FSP_CRITICAL_SECTION_IRQ_MASK_SET         ((uint8_t) (BSP_CFG_IRQ_MASK_LEVEL_FOR_CRITICAL_SECTION << \
-                                                               BSP_FEATURE_BSP_IRQ_PRIORITY_POS_BIT))
+ #define FSP_CRITICAL_SECTION_GET_CURRENT_STATE         __get_ICC_PMR
+ #define FSP_CRITICAL_SECTION_SET_STATE                 __set_ICC_PMR
+ #define FSP_CRITICAL_SECTION_IRQ_MASK_SET              ((uint8_t) (BSP_CFG_IRQ_MASK_LEVEL_FOR_CRITICAL_SECTION << \
+                                                                    BSP_FEATURE_BSP_IRQ_PRIORITY_POS_BIT))
 
 /** This macro temporarily saves the current interrupt state and disables interrupts. */
  #ifndef FSP_CRITICAL_SECTION_ENTER
@@ -262,20 +272,11 @@ namespace RZN
     __asm volatile ("isb");
  #endif
 
-/** In the event of an unrecoverable error, the BSP will by default take no action.
- *  The user can override this default behavior by defining their own BSP_CFG_HANDLE_UNRECOVERABLE_ERROR macro.
- *
- *  When BSP_CFG_HANDLE_UNRECOVERABLE_ERROR is called from error handlers, the user will need to investigate the cause.
- *  Common problems are stack corruption or the use of an invalid pointer.
- *
- *  Use the Fault Status window in e2 studio or manually check the fault status registers for more information.
- *  After an error handler, other interrupts may occur. Therefore, override  BSP_CFG_HANDLE_UNRECOVERABLE_ERROR macro
- *  with a user-defined function and place a breakpoint inside it. This will help you catch the first interrupt and
- *  identify the root cause of the error.
- */
- #if !defined(BSP_CFG_HANDLE_UNRECOVERABLE_ERROR)
-
-  #define BSP_CFG_HANDLE_UNRECOVERABLE_ERROR(x)
+/* Put certain BSP variables in uninitialized RAM when initializing BSP early. */
+ #if BSP_CFG_EARLY_INIT
+  #define BSP_SECTION_EARLY_INIT                 BSP_PLACE_IN_SECTION(BSP_SECTION_NOINIT)
+ #else
+  #define BSP_SECTION_EARLY_INIT
  #endif
 
 /***********************************************************************************************************************
@@ -287,7 +288,7 @@ typedef enum e_bsp_warm_start_event
 {
     BSP_WARM_START_RESET = 0,          ///< Called almost immediately after reset. No C runtime environment, clocks, or IRQs.
     BSP_WARM_START_POST_CLOCK,         ///< Called after clock initialization. No C runtime environment or IRQs.
-    BSP_WARM_START_POST_C,             ///< Called after clocks and C runtime environment have been set up
+    BSP_WARM_START_POST_C              ///< Called after clocks and C runtime environment have been set up
 } bsp_warm_start_event_t;
 
 /* Private enum used in R_FSP_SystemClockHzGet. */
@@ -333,7 +334,8 @@ typedef enum e_fsp_priv_clock
     FSP_PRIV_CLOCK_CKIO,
     FSP_PRIV_CLOCK_XSPI0_CLK,
     FSP_PRIV_CLOCK_XSPI1_CLK,
-    FSP_PRIV_CLOCK_PCLKAM
+    FSP_PRIV_CLOCK_PCLKAM,
+    FSP_PRIV_CLOCK_SDHI_IMCLK,
 } fsp_priv_clock_t;
 
 /***********************************************************************************************************************
@@ -352,7 +354,7 @@ extern IRQn_Type g_current_interrupt_num[];
 extern uint8_t   g_current_interrupt_pointer;
 
 /***********************************************************************************************************************
- * Exported global functions (to be accessed by other files)
+ * Global variables (defined in other files)
  **********************************************************************************************************************/
 
 /***********************************************************************************************************************
@@ -721,6 +723,14 @@ __STATIC_INLINE uint32_t R_FSP_SystemClockHzGet (fsp_priv_clock_t clock)
         }
  #endif
 
+ #if (2 == BSP_FEATURE_CGC_SCKCR_TYPE)
+        case FSP_PRIV_CLOCK_SDHI_IMCLK:
+        {
+            clock_hz = BSP_PRV_SDHI_IMCLK_FREQ_200_MHz;
+            break;
+        }
+ #endif
+
         default:
         {
             break;
@@ -730,6 +740,9 @@ __STATIC_INLINE uint32_t R_FSP_SystemClockHzGet (fsp_priv_clock_t clock)
     return clock_hz;
 }
 
+/***********************************************************************************************************************
+ * Exported global functions (to be accessed by other files)
+ **********************************************************************************************************************/
  #if ((1 == BSP_CFG_ERROR_LOG) || (1 == BSP_CFG_ASSERT))
 
 /** Prototype of default function called before errors are returned in FSP code if BSP_CFG_LOG_ERRORS is set to 1. */
@@ -737,17 +750,33 @@ void fsp_error_log(fsp_err_t err, const char * file, int32_t line);
 
  #endif
 
-/** @} (end addtogroup BSP_MCU) */
-#ifdef __FOR_FSP_DOCUMENT__
- #ifdef __cplusplus
-}
+/** In the event of an unrecoverable error, the BSP will by default take no action.
+ *  The user can override this default behavior by defining their own BSP_CFG_HANDLE_UNRECOVERABLE_ERROR macro.
+ *
+ *  When BSP_CFG_HANDLE_UNRECOVERABLE_ERROR is called from error handlers, the user will need to investigate the cause.
+ *  Common problems are stack corruption or the use of an invalid pointer.
+ *
+ *  Use the Fault Status window in e2 studio or manually check the fault status registers for more information.
+ *  After an error handler, other interrupts may occur. Therefore, override  BSP_CFG_HANDLE_UNRECOVERABLE_ERROR macro
+ *  with a user-defined function and place a breakpoint inside it. This will help you catch the first interrupt and
+ *  identify the root cause of the error.
+ */
+ #if !defined(BSP_CFG_HANDLE_UNRECOVERABLE_ERROR)
+
+  #define BSP_CFG_HANDLE_UNRECOVERABLE_ERROR(x)
  #endif
-#endif
+
+/** @} (end addtogroup BSP_MCU) */
+ #ifdef __FOR_FSP_DOCUMENT__
+  #ifdef __cplusplus
+}
+  #endif
+ #endif
 
 void * bsp_prv_malloc(size_t size);
 void   bsp_prv_free(void * ptr);
 
-__WEAK void R_BSP_FspAssert(void);
+void R_BSP_FspAssert(void);
 
 /** Common macro for FSP header files. There is also a corresponding FSP_HEADER macro at the top of this file. */
 FSP_FOOTER

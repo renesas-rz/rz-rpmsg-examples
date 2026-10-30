@@ -22,6 +22,10 @@
  **********************************************************************************************************************/
 
 /***********************************************************************************************************************
+ * Private function prototypes
+ **********************************************************************************************************************/
+
+/***********************************************************************************************************************
  * Exported global variables (to be accessed by other files)
  **********************************************************************************************************************/
 
@@ -30,10 +34,10 @@
  **********************************************************************************************************************/
 
 #ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __cplusplus
 namespace RZN
 {
-#endif
+ #endif
 #endif
 
 /*******************************************************************************************************************//**
@@ -104,10 +108,9 @@ void R_BSP_SoftwareDelay (uint32_t delay, bsp_delay_units_t units)
     /* Have we overflowed 32 bits? */
     if (ns_64bits <= UINT32_MAX)
     {
-        ns_64bits = ns_64bits * (uint64_t) BSP_DELAY_SIGNIFICANT_DIGITS;
-
         /* No, we will not overflow.
          * Multiply the calculation result by BSP_DELAY_SIGNIFICANT_DIGITS to disable the retention of the decimal point.*/
+        ns_64bits        = ns_64bits * (uint64_t) BSP_DELAY_SIGNIFICANT_DIGITS;
         cycles_requested = (uint32_t) (ns_64bits / (uint64_t) ns_per_cycle);
         loops_required   = cycles_requested / BSP_DELAY_LOOP_CYCLES;
     }
@@ -141,9 +144,9 @@ void R_BSP_SoftwareDelay (uint32_t delay, bsp_delay_units_t units)
 /** @} (end addtogroup BSP_MCU) */
 
 #ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __cplusplus
 }
-#endif
+ #endif
 #endif
 
 /*******************************************************************************************************************//**

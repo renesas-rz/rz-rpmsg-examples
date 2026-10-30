@@ -13,7 +13,7 @@
  #error "Include metal/irq.h instead of metal/generic/irq.h"
 #endif
 
-#ifndef __METAL_FREERTOS_IRQ__H__
- #define __METAL_FREERTOS_IRQ__H__
+#ifndef __METAL_GENERIC_IRQ__H__
+ #define __METAL_GENERIC_IRQ__H__
 
-#endif                                 /* __METAL_FREERTOS_IRQ__H__ */
+#endif                                 /* __METAL_GENERIC_IRQ__H__ */

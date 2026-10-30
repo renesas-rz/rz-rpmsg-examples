@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2016, Xilinx Inc. and Contributors. All rights reserved.
+ * Copyright (c) 2015, Xilinx Inc. and Contributors. All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
 /*
- * @file    init.c
- * @brief   libmetal initialization.
+ * @file    generic/init.c
+ * @brief   Generic libmetal initialization.
  */
 
 #include <metal/sys.h>

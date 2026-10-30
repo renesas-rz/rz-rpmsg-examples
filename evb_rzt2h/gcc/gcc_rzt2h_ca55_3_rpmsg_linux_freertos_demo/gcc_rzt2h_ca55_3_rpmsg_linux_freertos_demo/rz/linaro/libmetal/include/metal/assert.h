@@ -12,10 +12,6 @@
 #ifndef __METAL_ASSERT__H__
 #define __METAL_ASSERT__H__
 
-#ifdef double_assert
- #error recursive
-#endif
-
 #include <metal/system/generic/assert.h>
 
 /**

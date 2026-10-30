@@ -42,24 +42,24 @@
 
 void sys_irq_restore_enable (unsigned int flags)
 {
-#ifdef FREERTOSCONFIG_H_
+#ifdef FREERTOS_CONFIG_H
  #if defined(BSP_CFG_CORE_CR52)
     vPortClearInterruptMask(flags);
  #elif defined(BSP_CFG_CORE_CA55)
     portCLEAR_INTERRUPT_MASK_FROM_ISR(flags);
  #endif
-#endif                                 /* FREERTOSCONFIG_H_ */
+#endif                                 /* FREERTOS_CONFIG_H */
 }
 
 unsigned int sys_irq_save_disable (void)
 {
-#ifdef FREERTOSCONFIG_H_
+#ifdef FREERTOS_CONFIG_H
  #if defined(BSP_CFG_CORE_CR52)
     return (unsigned int) ulPortSetInterruptMask();
  #elif defined(BSP_CFG_CORE_CA55)
     return (unsigned int) portSET_INTERRUPT_MASK_FROM_ISR();
  #endif
-#endif                                 /* FREERTOSCONFIG_H_ */
+#endif                                 /* FREERTOS_CONFIG_H */
 }
 
 void metal_machine_cache_flush (void * addr, unsigned int len)

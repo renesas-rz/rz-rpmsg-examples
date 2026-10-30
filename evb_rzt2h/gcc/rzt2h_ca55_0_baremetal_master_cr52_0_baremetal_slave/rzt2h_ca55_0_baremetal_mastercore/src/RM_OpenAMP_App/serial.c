@@ -29,6 +29,11 @@
 
 extern uint32_t console_init(void);
 
+int printf_buff (const char * format, ...);
+int printf_raw (const char * format, ...);
+int sprintf_uart (char * buffer, const char * format, ...);
+int snprintf_uart (char * buffer, size_t length, const char * format, ...);
+
 /*----------------------------------------------------------------------------*/
 static uint32_t xSerialPortInitialized = 0;
 static uint32_t flag_tend              = 1;
@@ -42,15 +47,17 @@ void uart_callback (uart_callback_args_t * const p_arg)
     }
     else if (p_arg->event & UART_EVENT_RX_COMPLETE)
     {
-        g_uart_callback_event = 1;
+        g_uart_callback_event |= UART_EVENT_RX_COMPLETE;
     }
 }
 
 /*----------------------------------------------------------------------------*/
 static void outbyte1 (console_t console, char c)
 {
+    FSP_PARAMETER_NOT_USED(console);
+
     flag_tend = 0;
-    g_uart0.p_api->write(g_uart0.p_ctrl, &c, 1);
+    g_uart0.p_api->write(g_uart0.p_ctrl, (uint8_t *) &c, 1);
     while (flag_tend == 0)
     {
 #if defined(__ICCARM__)

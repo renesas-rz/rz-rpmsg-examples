@@ -5,6 +5,7 @@ void R_BSP_WarmStart(bsp_warm_start_event_t event)
 BSP_PLACE_IN_SECTION(".warm_start");
 BSP_ATTRIBUTE_STACKLESS void R_BSP_WarmStart_StackLess(void)
 BSP_PLACE_IN_SECTION(".warm_start");
+
 FSP_CPP_FOOTER
 
 #define IOPORT_CFG_NAME1    g_bsp_pin_cfg1
@@ -58,7 +59,7 @@ void R_BSP_WarmStart (bsp_warm_start_event_t event)
  * This function is called without a stack at the very beginning of the startup process.
  * All instructions must be written in inline assembly.
  **********************************************************************************************************************/
-BSP_ATTRIBUTE_STACKLESS void R_BSP_WarmStart_StackLess(void)
+BSP_ATTRIBUTE_STACKLESS void R_BSP_WarmStart_StackLess (void)
 {
     /* The very beginning of the startup process. */
 

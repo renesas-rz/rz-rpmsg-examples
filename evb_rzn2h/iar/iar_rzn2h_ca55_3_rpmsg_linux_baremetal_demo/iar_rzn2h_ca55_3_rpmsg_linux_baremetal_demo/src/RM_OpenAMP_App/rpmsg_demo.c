@@ -39,6 +39,7 @@
 
 extern int  init_system(void);
 extern void cleanup_system(void);
+extern int app (struct rpmsg_device * rdev, void * platform, unsigned long svcno);
 
 #define SHUTDOWN_MSG    (0xEF56A55A)
 
@@ -50,7 +51,7 @@ extern void cleanup_system(void);
 
 static struct rpmsg_endpoint rp_ept[CFG_RPMSG_SVCNO] = {0};
 
-volatile static int evt_svc_unbind[CFG_RPMSG_SVCNO] = {0};
+static volatile int evt_svc_unbind[CFG_RPMSG_SVCNO] = {0};
 
 /**
  *  Callback Function: rpmsg_endpoint_cb

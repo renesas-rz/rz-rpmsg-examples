@@ -5,22 +5,23 @@
  */
 
 /*
- * @file    time.c
- * @brief   libmetal time handling.
+ * @file    generic/time.c
+ * @brief   Generic libmetal time handling.
  */
-#ifdef FREERTOSCONFIG_H_
+
+#ifdef FREERTOS_CONFIG_H
  #include <FreeRTOS.h>
  #include <task.h>
-#endif                                 /* FREERTOSCONFIG_H_ */
-
+#endif                                 /* FREERTOS_CONFIG_H */
 #include <metal/time.h>
 
 unsigned long long metal_get_timestamp (void)
 {
-    /* TODO: Implement timestamp for generic system */
-#ifdef FREERTOSCONFIG_H_
-    return (unsigned long long) xTaskGetTickCount();
+#ifdef FREERTOS_CONFIG_H
+    return (unsigned long long) (1000 * portTICK_PERIOD_MS * xTaskGetTickCount());
 #else
+
+    /* TODO: Implement timestamp for generic system */
     return 0;
-#endif                                 /* FREERTOSCONFIG_H_ */
+#endif                                 /* FREERTOS_CONFIG_H */
 }

@@ -10,7 +10,7 @@ and FreeRTOS/BareMetal runs on the Cortex-M33, with support for Inter-Processor 
   - [Getting Started](#getting-started)
     - [Sample Projects](#sample-projects)
     - [Development Environment](#development-environment)
-  - [example rzg2ul\_cm33\_rpmsg\_linux-rtos\_example](#example-rzg2ul_cm33_rpmsg_linux-rtos_example)
+  - [example rzg2ul\_cm33\_rpmsg\_linux_rtos\_example](#example-rzg2ul_cm33_rpmsg_linux_rtos_example)
     - [Hardware setup](#hardware-setup)
     - [CM33 sample project setup](#cm33-sample-project-setup)
     - [CM33 sample program invocation](#cm33-sample-program-invocation)
@@ -19,26 +19,27 @@ and FreeRTOS/BareMetal runs on the Cortex-M33, with support for Inter-Processor 
       - [CM33 sample program invocation with remoteproc](#cm33-sample-program-invocation-with-remoteproc)
     - [CA55 sample program invocation](#ca55-sample-program-invocation)
     - [Overview of sample program behavior](#overview-of-sample-program-behavior)
+    - [Assignment of peripherals](#assignment-of-peripherals)
 
 ## Getting Started
 ### Sample Projects
 |No.|Program File|Descriptions|
 |----|----|----|
-|1|rzg2ul_cm33_rpmsg_linux-rtos_example|Sample project to check the Inter-Processor Communication in multi-OS environment.
+|1|rzg2ul_cm33_rpmsg_linux_rtos_example|Sample project to check the Inter-Processor Communication in multi-OS environment.
 
 
 ### Development Environment
 |Hardware|Version|
 |----|----|
 |[RZ/G2UL-EVKIT](https://www.renesas.com/en/design-resources/boards-kits/rz-G2UL-evkit)|-|
-|[Segger J-link](https://www.segger.com/products/debug-probes/j-link/)| J-Link BASE v11.0 (J-Link DLL v8.60) |
+|[Segger J-link](https://www.segger.com/products/debug-probes/j-link/)| J-Link BASE v11.0 (J-Link DLL v9.44) |
 
 
 |Software|Version|
 |----|----|
-|e<sup>2</sup> studio|2025-12 (25.12.0)|
+|e<sup>2</sup> studio|2026-07 (R20260717-1302)|
 |GNU ARM Embedded 13.3-Rel1|13.3.1.arm-13-24|
-|RZ FSP|4.0.0|
+|RZ FSP|4.2.0|
 |Tera Term|-|
 
 
@@ -46,9 +47,9 @@ For more information to set up your development environment, refer to the follow
 - [Getting Started with Flexible Software Package](https://www.renesas.com/en/document/apn/rzg2l-getting-started-with-flexible-software-package)
 
 
-## Demo rzg2ul_cm33_rpmsg_linux-rtos_example
+## Demo rzg2ul_cm33_rpmsg_linux_rtos_example
 
-The **rzg2ul_cm33_rpmsg_linux-rtos_example** outputs the message tranfer progress between CPU cores to the console.
+The **rzg2ul_cm33_rpmsg_linux_rtos_example** outputs the message tranfer progress between CPU cores to the console.
 
 ### Hardware setup
 1. Connect USB Type Micro-AB cable to SER3_UART Connector (CN14).
@@ -61,7 +62,7 @@ The **rzg2ul_cm33_rpmsg_linux-rtos_example** outputs the message tranfer progres
 <br><img src=./git_images/connection-board.png width="720">
 
 ### CM33 sample project setup
-1. Open e2 studio 2025-12, import **rzg2ul_cm33_rpmsg_linux-rtos_example** from this repo to your workspace.
+1. Open e2 studio, import **rzg2ul_cm33_rpmsg_linux_rtos_example** from this repo to your workspace.
 2. (Optional for configuring RPMsg channel)
 By default, RPMsg channel 0 is configured to be used on CM33. If you would like to use channel 1, please open the property of **MainTask#0** on FSP Smart Configurator, specify 1 for **Thread Context**, and push **General Project Content** button to reflect the change to the source code.
 <img src=./git_images/change_RPMsg_channel.png width="720"><br>
@@ -71,15 +72,15 @@ Change the value for ENABLE_REMOTEPROC defined in **src/platform_info.h** from 0
     #define ENABLE_REMOTEPROC (1U)
     ```
 4. Build the project. The following files should be generated in Debug and/or Release directory in accordance with the active Build Configuration if there is no build failures.
-- rzg2ul_cm33_rpmsg_linux-rtos_example.elf
-- rzg2ul_cm33_rpmsg_linux-rtos_example_non_secure_code.bin
-- rzg2ul_cm33_rpmsg_linux-rtos_example_non_secure_vector.bin
-- rzg2ul_cm33_rpmsg_linux-rtos_example_secure_code.bin
-- rzg2ul_cm33_rpmsg_linux-rtos_example_secure_vector.bin
+- rzg2ul_cm33_rpmsg_linux_rtos_example.elf
+- rzg2ul_cm33_rpmsg_linux_rtos_example_non_secure_code.bin
+- rzg2ul_cm33_rpmsg_linux_rtos_example_non_secure_vector.bin
+- rzg2ul_cm33_rpmsg_linux_rtos_example_secure_code.bin
+- rzg2ul_cm33_rpmsg_linux_rtos_example_secure_vector.bin
 
 ### CM33 sample program invocation
 #### CM33 sample program invocation with SEGGER J-Link
-1. Start debug project by choosing **rzg2ul_cm33_rpmsg_linux-rtos_example Debug_Flat** or **rzg2ul_cm33_rpmsg_linux-rtos_example Release_Flat**
+1. Start debug project by choosing **rzg2ul_cm33_rpmsg_linux_rtos_example Debug_Flat** or **rzg2ul_cm33_rpmsg_linux_rtos_example Release_Flat**
 2. When Debug Perspective is opened, Program Counter (PC) should be located at the top of Warm_Reset_S function. Then, you need to press **Resume** button.
 3. Program stops at the top of main function. So, please click the same button as the previous step to start example.
 
@@ -89,7 +90,7 @@ Change the value for ENABLE_REMOTEPROC defined in **src/platform_info.h** from 0
 3. Turn on SMARC EVK by pressing the Power button for a few seconds.
 4. Hit any key to stop autoboot within 3 seconds after the following message is shown in the console connected to CN14 of SMRAC Carrier Board:
     ```
-    U-Boot 2024.07 (Sep 03 2025 - 15:10:30 +0000)
+    U-Boot 2024.07 (Sep 22 2025 - 10:51:32 +0000)
 
     CPU:   Renesas Electronics CPU rev 1.0
     Model: smarc-rzg2ul
@@ -116,10 +117,10 @@ Change the value for ENABLE_REMOTEPROC defined in **src/platform_info.h** from 0
     ```
     dcache off
     mmc dev 1
-    fatload mmc 1:N 0x0001FF80 rzg2ul_cm33_rpmsg_linux-rtos_example_secure_vector.bin
-    fatload mmc 1:N 0x42EFF440 rzg2ul_cm33_rpmsg_linux-rtos_example_secure_code.bin
-    fatload mmc 1:N 0x00010000 rzg2ul_cm33_rpmsg_linux-rtos_example_non_secure_vector.bin
-    fatload mmc 1:N 0x40010000 rzg2ul_cm33_rpmsg_linux-rtos_example_non_secure_code.bin
+    fatload mmc 1:N 0x0001FF80 rzg2ul_cm33_rpmsg_linux_rtos_example_secure_vector.bin
+    fatload mmc 1:N 0x42EFF440 rzg2ul_cm33_rpmsg_linux_rtos_example_secure_code.bin
+    fatload mmc 1:N 0x00010000 rzg2ul_cm33_rpmsg_linux_rtos_example_non_secure_vector.bin
+    fatload mmc 1:N 0x40010000 rzg2ul_cm33_rpmsg_linux_rtos_example_non_secure_code.bin
     cm33 start_debug 0x1001FF80 0x00010000
     dcache on
     ```
@@ -129,7 +130,7 @@ Change the value for ENABLE_REMOTEPROC defined in **src/platform_info.h** from 0
 1. Booting up Linux by following **5. Booting and Running Linux** of [SMARC EVK of RZ/G2UL Linux Startup Guide](https://www.renesas.com/en/document/gde/smarc-evk-rzg2l-rzg2lc-rzg2ul-linux-start-guide-rev107).
 2. Invoke the command stated below to specify the sample program to be loaded:
     ```
-    root@smarc-rzg2ul:~# echo rzg2ul_cm33_rpmsg_linux-rtos_example.elf > /sys/class/remoteproc/remoteproc0/firmware
+    root@smarc-rzg2ul:~# echo rzg2ul_cm33_rpmsg_linux_rtos_example.elf > /sys/class/remoteproc/remoteproc0/firmware
     ```
 3. Trigger CM33 execution by invoking the command below:
     ```
@@ -139,7 +140,7 @@ Change the value for ENABLE_REMOTEPROC defined in **src/platform_info.h** from 0
     ```
     root@smarc-rzg2ul:~# echo start > /sys/class/remoteproc/remoteproc0/state
     [   67.135837] remoteproc remoteproc0: powering up cm33
-    [   67.354296] remoteproc remoteproc0: Booting fw image rzg2ul_cm33_rpmsg_linux-rtos_example.elf, size 871384
+    [   67.354296] remoteproc remoteproc0: Booting fw image rzg2ul_cm33_rpmsg_linux_rtos_example.elf, size 871384
     [   67.363860] remoteproc remoteproc0: unsupported resource 4
     [   67.379869] rproc-virtio rproc-virtio.0.auto: assigned reserved memory node vdev0buffer@0x43200000
     [   67.397315] rproc-virtio rproc-virtio.0.auto: registered virtio0 (type 7)
@@ -222,3 +223,12 @@ Change the value for ENABLE_REMOTEPROC defined in **src/platform_info.h** from 0
     >
     ```
     If you would like to quit the application, please type e.
+
+## Assignment of peripherals
+Table below shows the expected assignment of peripherals to sub core (CM33) on this example project while all other devices remain assigned to the Linux (main core) side. 
+
+**Peripherals assignment on RZ/G2UL Multi-OS Example Project:**
+
+  |Peripherals|Main core (CA55)|Sub core (CM33)|Remarks|
+  |----|----|----|----|
+  |GTM|ch0-1|ch2|0006-arm64-dts-renesas-rzg2ul-smarc-Disable-OSTM2.patch<br>|

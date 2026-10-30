@@ -12,12 +12,12 @@
 #ifndef __METAL_COMPILER__H__
 #define __METAL_COMPILER__H__
 
-#if defined(__CC_ARM)
- #include <metal/compiler/armcc/compiler.h>
-#elif defined(__GNUC__)
+#if defined(__GNUC__)
  #include <metal/compiler/gcc/compiler.h>
 #elif defined(__ICCARM__)
  #include <metal/compiler/iar/compiler.h>
+#elif defined(__CC_ARM) || defined(__arm__)
+ #error "MDK-ARM ARMCC compiler requires the GNU extensions to work correctly"
 #else
  #error "Missing compiler support"
 #endif

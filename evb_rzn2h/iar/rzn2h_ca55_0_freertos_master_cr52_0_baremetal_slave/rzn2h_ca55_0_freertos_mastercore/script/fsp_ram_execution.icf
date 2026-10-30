@@ -266,6 +266,14 @@ define symbol __region_BTCM_start__                          = BTCM_PRV_START;
 define symbol __region_BTCM_end__                            = BTCM_PRV_START + BTCM_PRV_LENGTH - BTCM_END_ADDRESS_OFFSET;
 define symbol __region_SYSTEM_RAM_start__                    = SYSTEM_RAM_ALIGN_START;
 define symbol __region_SYSTEM_RAM_end__                      = SYSTEM_RAM_ALIGN_START + SYSTEM_RAM_ALIGN_LENGTH - SYSTEM_RAM_END_ADDRESS_OFFSET;
+define symbol __region_CPU0_ATCM_VIA_AXIS_start__            = CPU0_ATCM_VIA_AXIS_PRV_START;
+define symbol __region_CPU0_ATCM_VIA_AXIS_end__              = CPU0_ATCM_VIA_AXIS_PRV_START + CPU0_ATCM_VIA_AXIS_PRV_LENGTH - CPU0_ATCM_VIA_AXIS_END_ADDRESS_OFFSET;
+define symbol __region_CPU0_BTCM_VIA_AXIS_start__            = CPU0_BTCM_VIA_AXIS_PRV_START;
+define symbol __region_CPU0_BTCM_VIA_AXIS_end__              = CPU0_BTCM_VIA_AXIS_PRV_START + CPU0_BTCM_VIA_AXIS_PRV_LENGTH - CPU0_BTCM_VIA_AXIS_END_ADDRESS_OFFSET;
+define symbol __region_CPU1_ATCM_VIA_AXIS_start__            = CPU1_ATCM_VIA_AXIS_PRV_START;
+define symbol __region_CPU1_ATCM_VIA_AXIS_end__              = CPU1_ATCM_VIA_AXIS_PRV_START + CPU1_ATCM_VIA_AXIS_PRV_LENGTH - CPU1_ATCM_VIA_AXIS_END_ADDRESS_OFFSET;
+define symbol __region_CPU1_BTCM_VIA_AXIS_start__            = CPU1_BTCM_VIA_AXIS_PRV_START;
+define symbol __region_CPU1_BTCM_VIA_AXIS_end__              = CPU1_BTCM_VIA_AXIS_PRV_START + CPU1_BTCM_VIA_AXIS_PRV_LENGTH - CPU1_BTCM_VIA_AXIS_END_ADDRESS_OFFSET;
 define symbol __region_SYSTEM_RAM_MIRROR_start__             = SYSTEM_RAM_MIRROR_PRV_START;
 define symbol __region_SYSTEM_RAM_MIRROR_end__               = SYSTEM_RAM_MIRROR_PRV_START + SYSTEM_RAM_MIRROR_PRV_LENGTH - SYSTEM_RAM_MIRROR_END_ADDRESS_OFFSET;
 define symbol __region_XSPI0_CS0_MIRROR_start__              = xSPI0_CS0_SPACE_MIRROR_PRV_START;
@@ -364,6 +372,10 @@ define symbol __region_OPENAMP_VRING_end__                   = OPENAMP_VRING_STA
 define region ATCM_region                        = mem:[from __region_ATCM_start__  to __region_ATCM_end__ ];
 define region BTCM_region                        = mem:[from __region_BTCM_start__  to __region_BTCM_end__ ];
 define region SYSTEM_RAM_region                  = mem:[from __region_SYSTEM_RAM_start__  to __region_SYSTEM_RAM_end__ ];
+define region CPU0_ATCM_VIA_AXIS_region          = mem:[from __region_CPU0_ATCM_VIA_AXIS_start__  to __region_CPU0_ATCM_VIA_AXIS_end__ ];
+define region CPU0_BTCM_VIA_AXIS_region          = mem:[from __region_CPU0_BTCM_VIA_AXIS_start__  to __region_CPU0_BTCM_VIA_AXIS_end__ ];
+define region CPU1_ATCM_VIA_AXIS_region          = mem:[from __region_CPU1_ATCM_VIA_AXIS_start__  to __region_CPU1_ATCM_VIA_AXIS_end__ ];
+define region CPU1_BTCM_VIA_AXIS_region          = mem:[from __region_CPU1_BTCM_VIA_AXIS_start__  to __region_CPU1_BTCM_VIA_AXIS_end__ ];
 define region SYSTEM_RAM_MIRROR_region           = mem:[from __region_SYSTEM_RAM_MIRROR_start__  to __region_SYSTEM_RAM_MIRROR_end__ ];
 define region XSPI0_CS0_MIRROR_region            = mem:[from __region_XSPI0_CS0_MIRROR_start__  to __region_XSPI0_CS0_MIRROR_end__ ];
 define region XSPI0_CS1_MIRROR_region            = mem:[from __region_XSPI0_CS1_MIRROR_start__  to __region_XSPI0_CS1_MIRROR_end__ ];
@@ -671,6 +683,10 @@ define block NONCACHE_END_block   { section .ddsc_noncache_end };
 place in ATCM_region { };
 place in BTCM_region { };
 place in SYSTEM_RAM_region { };
+place in CPU0_ATCM_VIA_AXIS_region { };
+place in CPU0_BTCM_VIA_AXIS_region { };
+place in CPU1_ATCM_VIA_AXIS_region { };
+place in CPU1_BTCM_VIA_AXIS_region { };
 place in SYSTEM_RAM_MIRROR_region { };
 place in XSPI0_CS0_MIRROR_region { };
 place in XSPI0_CS1_MIRROR_region { };
@@ -776,6 +792,6 @@ else
     place at start of SYSTEM_RAM_region         { block SYSTEM_RAM_END_block };
 }
 
-place in OPENAMP_RSCTBL_region 			{ block resource_block };
-place in INTERCPU_SHM_region   			{ block intercpu_shm_block };
-place in OPENAMP_VRING_region  			{ block vring_block };
+place in OPENAMP_RSCTBL_region          { block resource_block };
+place in INTERCPU_SHM_region            { block intercpu_shm_block };
+place in OPENAMP_VRING_region           { block vring_block };

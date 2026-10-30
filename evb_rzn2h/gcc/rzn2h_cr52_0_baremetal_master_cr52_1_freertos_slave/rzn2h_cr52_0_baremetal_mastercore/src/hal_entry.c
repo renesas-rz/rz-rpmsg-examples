@@ -11,6 +11,7 @@ void R_BSP_WarmStart(bsp_warm_start_event_t event)
 BSP_PLACE_IN_SECTION(".warm_start");
 BSP_ATTRIBUTE_STACKLESS void R_BSP_WarmStart_StackLess(void)
 BSP_PLACE_IN_SECTION(".warm_start");
+
 FSP_CPP_FOOTER
 
 #define IOPORT_CFG_NAME1    g_bsp_pin_cfg1
@@ -43,7 +44,7 @@ void hal_entry (void)
     uint32_t        led_send = 0;
 
     /* Open OpenAMP */
-    (void) RM_OpenAMP_Open(VIRTIO_DEV_MASTER, 0, 0);
+    (void) RM_OpenAMP_Open(VIRTIO_DEV_DRIVER, 0, 0);
 
     /* Initialize the buffer data of UART */
     R_SCI_UART_Read(&g_uart0_ctrl, (uint8_t *) rx_data, 8);
@@ -70,7 +71,7 @@ void hal_entry (void)
         }
 
         /* Check event uart RX completing */
-        if (g_uart_callback_event == 1)
+        if (g_uart_callback_event & UART_EVENT_RX_COMPLETE)
         {
             LPRINTF("Received data from UART\n");
             if (string_cmp(rx_data, led_on, 8) == 0)
@@ -99,7 +100,7 @@ void hal_entry (void)
 
             /* Re-initialize for new buffer data of UART */
             R_SCI_UART_Read(&g_uart0_ctrl, (uint8_t *) rx_data, 8);
-            g_uart_callback_event = 0;
+            g_uart_callback_event &= (uart_event_t)~((uint32_t)UART_EVENT_RX_COMPLETE);
         }
         else
         {
@@ -167,7 +168,7 @@ void R_BSP_WarmStart (bsp_warm_start_event_t event)
  * This function is called without a stack at the very beginning of the startup process.
  * All instructions must be written in inline assembly.
  **********************************************************************************************************************/
-BSP_ATTRIBUTE_STACKLESS void R_BSP_WarmStart_StackLess(void)
+BSP_ATTRIBUTE_STACKLESS void R_BSP_WarmStart_StackLess (void)
 {
     /* The very beginning of the startup process. */
 

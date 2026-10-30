@@ -46,17 +46,17 @@ extern "C" {
 #define NO_ATOMIC_64_SUPPORT
 
 #if !defined(MAX_IRQS)
- #define MAX_IRQS    ((int) 543U)      /**< maximum number of irqs */
+ #define MAX_IRQS    ((int) BSP_ICU_VECTOR_MAX_ENTRIES) /**< maximum number of irqs */
 #endif
 
 static inline void sys_irq_enable (unsigned int vector)
 {
-    (void) R_BSP_IrqEnable(vector);
+    (void) R_BSP_IrqEnable((IRQn_Type) vector);
 }
 
 static inline void sys_irq_disable (unsigned int vector)
 {
-    (void) R_BSP_IrqDisable(vector);
+    (void) R_BSP_IrqDisable((IRQn_Type) vector);
 }
 
 #ifdef __cplusplus

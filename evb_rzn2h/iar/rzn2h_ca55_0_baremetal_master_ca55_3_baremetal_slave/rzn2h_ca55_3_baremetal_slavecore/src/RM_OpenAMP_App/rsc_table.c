@@ -54,11 +54,8 @@ struct remote_resource_table resources_init[] =
 
         /* Offsets of rsc entries */
         {
-            offsetof(struct remote_resource_table, rproc_mem),
             offsetof(struct remote_resource_table, rpmsg_vdev)
         },
-
-        {RSC_RPROC_MEM,       RPMSG_MEM_BASE, RPMSG_MEM_BASE, RPMSG_MEM_SIZE, 0},
 
 #ifdef __ICCARM__
 

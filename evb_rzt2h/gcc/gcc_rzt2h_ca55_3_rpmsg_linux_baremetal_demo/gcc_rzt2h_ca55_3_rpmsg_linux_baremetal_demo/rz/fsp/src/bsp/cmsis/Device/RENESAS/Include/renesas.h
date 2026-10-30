@@ -114,6 +114,8 @@ extern "C" {
   #include "R9A07G075M29.h"
  #elif BSP_MCU_GROUP_RZT2H
   #include "R9A09G077.h"
+ #elif BSP_MCU_GROUP_RZT2N
+  #include "R9A07G076.h"
  #else
   #warning Unsupported MCU
  #endif

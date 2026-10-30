@@ -53,7 +53,7 @@
 
 /* BSP DDR Includes. */
  #if BSP_FEATURE_DDR_SUPPORTED
-  #include "../../src/bsp/mcu/all/bsp_ddr.h"
+  #include "../../src/bsp/mcu/rzt2h/bsp_ddr.h"
  #endif
 
  #if BSP_FEATURE_ADDRESS_EXPANDER_SUPPORTED
@@ -93,6 +93,7 @@ FSP_HEADER
  #define BSP_OVERRIDE_POE3_ACTIVE_LEVEL_T
  #define BSP_OVERRIDE_POEG_STATE_T
  #define BSP_OVERRIDE_POEG_TRIGGER_T
+ #define BSP_OVERRIDE_TIMER_EVENT_T
  #define BSP_OVERRIDE_TRANSFER_MODE_T
  #define BSP_OVERRIDE_TRANSFER_SIZE_T
  #define BSP_OVERRIDE_TRANSFER_ADDR_MODE_T
@@ -312,13 +313,12 @@ struct st_cgc_pll_vco_cfg
 /* Please refer to the struct st_cgc_pll_vco_cfg. */
 typedef struct st_cgc_pll_vco_cfg cgc_pll_vco_cfg_t;
 
-/** Clock configuration structure - Dummy definition because it is not used in this MPU.
- * Set NULL as an input parameter to the cgc_api_t::clockStart function for the PLL clock. */
+/** Clock configuration structure - Used as an input parameter to the cgc_api_t::clockStart function for the PLL clock. */
 struct st_cgc_pll_cfg
 {
-    cgc_pll_ssc_cfg_t pll0_ssc_cfg;
-    cgc_pll_ssc_cfg_t pll2_ssc_cfg;
-    cgc_pll_vco_cfg_t pll3_vco_cfg;
+    cgc_pll_ssc_cfg_t pll0_ssc_cfg;    ///< SSC settings of PLL0 (for RZ/T2H and RZ/T2N).
+    cgc_pll_ssc_cfg_t pll2_ssc_cfg;    ///< SSC settings of PLL2 (for RZ/T2H and RZ/T2N).
+    cgc_pll_vco_cfg_t pll3_vco_cfg;    ///< VCO settings of PLL3 (for RZ/T2H).
 };
 
 /** Clock configuration structure - Dummy definition because it is not used in this MPU.
@@ -415,7 +415,7 @@ struct st_cgc_divider_cfg
     };
 };
 
-/** Clock configuration structure Please refer to the struct st_cgc_divider_cfg. */
+/** Clock configuration structure. Please refer to the struct st_cgc_divider_cfg. */
 typedef struct st_cgc_divider_cfg cgc_divider_cfg_t;
 
 /** Clock options */
@@ -439,7 +439,7 @@ struct st_cgc_clocks_cfg
     cgc_clock_change_t pll3_state;     ///< State of PLL3
 };
 
-/** Clock configuration Please refer to the struct st_cgc_clocks_cfg. */
+/** Clock configuration. Please refer to the struct st_cgc_clocks_cfg. */
 typedef struct st_cgc_clocks_cfg cgc_clocks_cfg_t;
 
 /*==============================================
@@ -498,7 +498,7 @@ struct st_display_input_cfg
     display_data_swap_t data_swap;     ///< Input data swap_Setting
 };
 
-/** Graphics plane input configuration structure Please refer to the struct st_display_input_cfg. */
+/** Graphics plane input configuration structure. Please refer to the struct st_display_input_cfg. */
 typedef struct st_display_input_cfg display_input_cfg_t;
 
 /*==============================================
@@ -2770,7 +2770,7 @@ struct st_ether_callback_args
     void * p_context;                  ///< Placeholder for user data.
 };
 
-/** Ether Callback function parameter data Please refer to the struct st_ether_callback_args. */
+/** Ether Callback function parameter data. Please refer to the struct st_ether_callback_args. */
 typedef struct st_ether_callback_args ether_callback_args_t;
 
 /*==============================================
@@ -2794,7 +2794,7 @@ struct st_ether_switch_callback_args
     void * p_context;                  ///< Placeholder for user data.
 };
 
-/** Ether Switch Callback function parameter data Please refer to the struct st_ether_switch_callback_args. */
+/** Ether Switch Callback function parameter data. Please refer to the struct st_ether_switch_callback_args. */
 typedef struct st_ether_switch_callback_args ether_switch_callback_args_t;
 
 /*==============================================
@@ -2943,6 +2943,29 @@ typedef enum e_poeg_trigger
 } poeg_trigger_t;
 
 /*==============================================
+ * Timer API Overrides
+ *==============================================*/
+
+/** Events that can trigger a callback function */
+typedef enum e_timer_event
+{
+    TIMER_EVENT_CYCLE_END,                     ///< Requested timer delay has expired or timer has wrapped around
+    TIMER_EVENT_CREST = TIMER_EVENT_CYCLE_END, ///< Timer crest event (counter is at a maximum, triangle-wave PWM only)
+    TIMER_EVENT_CAPTURE_A,                     ///< A capture has occurred on signal A
+    TIMER_EVENT_CAPTURE_B,                     ///< A capture has occurred on signal B
+    TIMER_EVENT_CAPTURE_C,                     ///< A capture has occurred on signal C
+    TIMER_EVENT_CAPTURE_D,                     ///< A capture has occurred on signal D
+    TIMER_EVENT_TROUGH,                        ///< Timer trough event (counter is 0, triangle-wave PWM only)
+    TIMER_EVENT_COMPARE_A,                     ///< A compare has occurred on signal A
+    TIMER_EVENT_COMPARE_B,                     ///< A compare has occurred on signal B
+    TIMER_EVENT_COMPARE_C,                     ///< A compare has occurred on signal C
+    TIMER_EVENT_COMPARE_D,                     ///< A compare has occurred on signal D
+    TIMER_EVENT_COMPARE_E,                     ///< A compare has occurred on signal E
+    TIMER_EVENT_COMPARE_F,                     ///< A compare has occurred on signal F
+    TIMER_EVENT_DEAD_TIME,                     ///< Dead time event
+} timer_event_t;
+
+/*==============================================
  * Transfer API Overrides
  *==============================================*/
 
@@ -2986,14 +3009,14 @@ typedef enum e_transfer_addr_mode
 } transfer_addr_mode_t;
 
 /** Callback function parameter data. */
-struct st_transfer_callback_args_t
+struct st_transfer_callback_args
 {
     transfer_event_t event;            ///< Event code
     void           * p_context;        ///< Placeholder for user data. Set in transfer_api_t::open function in RZT::transfer_cfg_t.
 };
 
-/** Callback function parameter data. Please refer to the struct st_transfer_callback_args_t. */
-typedef struct st_transfer_callback_args_t transfer_callback_args_t;
+/** Callback function parameter data. Please refer to the struct st_transfer_callback_args. */
+typedef struct st_transfer_callback_args transfer_callback_args_t;
 
 /** This structure specifies the properties of the transfer. */
 struct st_transfer_info
@@ -3049,7 +3072,7 @@ struct st_adc_info
     bool calibration_ongoing;                ///< Calibration is in progress.
 };
 
-/** ADC Information Structure for Transfer Interface Please refer to the struct st_adc_info. */
+/** ADC Information Structure for Transfer Interface. Please refer to the struct st_adc_info. */
 typedef struct st_adc_info adc_info_t;
 
 /***********************************************************************************************************************

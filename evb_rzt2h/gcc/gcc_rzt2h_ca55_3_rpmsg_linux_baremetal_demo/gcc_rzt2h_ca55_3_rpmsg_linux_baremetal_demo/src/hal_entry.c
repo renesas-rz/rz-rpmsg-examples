@@ -43,10 +43,11 @@ void hal_entry (void)
     void                * platform;
     int ret;
 
-    LPRINTF("****************  CA55_3 Baremetal  ******************\n", 0);
+    LPRINTF("***************  CA55_3 BAREMETAL  ******************\n", 0);
     LPRINTF("*****************************************************\n");
 
     ret = init_system();
+
     if (ret)
     {
         LPERROR("Failed to init remoteproc device.\n");
@@ -54,6 +55,7 @@ void hal_entry (void)
     }
 
     ret = platform_init(proc_id, rsc_id, &platform);
+
     if (ret)
     {
         LPERROR("Failed to create remoteproc device.\n");
@@ -64,7 +66,8 @@ void hal_entry (void)
         do
         {
             /* RTOS is Master, but this setting must remote in this release. */
-            rpdev = platform_create_rpmsg_vdev(platform, 0x0U, VIRTIO_DEV_SLAVE, NULL, NULL);
+            rpdev = platform_create_rpmsg_vdev(platform, 0x0U, VIRTIO_DEV_DEVICE, NULL, NULL);
+
             if (!rpdev)
             {
                 LPERROR("Fail, platform_create_rpmsg_vdev.\n");
@@ -83,13 +86,15 @@ void hal_entry (void)
             R_BSP_SoftwareDelay(RECONNECT_DLY, BSP_DELAY_UNITS_MICROSECONDS);
         } while (RECONNECT_FLG);
     }
-
+#if !RECONNECT_FLG
     platform_cleanup(platform);
     cleanup_system();
 
     /* Closes the icu_inter_cpu_irq */
     g_icu_inter_cpu_irq0.p_api->close(g_icu_inter_cpu_irq0.p_ctrl);
     g_icu_inter_cpu_irq1.p_api->close(g_icu_inter_cpu_irq1.p_ctrl);
+#endif
+
 err2:
     platform_cleanup(platform);
 err1:

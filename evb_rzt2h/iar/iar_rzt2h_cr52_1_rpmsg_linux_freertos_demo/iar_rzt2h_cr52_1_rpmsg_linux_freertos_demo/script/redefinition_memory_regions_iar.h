@@ -7,7 +7,7 @@ define symbol OPENAMP_RSCTBL_LENGTH_ADDRESS = 0x00001000;
 define symbol OPENAMP_VRING_START_ADDRESS   = 0xE1000000;
 define symbol OPENAMP_VRING_LENGTH_ADDRESS  = 0x08000000;
 
-/* User customizes the location in here */		 
+/* User customizes the location in here */
 define symbol FSP_STARTUP_LOCATION_ADDRESS  = 0x10060000;
 
 /* When using OpenAMP, allocate the length of the OpenAMP relevant region */
@@ -24,11 +24,11 @@ else
 
 if (isdefinedsymbol(OPENAMP_RSCTBL_LENGTH_ADDRESS))
 {
-    define symbol OPENAMP_RSCTBL_LENGTH	= OPENAMP_RSCTBL_LENGTH_ADDRESS;
+    define symbol OPENAMP_RSCTBL_LENGTH = OPENAMP_RSCTBL_LENGTH_ADDRESS;
 }
 else
 {
-    define symbol OPENAMP_RSCTBL_LENGTH	= 0;
+    define symbol OPENAMP_RSCTBL_LENGTH = 0;
 }
 
 if (isdefinedsymbol(OPENAMP_VRING_START_ADDRESS))
@@ -44,11 +44,11 @@ else
 
 if (isdefinedsymbol(OPENAMP_VRING_LENGTH))
 {
-    define symbol OPENAMP_VRING_LENGTH	= OPENAMP_VRING_LENGTH_ADDRESS;
+    define symbol OPENAMP_VRING_LENGTH  = OPENAMP_VRING_LENGTH_ADDRESS;
 }
 else
 {
-    define symbol OPENAMP_VRING_LENGTH	= 0;
+    define symbol OPENAMP_VRING_LENGTH  = 0;
 }
 
 if (isdefinedsymbol(FSP_STARTUP_LOCATION_ADDRESS))
@@ -140,16 +140,16 @@ else
 
 if (isdefinedsymbol(SYSTEM_RAM_START))
 {
-	if (isdefinedsymbol(FSP_STARTUP_LOCATION))
-	{
-		define symbol SYSTEM_RAM_PRV_START          = FSP_STARTUP_LOCATION;
-		define symbol SYSTEM_RAM_END_ADDRESS_OFFSET = 1;
-	}
-	else
-	{
+    if (isdefinedsymbol(FSP_STARTUP_LOCATION))
+    {
+        define symbol SYSTEM_RAM_PRV_START          = FSP_STARTUP_LOCATION;
+        define symbol SYSTEM_RAM_END_ADDRESS_OFFSET = 1;
+    }
+    else
+    {
         define symbol SYSTEM_RAM_PRV_START          = SYSTEM_RAM_START;
         define symbol SYSTEM_RAM_END_ADDRESS_OFFSET = 1;
-	}
+    }
 }
 else
 {
@@ -164,6 +164,86 @@ if (isdefinedsymbol(SYSTEM_RAM_LENGTH))
 else
 {
     define symbol SYSTEM_RAM_PRV_LENGTH = 0;
+}
+
+if (isdefinedsymbol(CPU0_ATCM_VIA_AXIS_START))
+{
+    define symbol CPU0_ATCM_VIA_AXIS_PRV_START          = CPU0_ATCM_VIA_AXIS_START;
+    define symbol CPU0_ATCM_VIA_AXIS_END_ADDRESS_OFFSET = 1;
+}
+else
+{
+    define symbol CPU0_ATCM_VIA_AXIS_PRV_START          = 0;
+    define symbol CPU0_ATCM_VIA_AXIS_END_ADDRESS_OFFSET = 0;
+}
+
+if (isdefinedsymbol(CPU0_ATCM_VIA_AXIS_LENGTH))
+{
+    define symbol CPU0_ATCM_VIA_AXIS_PRV_LENGTH = CPU0_ATCM_VIA_AXIS_LENGTH;
+}
+else
+{
+    define symbol CPU0_ATCM_VIA_AXIS_PRV_LENGTH = 0;
+}
+
+if (isdefinedsymbol(CPU0_BTCM_VIA_AXIS_START))
+{
+    define symbol CPU0_BTCM_VIA_AXIS_PRV_START          = CPU0_BTCM_VIA_AXIS_START;
+    define symbol CPU0_BTCM_VIA_AXIS_END_ADDRESS_OFFSET = 1;
+}
+else
+{
+    define symbol CPU0_BTCM_VIA_AXIS_PRV_START          = 0;
+    define symbol CPU0_BTCM_VIA_AXIS_END_ADDRESS_OFFSET = 0;
+}
+
+if (isdefinedsymbol(CPU0_BTCM_VIA_AXIS_LENGTH))
+{
+    define symbol CPU0_BTCM_VIA_AXIS_PRV_LENGTH = CPU0_BTCM_VIA_AXIS_LENGTH;
+}
+else
+{
+    define symbol CPU0_BTCM_VIA_AXIS_PRV_LENGTH = 0;
+}
+
+if (isdefinedsymbol(CPU1_ATCM_VIA_AXIS_START))
+{
+    define symbol CPU1_ATCM_VIA_AXIS_PRV_START          = CPU1_ATCM_VIA_AXIS_START;
+    define symbol CPU1_ATCM_VIA_AXIS_END_ADDRESS_OFFSET = 1;
+}
+else
+{
+    define symbol CPU1_ATCM_VIA_AXIS_PRV_START          = 0;
+    define symbol CPU1_ATCM_VIA_AXIS_END_ADDRESS_OFFSET = 0;
+}
+
+if (isdefinedsymbol(CPU1_ATCM_VIA_AXIS_LENGTH))
+{
+    define symbol CPU1_ATCM_VIA_AXIS_PRV_LENGTH = CPU1_ATCM_VIA_AXIS_LENGTH;
+}
+else
+{
+    define symbol CPU1_ATCM_VIA_AXIS_PRV_LENGTH = 0;
+}
+
+if (isdefinedsymbol(CPU1_BTCM_VIA_AXIS_START))
+{
+    define symbol CPU1_BTCM_VIA_AXIS_PRV_START          = CPU1_BTCM_VIA_AXIS_START;
+    define symbol CPU1_BTCM_VIA_AXIS_END_ADDRESS_OFFSET = 1;
+}
+else
+{
+    define symbol CPU1_BTCM_VIA_AXIS_PRV_START          = 0;
+    define symbol CPU1_BTCM_VIA_AXIS_END_ADDRESS_OFFSET = 0;
+}
+
+if (isdefinedsymbol(CPU1_BTCM_VIA_AXIS_LENGTH))
+{
+    define symbol CPU1_BTCM_VIA_AXIS_PRV_LENGTH = CPU1_BTCM_VIA_AXIS_LENGTH;
+}
+else
+{
+    define symbol CPU1_BTCM_VIA_AXIS_PRV_LENGTH = 0;
 }
 
 if (isdefinedsymbol(SYSTEM_RAM_MIRROR_START))
@@ -559,7 +639,20 @@ else
 
 if (isdefinedsymbol(DDR_MIRROR0_LENGTH))
 {
-    define symbol DDR_MIRROR0_PRV_LENGTH = DDR_MIRROR0_LENGTH;
+    if (isdefinedsymbol(DDR_MIRROR0_CR52_0_LENGTH))
+    {
+        define symbol DDR_MIRROR0_PRV_LENGTH =
+            (max(DDR_MIRROR0_LENGTH, DDR_MIRROR0_CR52_0_LENGTH) - DDR_MIRROR0_CR52_0_LENGTH);
+    }
+    else if (isdefinedsymbol(DDR_MIRROR0_CR52_1_LENGTH))
+    {
+        define symbol DDR_MIRROR0_PRV_LENGTH =
+            (max(DDR_MIRROR0_LENGTH, DDR_MIRROR0_CR52_1_LENGTH) - DDR_MIRROR0_CR52_1_LENGTH);
+    }
+    else
+    {
+        define symbol DDR_MIRROR0_PRV_LENGTH = DDR_MIRROR0_LENGTH;
+    }
 }
 else
 {
@@ -568,8 +661,36 @@ else
 
 if (isdefinedsymbol(DDR_MIRROR1_START))
 {
-    define symbol DDR_MIRROR1_PRV_START          = DDR_MIRROR1_START;
-    define symbol DDR_MIRROR1_END_ADDRESS_OFFSET = 1;
+    if (isdefinedsymbol(DDR_MIRROR1_CA55_0_START))
+    {
+        define symbol DDR_MIRROR1_PRV_START          = 0;
+        define symbol DDR_MIRROR1_END_ADDRESS_OFFSET = 0;
+    }
+    else if (isdefinedsymbol(DDR_MIRROR1_CA55_1_START))
+    {
+        define symbol DDR_MIRROR1_PRV_START          = 0;
+        define symbol DDR_MIRROR1_END_ADDRESS_OFFSET = 0;
+    }
+    else if (isdefinedsymbol(DDR_MIRROR1_CA55_2_START))
+    {
+        define symbol DDR_MIRROR1_PRV_START          = 0;
+        define symbol DDR_MIRROR1_END_ADDRESS_OFFSET = 0;
+    }
+    else if (isdefinedsymbol(DDR_MIRROR1_CA55_3_START))
+    {
+        define symbol DDR_MIRROR1_PRV_START          = 0;
+        define symbol DDR_MIRROR1_END_ADDRESS_OFFSET = 0;
+    }
+    else if (isdefinedsymbol(DDR_MIRROR0_START))
+    {
+        define symbol DDR_MIRROR1_PRV_START          = max(DDR_MIRROR0_START, DDR_MIRROR1_START);
+        define symbol DDR_MIRROR1_END_ADDRESS_OFFSET = 1;
+    }
+    else
+    {
+        define symbol DDR_MIRROR1_PRV_START          = DDR_MIRROR1_START;
+        define symbol DDR_MIRROR1_END_ADDRESS_OFFSET = 1;
+    }
 }
 else
 {
@@ -579,7 +700,30 @@ else
 
 if (isdefinedsymbol(DDR_MIRROR1_LENGTH))
 {
-    define symbol DDR_MIRROR1_PRV_LENGTH = DDR_MIRROR1_LENGTH;
+    if (isdefinedsymbol(DDR_MIRROR1_CA55_0_LENGTH))
+    {
+        define symbol DDR_MIRROR1_PRV_LENGTH = 0;
+    }
+    else if (isdefinedsymbol(DDR_MIRROR1_CA55_1_LENGTH))
+    {
+        define symbol DDR_MIRROR1_PRV_LENGTH = 0;
+    }
+    else if (isdefinedsymbol(DDR_MIRROR1_CA55_2_LENGTH))
+    {
+        define symbol DDR_MIRROR1_PRV_LENGTH = 0;
+    }
+    else if (isdefinedsymbol(DDR_MIRROR1_CA55_3_LENGTH))
+    {
+        define symbol DDR_MIRROR1_PRV_LENGTH = 0;
+    }
+    else if (isdefinedsymbol(DDR_MIRROR0_LENGTH))
+    {
+        define symbol DDR_MIRROR1_PRV_LENGTH = min(DDR_MIRROR0_LENGTH, DDR_MIRROR1_LENGTH);
+    }
+    else
+    {
+        define symbol DDR_MIRROR1_PRV_LENGTH = DDR_MIRROR1_LENGTH;
+    }
 }
 else
 {
@@ -588,8 +732,21 @@ else
 
 if (isdefinedsymbol(DDR_START))
 {
-    define symbol DDR_PRV_START          = DDR_START;
-    define symbol DDR_END_ADDRESS_OFFSET = 1;
+    if (isdefinedsymbol(DDR_CR52_0_START))
+    {
+        define symbol DDR_PRV_START          = 0;
+        define symbol DDR_END_ADDRESS_OFFSET = 0;
+    }
+    else if (isdefinedsymbol(DDR_CR52_1_START))
+    {
+        define symbol DDR_PRV_START          = 0;
+        define symbol DDR_END_ADDRESS_OFFSET = 0;
+    }
+    else
+    {
+        define symbol DDR_PRV_START          = DDR_START;
+        define symbol DDR_END_ADDRESS_OFFSET = 1;
+    }
 }
 else
 {
@@ -599,7 +756,18 @@ else
 
 if (isdefinedsymbol(DDR_LENGTH))
 {
-    define symbol DDR_PRV_LENGTH = DDR_LENGTH;
+    if (isdefinedsymbol(DDR_CR52_0_LENGTH))
+    {
+        define symbol DDR_PRV_LENGTH = 0;
+    }
+    else if (isdefinedsymbol(DDR_CR52_1_LENGTH))
+    {
+        define symbol DDR_PRV_LENGTH = 0;
+    }
+    else
+    {
+        define symbol DDR_PRV_LENGTH = DDR_LENGTH;
+    }
 }
 else
 {
@@ -608,8 +776,21 @@ else
 
 if (isdefinedsymbol(PCIE0_START))
 {
-    define symbol PCIE0_PRV_START          = PCIE0_START;
-    define symbol PCIE0_END_ADDRESS_OFFSET = 1;
+    if (isdefinedsymbol(PCIE0_CR52_0_START))
+    {
+        define symbol PCIE0_PRV_START          = 0;
+        define symbol PCIE0_END_ADDRESS_OFFSET = 0;
+    }
+    else if (isdefinedsymbol(PCIE0_CR52_1_START))
+    {
+        define symbol PCIE0_PRV_START          = 0;
+        define symbol PCIE0_END_ADDRESS_OFFSET = 0;
+    }
+    else
+    {
+        define symbol PCIE0_PRV_START          = PCIE0_START;
+        define symbol PCIE0_END_ADDRESS_OFFSET = 1;
+    }
 }
 else
 {
@@ -619,7 +800,18 @@ else
 
 if (isdefinedsymbol(PCIE0_LENGTH))
 {
-    define symbol PCIE0_PRV_LENGTH = PCIE0_LENGTH;
+    if (isdefinedsymbol(PCIE0_CR52_0_LENGTH))
+    {
+        define symbol PCIE0_PRV_LENGTH = 0;
+    }
+    else if (isdefinedsymbol(PCIE0_CR52_1_LENGTH))
+    {
+        define symbol PCIE0_PRV_LENGTH = 0;
+    }
+    else
+    {
+        define symbol PCIE0_PRV_LENGTH = PCIE0_LENGTH;
+    }
 }
 else
 {
@@ -628,8 +820,21 @@ else
 
 if (isdefinedsymbol(PCIE1_START))
 {
-    define symbol PCIE1_PRV_START          = PCIE1_START;
-    define symbol PCIE1_END_ADDRESS_OFFSET = 1;
+    if (isdefinedsymbol(PCIE1_CR52_0_START))
+    {
+        define symbol PCIE1_PRV_START          = 0;
+        define symbol PCIE1_END_ADDRESS_OFFSET = 0;
+    }
+    else if (isdefinedsymbol(PCIE1_CR52_1_START))
+    {
+        define symbol PCIE1_PRV_START          = 0;
+        define symbol PCIE1_END_ADDRESS_OFFSET = 0;
+    }
+    else
+    {
+        define symbol PCIE1_PRV_START          = PCIE1_START;
+        define symbol PCIE1_END_ADDRESS_OFFSET = 1;
+    }
 }
 else
 {
@@ -639,7 +844,18 @@ else
 
 if (isdefinedsymbol(PCIE1_LENGTH))
 {
-    define symbol PCIE1_PRV_LENGTH = PCIE1_LENGTH;
+    if (isdefinedsymbol(PCIE1_CR52_0_LENGTH))
+    {
+        define symbol PCIE1_PRV_LENGTH = 0;
+    }
+    else if (isdefinedsymbol(PCIE1_CR52_1_LENGTH))
+    {
+        define symbol PCIE1_PRV_LENGTH = 0;
+    }
+    else
+    {
+        define symbol PCIE1_PRV_LENGTH = PCIE1_LENGTH;
+    }
 }
 else
 {

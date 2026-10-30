@@ -5,42 +5,47 @@
  */
 
 /*
- * @file    alloc.c
- * @brief   libmetal memory allocattion definitions.
+ * @file    generic/alloc.c
+ * @brief   generic libmetal memory allocattion definitions.
  */
 
 #ifndef __METAL_ALLOC__H__
- #error "Include metal/alloc.h instead of generic/alloc.h"
+ #error "Include metal/alloc.h instead of metal/generic/alloc.h"
 #endif
 
-#include <stdlib.h>
+#ifndef __METAL_GENERIC_ALLOC__H__
+ #define __METAL_GENERIC_ALLOC__H__
 
-#ifdef FREERTOSCONFIG_H_
- #include "FreeRTOS.h"
-#endif
+ #include <stdlib.h>
 
-#ifdef __cplusplus
+ #ifdef FREERTOS_CONFIG_H
+  #include "FreeRTOS.h"
+ #endif
+
+ #ifdef __cplusplus
 extern "C" {
-#endif
+ #endif
 
-static inline void * metal_allocate_memory (unsigned int size)
+static inline void * __metal_allocate_memory (unsigned int size)
 {
-#if (2 == BSP_CFG_RTOS) && configSUPPORT_DYNAMIC_ALLOCATION
+ #if (2 == BSP_CFG_RTOS) && configSUPPORT_DYNAMIC_ALLOCATION
     return pvPortMalloc(size);
-#else
+ #else
     return malloc(size);
-#endif
+ #endif
 }
 
-static inline void metal_free_memory (void * ptr)
+static inline void __metal_free_memory (void * ptr)
 {
-#if (2 == BSP_CFG_RTOS) && configSUPPORT_DYNAMIC_ALLOCATION
+ #if (2 == BSP_CFG_RTOS) && configSUPPORT_DYNAMIC_ALLOCATION
     vPortFree(ptr);
-#else
+ #else
     free(ptr);
-#endif
+ #endif
 }
 
-#ifdef __cplusplus
+ #ifdef __cplusplus
 }
-#endif
+ #endif
+
+#endif                                 /* __METAL_GENERIC_ALLOC__H__ */

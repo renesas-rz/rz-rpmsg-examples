@@ -325,10 +325,10 @@ typedef enum e_bsp_image_info_section
  **********************************************************************************************************************/
 
 #ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __cplusplus
 namespace RZN
 {
-#endif
+ #endif
 #endif
 
 /*******************************************************************************************************************//**
@@ -342,9 +342,9 @@ uint32_t SystemCoreClock = 0U;
 /** @} (end addtogroup BSP_MCU) */
 
 #ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __cplusplus
 }
-#endif
+ #endif
 #endif
 
 #if defined(__ICCARM__)
@@ -969,8 +969,10 @@ BSP_DONT_REMOVE const void * __ddsc_SYSTEM_RAM_END BSP_PLACE_IN_SECTION(".ddsc_s
 
 // BSP_DONT_REMOVE const void * __ddsc_ATCM_CR52_1_END BSP_PLACE_IN_SECTION(".ddsc_atcm_end");
 
+
      #if ((1 == LOADER_PROGRAM_LOCATION) || (1 == USER_PROGRAM_LOCATION))
 // BSP_DONT_REMOVE const void * __ddsc_BTCM_CR52_1_END BSP_PLACE_IN_SECTION(".ddsc_btcm_end");
+
 
      #endif
      #if ((2 == LOADER_PROGRAM_LOCATION) || (2 == USER_PROGRAM_LOCATION))
@@ -1173,10 +1175,10 @@ void bsp_global_system_counter_init (void)
 #endif
 
 #ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __cplusplus
 namespace RZN
 {
-#endif
+ #endif
 #endif
 
 /*******************************************************************************************************************//**
@@ -1245,9 +1247,9 @@ BSP_ATTRIBUTE_STACKLESS void R_BSP_WarmStart_StackLess (void)
 /** @} (end addtogroup BSP_MCU) */
 
 #ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __cplusplus
 }
-#endif
+ #endif
 #endif
 
 #if BSP_CFG_C_RUNTIME_INIT
@@ -1572,7 +1574,7 @@ void bsp_application_bss_init (void)
         uintptr_t secondary_atcm_cr521_size = (uintptr_t) BSP_PRV_SECTION_SECONDARY_ATCM_CR521_ROM_END -
                                               (uintptr_t) BSP_PRV_SECTION_SECONDARY_ATCM_CR521_ROM_START;
 
-        if (0 != secondary_atcm_cr521_size)
+        if ((0 != secondary_atcm_cr521_size) && (0 != R_TCMAW->CPU1HALT))
         {
             /* Initialize the TCM of CR52_1. */
             bsp_tcm_init_via_axis();

@@ -12,6 +12,7 @@
 #ifndef __METAL_LIST__H__
  #define __METAL_LIST__H__
 
+ #include <stdbool.h>
  #include <stdlib.h>
 
  #ifdef __cplusplus
@@ -19,7 +20,8 @@ extern "C" {
  #endif
 
 /** \defgroup list List Primitives
- *  @{ */
+ *  @{
+ */
 
 struct metal_list
 {
@@ -27,7 +29,7 @@ struct metal_list
 };
 
 /*
- * METAL_INIT_LIST - used for initializing an list elmenet in a static struct
+ * METAL_INIT_LIST - used for initializing an list element in a static struct
  * or global
  */
  #define METAL_INIT_LIST(name)    {.next = &name, .prev = &name}
@@ -41,7 +43,8 @@ struct metal_list
 
 static inline void metal_list_init (struct metal_list * list)
 {
-    list->next = list->prev = list;
+    list->prev = list;
+    list->next = list;
 }
 
 static inline void metal_list_add_before (struct metal_list * node, struct metal_list * new_node)
@@ -79,7 +82,8 @@ static inline void metal_list_del (struct metal_list * node)
 {
     node->next->prev = node->prev;
     node->prev->next = node->next;
-    node->next       = node->prev = node;
+    node->prev       = node;
+    node->next       = node;
 }
 
 static inline struct metal_list * metal_list_first (struct metal_list * list)
@@ -87,10 +91,43 @@ static inline struct metal_list * metal_list_first (struct metal_list * list)
     return metal_list_is_empty(list) ? NULL : list->next;
 }
 
+/**
+ * @brief   Used for iterating over a list
+ *
+ * @param   list    Pointer to the head node of the list
+ * @param   node    Pointer to each node in the list during iteration
+ */
  #define metal_list_for_each(list, node) \
     for ((node) = (list)->next;          \
          (node) != (list);               \
          (node) = (node)->next)
+
+/**
+ * @brief   Used for iterating over a list safely
+ *
+ * @param   list    Pointer to the head node of the list
+ * @param   temp    Pointer to the next node's address during iteration
+ * @param   node    Pointer to each node in the list during iteration
+ */
+ #define metal_list_for_each_safe(list, temp, node)    \
+    for ((node) = (list)->next, (temp) = (node)->next; \
+         (node) != (list);                             \
+         (node) = (temp), (temp) = (node)->next)
+
+static inline bool metal_list_find_node (struct metal_list * list, struct metal_list * node)
+{
+    struct metal_list * n;
+
+    metal_list_for_each(list, n)
+    {
+        if (n == node)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
 
 /** @} */
 

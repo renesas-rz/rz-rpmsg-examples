@@ -9,7 +9,7 @@
     <option key="#DeviceCommand#" value="R9A09G087M44_CR52_0"/>
     <option key="#RTOS#" value="_none"/>
     <option key="#pinconfiguration#" value="R9A09G087M44GBG.pincfg"/>
-    <option key="#FSPVersion#" value="4.0.0"/>
+    <option key="#FSPVersion#" value="4.2.0"/>
     <option key="#ConfigurationFragments#" value="Renesas##BSP##Board##rzn2h_evb##ram_execution"/>
     <option key="#SELECTED_TOOLCHAIN#" value="iar.arm.toolchain"/>
     <option key="#ToolchainVersion#" value=""/>
@@ -450,6 +450,7 @@
     <node id="board.clock.pll2ssc.mmr.display" option="board.clock.pll2ssc.mmr.display.value"/>
     <node id="board.clock.dficlk.display" option="board.clock.dficlk.display.value"/>
     <node id="board.clock.sdhiclk.display" option="board.clock.sdhiclk.display.value"/>
+    <node id="board.clock.sdhiimclk.display" option="board.clock.sdhiimclk.display.value"/>
     <node id="board.clock.clma6.enable" option="board.clock.clma6.enable.enabled"/>
     <node id="board.clock.clma6.error" option="board.clock.clma6.error.not_mask"/>
     <node id="board.clock.clma6.detect" option="board.clock.clma6.detect.loco"/>
@@ -472,57 +473,57 @@
     <node id="board.clock.clma6.cmph" mul="1023" option="_edit"/>
   </raClockConfiguration>
   <raComponentSelection>
-    <component apiversion="" class="Common" condition="" group="all" subgroup="fsp_common" variant="" vendor="Renesas" version="4.0.0">
+    <component apiversion="" class="Common" condition="" group="all" subgroup="fsp_common" variant="" vendor="Renesas" version="4.2.0">
       <description>Board Support Package Common Files</description>
-      <originalPack>Renesas.RZ.4.0.0.pack</originalPack>
+      <originalPack>Renesas.RZ.4.2.0.pack</originalPack>
     </component>
-    <component apiversion="" class="Common" condition="" group="rzn" subgroup="fsp_common" variant="" vendor="Renesas" version="4.0.0">
+    <component apiversion="" class="Common" condition="" group="rzn" subgroup="fsp_common" variant="" vendor="Renesas" version="4.2.0">
       <description>Board Support Package Common Files</description>
-      <originalPack>Renesas.RZN.4.0.0.pack</originalPack>
+      <originalPack>Renesas.RZN.4.2.0.pack</originalPack>
     </component>
-    <component apiversion="" class="Common" condition="" group="rzn" subgroup="config" variant="" vendor="Renesas" version="4.0.0">
+    <component apiversion="" class="Common" condition="" group="rzn" subgroup="config" variant="" vendor="Renesas" version="4.2.0">
       <description>RZN Configuration Template File</description>
-      <originalPack>Renesas.RZN_config.4.0.0.pack</originalPack>
+      <originalPack>Renesas.RZN_config.4.2.0.pack</originalPack>
     </component>
-    <component apiversion="" class="BSP" condition="" group="rzn" subgroup="Memory" variant="" vendor="Renesas" version="4.0.0">
+    <component apiversion="" class="BSP" condition="" group="rzn" subgroup="Memory" variant="" vendor="Renesas" version="4.2.0">
       <description>Memory Config Checking</description>
-      <originalPack>Renesas.RZN.4.0.0.pack</originalPack>
+      <originalPack>Renesas.RZN.4.2.0.pack</originalPack>
     </component>
-    <component apiversion="" class="HAL Drivers" condition="" group="rzn" subgroup="r_ioport" variant="" vendor="Renesas" version="4.0.0">
+    <component apiversion="" class="HAL Drivers" condition="" group="rzn" subgroup="r_ioport" variant="" vendor="Renesas" version="4.2.0">
       <description>I/O Port</description>
-      <originalPack>Renesas.RZN.4.0.0.pack</originalPack>
+      <originalPack>Renesas.RZN.4.2.0.pack</originalPack>
     </component>
-    <component apiversion="" class="CMSIS" condition="" group="CMSIS6" subgroup="CoreM" variant="" vendor="Arm" version="6.1.0+fsp.4.0.0">
+    <component apiversion="" class="CMSIS" condition="" group="CMSIS6" subgroup="CoreM" variant="" vendor="Arm" version="6.1.0+fsp.4.2.0">
       <description>Arm CMSIS Version 6 - Core</description>
-      <originalPack>Arm.CMSIS6.6.1.0+fsp.4.0.0.pack</originalPack>
+      <originalPack>Arm.CMSIS6.6.1.0+fsp.4.2.0.pack</originalPack>
     </component>
-    <component apiversion="" class="BSP" condition="" group="Board" subgroup="rzn2h_evb" variant="ram_execution" vendor="Renesas" version="4.0.0">
-      <description>RZN2H Evaluation Board Support Files (RAM execution without flash memory)</description>
-      <originalPack>Renesas.RZN_board_rzn2h_evb.4.0.0.pack</originalPack>
-    </component>
-    <component apiversion="" class="BSP" condition="" group="rzn2h" subgroup="device" variant="R9A09G087M44GBG" vendor="Renesas" version="4.0.0">
+    <component apiversion="" class="BSP" condition="" group="rzn2h" subgroup="device" variant="R9A09G087M44GBG" vendor="Renesas" version="4.2.0">
       <description>Board support package for R9A09G087M44GBG</description>
-      <originalPack>Renesas.RZN_mcu_rzn2h.4.0.0.pack</originalPack>
+      <originalPack>Renesas.RZN_mcu_rzn2h.4.2.0.pack</originalPack>
     </component>
-    <component apiversion="" class="BSP" condition="" group="rzn2h" subgroup="device" variant="" vendor="Renesas" version="4.0.0">
+    <component apiversion="" class="BSP" condition="" group="rzn2h" subgroup="device" variant="" vendor="Renesas" version="4.2.0">
       <description>Board support package for RZN2H</description>
-      <originalPack>Renesas.RZN_mcu_rzn2h.4.0.0.pack</originalPack>
+      <originalPack>Renesas.RZN_mcu_rzn2h.4.2.0.pack</originalPack>
     </component>
-    <component apiversion="" class="BSP" condition="" group="rzn2h" subgroup="fsp" variant="" vendor="Renesas" version="4.0.0">
+    <component apiversion="" class="BSP" condition="" group="rzn2h" subgroup="fsp" variant="" vendor="Renesas" version="4.2.0">
       <description>Board support package for RZN2H - FSP Data</description>
-      <originalPack>Renesas.RZN_mcu_rzn2h.4.0.0.pack</originalPack>
+      <originalPack>Renesas.RZN_mcu_rzn2h.4.2.0.pack</originalPack>
     </component>
-    <component apiversion="" class="library" condition="" group="OpenAMP-generic" subgroup="all" variant="" vendor="Linaro" version="4.0.0">
+    <component apiversion="" class="BSP" condition="" group="Board" subgroup="rzn2h_evb" variant="ram_execution" vendor="Renesas" version="4.2.0">
+      <description>RZN2H Evaluation Board Support Files (RAM execution without flash memory)</description>
+      <originalPack>Renesas.RZN_board_rzn2h_evb.4.2.0.pack</originalPack>
+    </component>
+      <component apiversion="" class="library" condition="" group="OpenAMP-generic" subgroup="all" variant="" vendor="Linaro" version="4.2.0">
       <description>Open Asymmetric Multi-Processing</description>
-      <originalPack>Linaro.OpenAMP-generic.4.0.0.pack</originalPack>
+      <originalPack>Linaro.OpenAMP-generic.4.2.0.pack</originalPack>
     </component>
-    <component apiversion="" class="HAL Drivers" condition="" group="rzn" subgroup="r_icu_inter_cpu_irq" variant="" vendor="Renesas" version="4.0.0">
+    <component apiversion="" class="HAL Drivers" condition="" group="rzn" subgroup="r_icu_inter_cpu_irq" variant="" vendor="Renesas" version="4.2.0">
       <description>Inter CPU IRQ</description>
-      <originalPack>Renesas.RZN.4.0.0.pack</originalPack>
+      <originalPack>Renesas.RZN.4.2.0.pack</originalPack>
     </component>
-    <component apiversion="" class="HAL Drivers" condition="" group="rzn" subgroup="r_sci_uart" variant="" vendor="Renesas" version="4.0.0">
+    <component apiversion="" class="HAL Drivers" condition="" group="rzn" subgroup="r_sci_uart" variant="" vendor="Renesas" version="4.2.0">
       <description>SCI UART</description>
-      <originalPack>Renesas.RZN.4.0.0.pack</originalPack>
+      <originalPack>Renesas.RZN.4.2.0.pack</originalPack>
     </component>
   </raComponentSelection>
   <raElcConfiguration/>
@@ -588,21 +589,22 @@
       <property id="module.driver.rzn.ioport.edge_detect_single_output_port3" value="Rising edge"/>
     </module>
     <module id="module.bsp.rzn.memory_config.0"/>
-    <module id="module.driver.openamp.generic.613611666"/>
-    <module id="module.driver.rzn.icu_inter_cpu_irq_on_icu.217465507">
+    <module id="module.driver.openamp.generic.762142415"/>
+    <module id="module.driver.rzn.icu_inter_cpu_irq_on_icu.1645338183">
       <property id="module.driver.rzn.icu_inter_cpu_irq.name" value="g_icu_inter_cpu_irq0"/>
       <property id="module.driver.rzn.icu_inter_cpu_irq.channel" value="0"/>
       <property id="module.driver.rzn.icu_inter_cpu_irq.ipl" value="_disabled"/>
       <property id="module.driver.rzn.icu_inter_cpu_irq.p_callback" value="NULL"/>
     </module>
-    <module id="module.driver.rzn.icu_inter_cpu_irq_on_icu.1085111629">
+    <module id="module.driver.rzn.icu_inter_cpu_irq_on_icu.1522807496">
       <property id="module.driver.rzn.icu_inter_cpu_irq.name" value="g_icu_inter_cpu_irq1"/>
       <property id="module.driver.rzn.icu_inter_cpu_irq.channel" value="1"/>
       <property id="module.driver.rzn.icu_inter_cpu_irq.ipl" value="board.icu.common.irq.priority30"/>
       <property id="module.driver.rzn.icu_inter_cpu_irq.p_callback" value="rzn2_callback"/>
     </module>
-    <module id="module.driver.rzn.uart_on_sci_uart.140299904">
+    <module id="module.driver.rzn.uart_on_sci_uart.2078348445">
       <property id="module.driver.rzn.uart.name" value="g_uart0"/>
+      <property id="module.driver.rzn.uart.unit" value="module.driver.rzn.uart.unit.sci"/>
       <property id="module.driver.rzn.uart.channel" value="0"/>
       <property id="module.driver.rzn.uart.data_bits" value="module.driver.rzn.uart.data_bits.data_bits_8"/>
       <property id="module.driver.rzn.uart.parity" value="module.driver.rzn.uart.parity.parity_off"/>
@@ -630,10 +632,10 @@
     <context id="_hal.0">
       <stack module="module.driver.rzn.ioport_on_ioport.0"/>
       <stack module="module.bsp.rzn.memory_config.0"/>
-      <stack module="module.driver.openamp.generic.613611666"/>
-      <stack module="module.driver.rzn.icu_inter_cpu_irq_on_icu.217465507"/>
-      <stack module="module.driver.rzn.icu_inter_cpu_irq_on_icu.1085111629"/>
-      <stack module="module.driver.rzn.uart_on_sci_uart.140299904"/>
+      <stack module="module.driver.openamp.generic.762142415"/>
+      <stack module="module.driver.rzn.icu_inter_cpu_irq_on_icu.1645338183"/>
+      <stack module="module.driver.rzn.icu_inter_cpu_irq_on_icu.1522807496"/>
+      <stack module="module.driver.rzn.uart_on_sci_uart.2078348445"/>
     </context>
     <config id="config.driver.rzn.ioport">
       <property id="config.driver.rzn.ioport.checking" value="config.driver.rzn.ioport.checking.system"/>
@@ -665,6 +667,8 @@
     <symbolicName propertyId="p02_6.symbolic_name" value="SD0_IOVS"/>
     <symbolicName propertyId="p02_7.symbolic_name" value="LED10"/>
     <symbolicName propertyId="p03_0.symbolic_name" value="LED11"/>
+    <symbolicName propertyId="p03_1.symbolic_name" value="GMAC_RESETOUT2"/>
+    <symbolicName propertyId="p03_2.symbolic_name" value="GMAC_RESETOUT3"/>
     <symbolicName propertyId="p03_3.symbolic_name" value="I2C_SCL1_C"/>
     <symbolicName propertyId="p03_4.symbolic_name" value="I2C_SDA1_C"/>
     <symbolicName propertyId="p05_1.symbolic_name" value="XSPI0_CKP"/>
@@ -699,6 +703,8 @@
     <symbolicName propertyId="p13_2.symbolic_name" value="eMMC_RST"/>
     <symbolicName propertyId="p13_4.symbolic_name" value="RXD3"/>
     <symbolicName propertyId="p13_5.symbolic_name" value="TXD3"/>
+    <symbolicName propertyId="p13_7.symbolic_name" value="PHY2_IRQ14"/>
+    <symbolicName propertyId="p14_0.symbolic_name" value="DE3"/>
     <symbolicName propertyId="p14_3.symbolic_name" value="LED7_ESC_LA2"/>
     <symbolicName propertyId="p14_6.symbolic_name" value="LED8"/>
     <symbolicName propertyId="p14_7.symbolic_name" value="LED9"/>
@@ -708,10 +714,12 @@
     <symbolicName propertyId="p17_0.symbolic_name" value="SD1_DAT1"/>
     <symbolicName propertyId="p17_1.symbolic_name" value="SD1_DAT2"/>
     <symbolicName propertyId="p17_2.symbolic_name" value="SD1_DAT3"/>
+    <symbolicName propertyId="p17_3.symbolic_name" value="PHY3_IRQ15"/>
     <symbolicName propertyId="p17_4.symbolic_name" value="SD1_CD"/>
     <symbolicName propertyId="p17_6.symbolic_name" value="SD1_PWEN"/>
     <symbolicName propertyId="p17_7.symbolic_name" value="SD1_IOVS"/>
     <symbolicName propertyId="p18_1.symbolic_name" value="LED4_ESC_ERR"/>
+    <symbolicName propertyId="p18_2.symbolic_name" value="SEI"/>
     <symbolicName propertyId="p18_7.symbolic_name" value="SW4"/>
     <symbolicName propertyId="p20_0.symbolic_name" value="ETH0_TXCLK"/>
     <symbolicName propertyId="p20_1.symbolic_name" value="ETH0_TXD0"/>
@@ -727,7 +735,9 @@
     <symbolicName propertyId="p21_3.symbolic_name" value="ETH0_RXDV"/>
     <symbolicName propertyId="p21_4.symbolic_name" value="GMAC0_MDC"/>
     <symbolicName propertyId="p21_5.symbolic_name" value="GMAC0_MDIO"/>
+    <symbolicName propertyId="p21_6.symbolic_name" value="ETH0_PHYLINK"/>
     <symbolicName propertyId="p21_7.symbolic_name" value="ETH0_REFCLK"/>
+    <symbolicName propertyId="p22_0.symbolic_name" value="PHY0_IRQ11"/>
     <symbolicName propertyId="p22_1.symbolic_name" value="ETH0_TXER"/>
     <symbolicName propertyId="p22_2.symbolic_name" value="ETH0_RXER"/>
     <symbolicName propertyId="p22_3.symbolic_name" value="ETH0_CRS"/>
@@ -748,7 +758,9 @@
     <symbolicName propertyId="p26_0.symbolic_name" value="ETH1_RXDV"/>
     <symbolicName propertyId="p26_1.symbolic_name" value="GMAC1_MDC"/>
     <symbolicName propertyId="p26_2.symbolic_name" value="GMAC1_MDIO"/>
+    <symbolicName propertyId="p26_3.symbolic_name" value="ETH1_PHYLINK"/>
     <symbolicName propertyId="p26_4.symbolic_name" value="ETH1_REFCLK"/>
+    <symbolicName propertyId="p26_5.symbolic_name" value="PHY1_IRQ12"/>
     <symbolicName propertyId="p26_6.symbolic_name" value="ETH1_TXER"/>
     <symbolicName propertyId="p26_7.symbolic_name" value="ETH1_RXER"/>
     <symbolicName propertyId="p27_0.symbolic_name" value="ETH1_CRS"/>
@@ -770,6 +782,7 @@
     <symbolicName propertyId="p30_2.symbolic_name" value="ETH2_RXD2"/>
     <symbolicName propertyId="p30_3.symbolic_name" value="ETH2_RXD3"/>
     <symbolicName propertyId="p30_4.symbolic_name" value="ETH2_RXDV"/>
+    <symbolicName propertyId="p30_7.symbolic_name" value="ETH2_PHYLINK"/>
     <symbolicName propertyId="p31_0.symbolic_name" value="ETH2_REFCLK"/>
     <symbolicName propertyId="p31_1.symbolic_name" value="ETH2_RXER"/>
     <symbolicName propertyId="p31_2.symbolic_name" value="ETH2_TXER"/>
@@ -859,6 +872,10 @@
       <configSetting altId="ether_eth3.eth3_txd3.p33_6" configurationId="ether_eth3.eth3_txd3"/>
       <configSetting altId="ether_eth3.eth3_txen_txctl.p33_7" configurationId="ether_eth3.eth3_txen_txctl"/>
       <configSetting altId="ether_eth3.mode.rgmiimode.free" configurationId="ether_eth3.mode"/>
+      <configSetting altId="ether_ethsw.ethsw_phylink0.p21_6" configurationId="ether_ethsw.ethsw_phylink0"/>
+      <configSetting altId="ether_ethsw.ethsw_phylink1.p26_3" configurationId="ether_ethsw.ethsw_phylink1"/>
+      <configSetting altId="ether_ethsw.ethsw_phylink2.p30_7" configurationId="ether_ethsw.ethsw_phylink2"/>
+      <configSetting altId="ether_ethsw.mode.custom_40_1.8v_41.free" configurationId="ether_ethsw.mode"/>
       <configSetting altId="ether_gmac0.gmac0_mdc.p21_4" configurationId="ether_gmac0.gmac0_mdc"/>
       <configSetting altId="ether_gmac0.gmac0_mdio.p21_5" configurationId="ether_gmac0.gmac0_mdio"/>
       <configSetting altId="ether_gmac0.mode.custom_40_1.8v_41.free" configurationId="ether_gmac0.mode"/>
@@ -868,9 +885,14 @@
       <configSetting altId="iic1.iic_scl1.p03_3" configurationId="iic1.iic_scl1"/>
       <configSetting altId="iic1.iic_sda1.p03_4" configurationId="iic1.iic_sda1"/>
       <configSetting altId="iic1.mode.enabled.free" configurationId="iic1.mode"/>
+      <configSetting altId="irq.irq11.p22_0" configurationId="irq.irq11"/>
+      <configSetting altId="irq.irq12.p26_5" configurationId="irq.irq12"/>
+      <configSetting altId="irq.irq14.p13_7" configurationId="irq.irq14"/>
+      <configSetting altId="irq.irq15.p17_3" configurationId="irq.irq15"/>
       <configSetting altId="irq.irq3.p00_4" configurationId="irq.irq3"/>
       <configSetting altId="irq.irq4.p18_7" configurationId="irq.irq4"/>
       <configSetting altId="irq.mode.custom.free" configurationId="irq.mode"/>
+      <configSetting altId="irq.sei.p18_2" configurationId="irq.sei"/>
       <configSetting altId="jtag_fslash_swd.mode.jtag.free" configurationId="jtag_fslash_swd.mode"/>
       <configSetting altId="jtag_fslash_swd.tck_swclk.p08_3" configurationId="jtag_fslash_swd.tck_swclk"/>
       <configSetting altId="jtag_fslash_swd.tdi.p08_2" configurationId="jtag_fslash_swd.tdi"/>
@@ -920,6 +942,10 @@
       <configSetting altId="p02_7.gpio_mode.gpio_mode_out.low" configurationId="p02_7.gpio_mode"/>
       <configSetting altId="p03_0.output.low" configurationId="p03_0"/>
       <configSetting altId="p03_0.gpio_mode.gpio_mode_out.low" configurationId="p03_0.gpio_mode"/>
+      <configSetting altId="p03_1.output.low" configurationId="p03_1"/>
+      <configSetting altId="p03_1.gpio_mode.gpio_mode_out.low" configurationId="p03_1.gpio_mode"/>
+      <configSetting altId="p03_2.output.low" configurationId="p03_2"/>
+      <configSetting altId="p03_2.gpio_mode.gpio_mode_out.low" configurationId="p03_2.gpio_mode"/>
       <configSetting altId="p03_3.iic1.iic_scl1" configurationId="p03_3"/>
       <configSetting altId="p03_3.gpio_speed.gpio_speed_middle" configurationId="p03_3.gpio_drivecapacity"/>
       <configSetting altId="p03_3.gpio_mode.gpio_mode_peripheral" configurationId="p03_3.gpio_mode"/>
@@ -1061,6 +1087,12 @@
       <configSetting altId="p13_5.gpio_speed.gpio_speed_high" configurationId="p13_5.gpio_drivecapacity"/>
       <configSetting altId="p13_5.gpio_mode.gpio_mode_peripheral" configurationId="p13_5.gpio_mode"/>
       <configSetting altId="p13_5.sr.sr.fast" configurationId="p13_5.sr"/>
+      <configSetting altId="p13_7.irq.irq14" configurationId="p13_7"/>
+      <configSetting altId="p13_7.gpio_mode.gpio_mode_peripheral" configurationId="p13_7.gpio_mode"/>
+      <configSetting altId="p14_0.sci3.de3" configurationId="p14_0"/>
+      <configSetting altId="p14_0.gpio_speed.gpio_speed_high" configurationId="p14_0.gpio_drivecapacity"/>
+      <configSetting altId="p14_0.gpio_mode.gpio_mode_peripheral" configurationId="p14_0.gpio_mode"/>
+      <configSetting altId="p14_0.sr.sr.fast" configurationId="p14_0.sr"/>
       <configSetting altId="p14_3.output.low" configurationId="p14_3"/>
       <configSetting altId="p14_3.gpio_mode.gpio_mode_out.low" configurationId="p14_3.gpio_mode"/>
       <configSetting altId="p14_6.output.low" configurationId="p14_6"/>
@@ -1091,6 +1123,8 @@
       <configSetting altId="p17_2.gpio_speed.gpio_speed_middle" configurationId="p17_2.gpio_drivecapacity"/>
       <configSetting altId="p17_2.gpio_mode.gpio_mode_peripheral" configurationId="p17_2.gpio_mode"/>
       <configSetting altId="p17_2.sr.sr.fast" configurationId="p17_2.sr"/>
+      <configSetting altId="p17_3.irq.irq15" configurationId="p17_3"/>
+      <configSetting altId="p17_3.gpio_mode.gpio_mode_peripheral" configurationId="p17_3.gpio_mode"/>
       <configSetting altId="p17_4.sdhi1.sd1_cd" configurationId="p17_4"/>
       <configSetting altId="p17_4.gpio_speed.gpio_speed_middle" configurationId="p17_4.gpio_drivecapacity"/>
       <configSetting altId="p17_4.gpio_mode.gpio_mode_peripheral" configurationId="p17_4.gpio_mode"/>
@@ -1105,6 +1139,8 @@
       <configSetting altId="p17_7.sr.sr.fast" configurationId="p17_7.sr"/>
       <configSetting altId="p18_1.output.low" configurationId="p18_1"/>
       <configSetting altId="p18_1.gpio_mode.gpio_mode_out.low" configurationId="p18_1.gpio_mode"/>
+      <configSetting altId="p18_2.irq.sei" configurationId="p18_2"/>
+      <configSetting altId="p18_2.gpio_mode.gpio_mode_peripheral" configurationId="p18_2.gpio_mode"/>
       <configSetting altId="p18_7.irq.irq4" configurationId="p18_7"/>
       <configSetting altId="p18_7.gpio_mode.gpio_mode_peripheral" configurationId="p18_7.gpio_mode"/>
       <configSetting altId="p20_0.ether_eth0.eth0_txclk_txc" configurationId="p20_0"/>
@@ -1150,10 +1186,14 @@
       <configSetting altId="p21_5.ether_gmac0.gmac0_mdio" configurationId="p21_5"/>
       <configSetting altId="p21_5.gpio_speed.gpio_speed_middle" configurationId="p21_5.gpio_drivecapacity"/>
       <configSetting altId="p21_5.gpio_mode.gpio_mode_peripheral" configurationId="p21_5.gpio_mode"/>
+      <configSetting altId="p21_6.ether_ethsw.ethsw_phylink0" configurationId="p21_6"/>
+      <configSetting altId="p21_6.gpio_mode.gpio_mode_peripheral" configurationId="p21_6.gpio_mode"/>
       <configSetting altId="p21_7.ether_eth0.eth0_refclk" configurationId="p21_7"/>
       <configSetting altId="p21_7.gpio_speed.gpio_speed_middle" configurationId="p21_7.gpio_drivecapacity"/>
       <configSetting altId="p21_7.gpio_mode.gpio_mode_peripheral" configurationId="p21_7.gpio_mode"/>
       <configSetting altId="p21_7.sr.sr.fast" configurationId="p21_7.sr"/>
+      <configSetting altId="p22_0.irq.irq11" configurationId="p22_0"/>
+      <configSetting altId="p22_0.gpio_mode.gpio_mode_peripheral" configurationId="p22_0.gpio_mode"/>
       <configSetting altId="p22_1.ether_eth0.eth0_txer" configurationId="p22_1"/>
       <configSetting altId="p22_1.gpio_speed.gpio_speed_middle" configurationId="p22_1.gpio_drivecapacity"/>
       <configSetting altId="p22_1.gpio_mode.gpio_mode_peripheral" configurationId="p22_1.gpio_mode"/>
@@ -1211,10 +1251,14 @@
       <configSetting altId="p26_2.ether_gmac1.gmac1_mdio" configurationId="p26_2"/>
       <configSetting altId="p26_2.gpio_speed.gpio_speed_middle" configurationId="p26_2.gpio_drivecapacity"/>
       <configSetting altId="p26_2.gpio_mode.gpio_mode_peripheral" configurationId="p26_2.gpio_mode"/>
+      <configSetting altId="p26_3.ether_ethsw.ethsw_phylink1" configurationId="p26_3"/>
+      <configSetting altId="p26_3.gpio_mode.gpio_mode_peripheral" configurationId="p26_3.gpio_mode"/>
       <configSetting altId="p26_4.ether_eth1.eth1_refclk" configurationId="p26_4"/>
       <configSetting altId="p26_4.gpio_speed.gpio_speed_middle" configurationId="p26_4.gpio_drivecapacity"/>
       <configSetting altId="p26_4.gpio_mode.gpio_mode_peripheral" configurationId="p26_4.gpio_mode"/>
       <configSetting altId="p26_4.sr.sr.fast" configurationId="p26_4.sr"/>
+      <configSetting altId="p26_5.irq.irq12" configurationId="p26_5"/>
+      <configSetting altId="p26_5.gpio_mode.gpio_mode_peripheral" configurationId="p26_5.gpio_mode"/>
       <configSetting altId="p26_6.ether_eth1.eth1_txer" configurationId="p26_6"/>
       <configSetting altId="p26_6.gpio_speed.gpio_speed_middle" configurationId="p26_6.gpio_drivecapacity"/>
       <configSetting altId="p26_6.gpio_mode.gpio_mode_peripheral" configurationId="p26_6.gpio_mode"/>
@@ -1276,6 +1320,8 @@
       <configSetting altId="p30_4.ether_eth2.eth2_rxdv_crsdv_rxctl" configurationId="p30_4"/>
       <configSetting altId="p30_4.gpio_speed.gpio_speed_middle" configurationId="p30_4.gpio_drivecapacity"/>
       <configSetting altId="p30_4.gpio_mode.gpio_mode_peripheral" configurationId="p30_4.gpio_mode"/>
+      <configSetting altId="p30_7.ether_ethsw.ethsw_phylink2" configurationId="p30_7"/>
+      <configSetting altId="p30_7.gpio_mode.gpio_mode_peripheral" configurationId="p30_7.gpio_mode"/>
       <configSetting altId="p31_0.ether_eth2.eth2_refclk" configurationId="p31_0"/>
       <configSetting altId="p31_0.gpio_speed.gpio_speed_middle" configurationId="p31_0.gpio_drivecapacity"/>
       <configSetting altId="p31_0.gpio_mode.gpio_mode_peripheral" configurationId="p31_0.gpio_mode"/>
@@ -1337,6 +1383,7 @@
       <configSetting altId="sci0.mode.asynchronousmode.free" configurationId="sci0.mode"/>
       <configSetting altId="sci0.rxd_miso0.p27_4" configurationId="sci0.rxd_miso0"/>
       <configSetting altId="sci0.txd_mosi0.p27_5" configurationId="sci0.txd_mosi0"/>
+      <configSetting altId="sci3.de3.p14_0" configurationId="sci3.de3"/>
       <configSetting altId="sci3.mode.asynchronousmode.free" configurationId="sci3.mode"/>
       <configSetting altId="sci3.rxd_miso3.p13_4" configurationId="sci3.rxd_miso3"/>
       <configSetting altId="sci3.txd_mosi3.p13_5" configurationId="sci3.txd_mosi3"/>

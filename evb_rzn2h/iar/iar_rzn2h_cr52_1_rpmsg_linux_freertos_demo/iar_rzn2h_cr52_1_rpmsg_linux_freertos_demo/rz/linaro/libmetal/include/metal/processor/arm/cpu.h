@@ -12,15 +12,14 @@
 #ifndef __METAL_ARM_CPU__H__
 #define __METAL_ARM_CPU__H__
 
-#ifdef FREERTOSCONFIG_H_
- #include "FreeRTOS.h"
- #include "task.h"
-#endif
-
-#ifdef FREERTOSCONFIG_H_
- #define metal_cpu_yield()    taskYIELD()
+static inline void metal_cpu_yield (void)
+{
+#if defined(__aarch64__)
+    metal_asm volatile ("yield");
 #else
- #define metal_cpu_yield()
+
+    /* fallback to empty */
 #endif
+}
 
 #endif                                 /* __METAL_ARM_CPU__H__ */

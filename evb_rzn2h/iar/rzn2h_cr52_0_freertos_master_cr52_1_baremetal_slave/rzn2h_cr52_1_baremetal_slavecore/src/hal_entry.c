@@ -11,6 +11,7 @@ void R_BSP_WarmStart(bsp_warm_start_event_t event)
 BSP_PLACE_IN_SECTION(".warm_start");
 BSP_ATTRIBUTE_STACKLESS void R_BSP_WarmStart_StackLess(void)
 BSP_PLACE_IN_SECTION(".warm_start");
+
 FSP_CPP_FOOTER
 
 #define IOPORT_CFG_NAME1    g_bsp_pin_cfg1
@@ -29,7 +30,7 @@ static void verify_led_from_master(void);
 void hal_entry (void)
 {
     /* Open OpenAMP */
-    (void) RM_OpenAMP_Open(VIRTIO_DEV_SLAVE, 0, 0);
+    (void) RM_OpenAMP_Open(VIRTIO_DEV_DEVICE, 0, 0);
 
     while (1)
     {
@@ -114,7 +115,7 @@ void R_BSP_WarmStart (bsp_warm_start_event_t event)
  * This function is called without a stack at the very beginning of the startup process.
  * All instructions must be written in inline assembly.
  **********************************************************************************************************************/
-BSP_ATTRIBUTE_STACKLESS void R_BSP_WarmStart_StackLess(void)
+BSP_ATTRIBUTE_STACKLESS void R_BSP_WarmStart_StackLess (void)
 {
     /* The very beginning of the startup process. */
 

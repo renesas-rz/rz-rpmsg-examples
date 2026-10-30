@@ -40,6 +40,9 @@
 
 extern void init_resource_table(void);
 
+int init_system (void);
+void cleanup_system (void);
+
 const metal_phys_addr_t metal_phys[] =
 {
     MBX_REG_PA,

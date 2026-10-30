@@ -106,6 +106,7 @@ FSP_HEADER
 #define BSP_FEATURE_BSP_MASTER_MPU14_SUPPORTED                 (1U)
 #define BSP_FEATURE_BSP_MASTER_MPU15_SUPPORTED                 (1U)
 #define BSP_FEATURE_BSP_MODULE_RESET_DUMMY_READ_COUNT          (7U)
+#define BSP_FEATURE_BSP_MODULE_STOP_DUMMY_READ_COUNT           (7U)
 #define BSP_FEATURE_BSP_MSTP_CA55_HAS_MSTPCRN                  (1U)
 #define BSP_FEATURE_BSP_MSTP_CR52_CPU1_HAS_MSTPCRH             (0U)
 #define BSP_FEATURE_BSP_MSTP_CR52_HAS_MSTPCRN                  (1U)
@@ -321,6 +322,7 @@ FSP_HEADER
 #define BSP_FEATURE_ICU_INTER_CPU_IRQ_S_SWINT_SHIFT            (14U)
 #define BSP_FEATURE_ICU_IRQ_CHANNELS_MASK                      (0xFFFFU)
 #define BSP_FEATURE_ICU_SAFETY_REGISTER_TYPE                   (2)
+#define BSP_FEATURE_ICU_ENCIF_ENCSEL_TYPE                      (2U)
 #define BSP_FEATURE_ICU_WUPEN_MASK                             (0xFF4FFFFFU)
 
 #define BSP_FEATURE_IIC_FAST_MODE_PLUS                         (0U)
@@ -402,9 +404,15 @@ FSP_HEADER
 #define BSP_FEATURE_SCI_UART_CTSPEN_CHANNELS                   (0x03FU)
 #define BSP_FEATURE_SCI_UART_FIFO_CHANNELS                     (0x3FFU)
 #define BSP_FEATURE_SCI_UART_FIFO_DEPTH                        (16U)
-#define BSP_FEATURE_SCIE_SUPPORTED                             (1U)
 
-#define BSP_FEATURE_SDHI_CLOCK                                 (FSP_PRIV_CLOCK_PCLKAM)
+#define BSP_FEATURE_SCIE_CHANNEL                               (12U)
+#define BSP_FEATURE_SCIE_CHANNELS                              (0xFFFU)
+#define BSP_FEATURE_SCIE_SUPPORTED                             (1U)
+#define BSP_FEATURE_SCIE_UART_CTSPEN_CHANNELS                  (BSP_FEATURE_SCIE_CHANNELS)
+#define BSP_FEATURE_SCIE_UART_FIFO_CHANNELS                    (BSP_FEATURE_SCIE_CHANNELS)
+#define BSP_FEATURE_SCIE_UART_FIFO_DEPTH                       (BSP_FEATURE_SCI_UART_FIFO_DEPTH)
+
+#define BSP_FEATURE_SDHI_CLOCK                                 (FSP_PRIV_CLOCK_SDHI_IMCLK)
 #define BSP_FEATURE_SDHI_HAS_CARD_DETECTION                    (1U)
 #define BSP_FEATURE_SDHI_MAX_CHANNELS                          (2U)
 #define BSP_FEATURE_SDHI_MIN_CLOCK_DIVISION_SHIFT              (0U) // 1 (2^0) is minimum division supported

@@ -30,7 +30,7 @@ static void verify_led_from_master(void);
 void hal_entry (void)
 {
     /* Open OpenAMP */
-    (void) RM_OpenAMP_Open(VIRTIO_DEV_SLAVE, 0, 0);
+    (void) RM_OpenAMP_Open(VIRTIO_DEV_DEVICE, 0, 0);
 
     while (1)
     {

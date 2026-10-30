@@ -108,9 +108,11 @@
             <slot name="P21_3.CR52_0" secure="false"/>
             <slot name="P21_4.CR52_0" secure="false"/>
             <slot name="P21_5.CR52_0" secure="false"/>
+            <slot name="P21_6.CR52_0" secure="false"/>
             <slot name="P21_7.CR52_0" secure="false"/>
         </peripheral>
         <peripheral name="PORT22.CR52_0" group="PORT">
+            <slot name="P22_0.CR52_0" secure="false"/>
             <slot name="P22_1.CR52_0" secure="false"/>
             <slot name="P22_2.CR52_0" secure="false"/>
             <slot name="P22_3.CR52_0" secure="false"/>
@@ -145,13 +147,16 @@
             <slot name="P26_0.CR52_0" secure="false"/>
             <slot name="P26_1.CR52_0" secure="false"/>
             <slot name="P26_2.CR52_0" secure="false"/>
+            <slot name="P26_3.CR52_0" secure="false"/>
             <slot name="P26_4.CR52_0" secure="false"/>
+            <slot name="P26_5.CR52_0" secure="false"/>
             <slot name="P26_6.CR52_0" secure="false"/>
             <slot name="P26_7.CR52_0" secure="false"/>
         </peripheral>
         <peripheral name="PORT27.CR52_0" group="PORT">
             <slot name="P27_0.CR52_0" secure="false"/>
             <slot name="P27_1.CR52_0" secure="false"/>
+            <slot name="P27_2.CR52_0" secure="false"/>
             <slot name="P27_4.CR52_0" secure="false"/>
             <slot name="P27_5.CR52_0" secure="false"/>
         </peripheral>
@@ -170,9 +175,11 @@
             <slot name="P30_2.CR52_0" secure="false"/>
             <slot name="P30_3.CR52_0" secure="false"/>
             <slot name="P30_4.CR52_0" secure="false"/>
+            <slot name="P30_7.CR52_0" secure="false"/>
         </peripheral>
         <peripheral name="PORT31.CR52_0" group="PORT">
             <slot name="P31_0.CR52_0" secure="false"/>
+            <slot name="P31_1.CR52_0" secure="false"/>
         </peripheral>
         <peripheral name="PORT32.CR52_0" group="PORT">
             <slot name="P32_2.CR52_0" secure="false"/>
@@ -204,20 +211,12 @@
             <slot name="P35_5.CR52_0" secure="false"/>
             <slot name="P35_6.CR52_0" secure="false"/>
         </peripheral>
-        <peripheral name="SCI0.CR52_0" group="SCI" security=""/>
-        <peripheral name="ICU.CR52_0">
-            <slot name="IRQ1.CR52_0" secure="false"/>
-            <slot name="IRQ384.CR52_0" secure="false"/>
-            <slot name="IRQ385.CR52_0" secure="false"/>
-            <slot name="IRQ386.CR52_0" secure="false"/>
-            <slot name="IRQ387.CR52_0" secure="false"/>
-        </peripheral>
-        <memory parent="ATCM_CR52_0" name="ATCM_CR52_0_CR52_0" size="0x35EAC" offset="0x0" security="" Pname="CR52_0"/>
-        <memory parent="BTCM_CR52_0" name="BTCM_CR52_0_CR52_0" size="0xB1D0" offset="0x0" security="" Pname="CR52_0"/>
+        <memory parent="ATCM_CR52_0" name="ATCM_CR52_0_CR52_0" size="0x1B30C" offset="0x0" security="" Pname="CR52_0"/>
+        <memory parent="BTCM_CR52_0" name="BTCM_CR52_0_CR52_0" size="0xA7E8" offset="0x0" security="" Pname="CR52_0"/>
         <memory parent="SYSTEM_RAM" name="SYSTEM_RAM_CR52_0" size="0x0" offset="0x0" security="" Pname="CR52_0"/>
         <memory parent="NONCACHE" name="NONCACHE_CR52_0" size="0x180000" offset="0x0" security="" Pname="CR52_0"/>
         <memory parent="SECONDARY" name="SECONDARY_CR52_0" size="0x1" offset="0x0" security="" Pname="CR52_0"/>
-        <peripheral name="SCI5.CR52_1" group="SCI" security=""/>
+        <peripheral name="sci5.CR52_1" group="sci" security=""/>
         <peripheral name="ICU.CR52_1">
             <slot name="IRQ0.CR52_1" secure="false"/>
             <slot name="IRQ384.CR52_1" secure="false"/>
@@ -308,7 +307,9 @@
             <assign group="PORT" peripheral="PORT21.P21_3"/>
             <assign group="PORT" peripheral="PORT21.P21_4"/>
             <assign group="PORT" peripheral="PORT21.P21_5"/>
+            <assign group="PORT" peripheral="PORT21.P21_6"/>
             <assign group="PORT" peripheral="PORT21.P21_7"/>
+            <assign group="PORT" peripheral="PORT22.P22_0"/>
             <assign group="PORT" peripheral="PORT22.P22_1"/>
             <assign group="PORT" peripheral="PORT22.P22_2"/>
             <assign group="PORT" peripheral="PORT22.P22_3"/>
@@ -335,11 +336,14 @@
             <assign group="PORT" peripheral="PORT26.P26_0"/>
             <assign group="PORT" peripheral="PORT26.P26_1"/>
             <assign group="PORT" peripheral="PORT26.P26_2"/>
+            <assign group="PORT" peripheral="PORT26.P26_3"/>
             <assign group="PORT" peripheral="PORT26.P26_4"/>
+            <assign group="PORT" peripheral="PORT26.P26_5"/>
             <assign group="PORT" peripheral="PORT26.P26_6"/>
             <assign group="PORT" peripheral="PORT26.P26_7"/>
             <assign group="PORT" peripheral="PORT27.P27_0"/>
             <assign group="PORT" peripheral="PORT27.P27_1"/>
+            <assign group="PORT" peripheral="PORT27.P27_2"/>
             <assign group="PORT" peripheral="PORT27.P27_4"/>
             <assign group="PORT" peripheral="PORT27.P27_5"/>
             <assign group="PORT" peripheral="PORT29.P29_1"/>
@@ -354,7 +358,9 @@
             <assign group="PORT" peripheral="PORT30.P30_2"/>
             <assign group="PORT" peripheral="PORT30.P30_3"/>
             <assign group="PORT" peripheral="PORT30.P30_4"/>
+            <assign group="PORT" peripheral="PORT30.P30_7"/>
             <assign group="PORT" peripheral="PORT31.P31_0"/>
+            <assign group="PORT" peripheral="PORT31.P31_1"/>
             <assign group="PORT" peripheral="PORT32.P32_2"/>
             <assign group="PORT" peripheral="PORT32.P32_3"/>
             <assign group="PORT" peripheral="PORT32.P32_4"/>
@@ -377,12 +383,6 @@
             <assign group="PORT" peripheral="PORT35.P35_4"/>
             <assign group="PORT" peripheral="PORT35.P35_5"/>
             <assign group="PORT" peripheral="PORT35.P35_6"/>
-            <assign group="SCI" peripheral="SCI0"/>
-            <assign peripheral="ICU.IRQ1"/>
-            <assign peripheral="ICU.IRQ384"/>
-            <assign peripheral="ICU.IRQ385"/>
-            <assign peripheral="ICU.IRQ386"/>
-            <assign peripheral="ICU.IRQ387"/>
         </zone>
     </zones>
 </azone>

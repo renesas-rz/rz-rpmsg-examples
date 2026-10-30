@@ -31,10 +31,10 @@
  **********************************************************************************************************************/
 
 #ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __cplusplus
 namespace RZT
 {
-#endif
+ #endif
 #endif
 
 /*******************************************************************************************************************//**
@@ -171,6 +171,7 @@ void R_BSP_CpuResetAutoRelease (bsp_reset_t cpu)
         __asm volatile ("WFI");
   #endif
     }
+  #if (2U < BSP_FEATURE_BSP_CA55_CORE_NUM)
     else if (BSP_RESET_CA55_2 == cpu)
     {
         /* CA55_2 software reset. */
@@ -178,9 +179,9 @@ void R_BSP_CpuResetAutoRelease (bsp_reset_t cpu)
 
         R_BSP_RegisterProtectEnable(BSP_REG_PROTECT_LPC_RESET);
 
-  #if (2 == BSP_CFG_CORE_CA55)
+   #if (2 == BSP_CFG_CORE_CA55)
         __asm volatile ("WFI");
-  #endif
+   #endif
     }
     else if (BSP_RESET_CA55_3 == cpu)
     {
@@ -189,10 +190,11 @@ void R_BSP_CpuResetAutoRelease (bsp_reset_t cpu)
 
         R_BSP_RegisterProtectEnable(BSP_REG_PROTECT_LPC_RESET);
 
-  #if (3 == BSP_CFG_CORE_CA55)
+   #if (3 == BSP_CFG_CORE_CA55)
         __asm volatile ("WFI");
-  #endif
+   #endif
     }
+  #endif
  #endif
 #endif
     else
@@ -239,6 +241,7 @@ void R_BSP_CpuResetRelease (bsp_reset_t cpu)
         /* Release CA55_1 reset state. */
         R_SYSC_S->SWR551 = BSP_PRV_RESET_RELEASE_KEY;
     }
+ #if (2U < BSP_FEATURE_BSP_CA55_CORE_NUM)
     else if (BSP_RESET_CA55_2 == cpu)
     {
         /* Release CA55_2 reset state. */
@@ -249,6 +252,7 @@ void R_BSP_CpuResetRelease (bsp_reset_t cpu)
         /* Release CA55_3 reset state. */
         R_SYSC_S->SWR553 = BSP_PRV_RESET_RELEASE_KEY;
     }
+ #endif
 #endif
     else
     {
@@ -280,6 +284,8 @@ void R_BSP_CpuClusterResetAutoReleaseControl (bsp_reset_t cpu, bsp_cluster_reset
         /* Controls the automatic reset release of CA55_1. */
         R_SYSC_S->SWR55ARC_b.ARC551 = release;
     }
+
+ #if (2U < BSP_FEATURE_BSP_CA55_CORE_NUM)
     else if (BSP_RESET_CA55_2 == cpu)
     {
         /* Controls the automatic reset release of CA55_2. */
@@ -290,6 +296,7 @@ void R_BSP_CpuClusterResetAutoReleaseControl (bsp_reset_t cpu, bsp_cluster_reset
         /* Controls the automatic reset release of CA55_3. */
         R_SYSC_S->SWR55ARC_b.ARC553 = release;
     }
+ #endif
     else
     {
         /* Do Nothing. */
@@ -321,7 +328,7 @@ void R_BSP_ModuleResetEnable (bsp_module_reset_t module_to_enable)
     *p_reg |= mrctl;
 
     /** To ensure processing after module reset. */
-    mrctl = *(volatile uint32_t *) (p_reg);
+    FSP_REGISTER_READ(*(volatile uint32_t *) (p_reg));
 }
 
 /*******************************************************************************************************************//**
@@ -358,14 +365,14 @@ void R_BSP_ModuleResetDisable (bsp_module_reset_t module_to_disable)
 
     while (dummy_read_cnt)
     {
-        mrctl = *(volatile uint32_t *) (p_reg);
+        FSP_REGISTER_READ(*(volatile uint32_t *) (p_reg));
         dummy_read_cnt--;
     }
 }
 
 /** @} (end addtogroup BSP_MCU) */
 #ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __cplusplus
 }
-#endif
+ #endif
 #endif

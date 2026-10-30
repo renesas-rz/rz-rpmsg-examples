@@ -20,7 +20,7 @@ void new_thread0_entry (void * pvParameters)
     FSP_PARAMETER_NOT_USED(pvParameters);
 
     /* Open OpenAMP */
-    (void) RM_OpenAMP_Open(VIRTIO_DEV_SLAVE, 0, 0);
+    (void) RM_OpenAMP_Open(VIRTIO_DEV_DEVICE, 0, 0);
 
     while (1)
     {

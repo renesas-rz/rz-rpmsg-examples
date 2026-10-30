@@ -15,6 +15,10 @@
             <memory name="ATCM_CR52_1" type="RAM" start="0x00000000" size="0x00080000" security="" Pname="CR52_1"/>
             <memory name="BTCM_CR52_1" type="RAM" start="0x00100000" size="0x00010000" security="" Pname="CR52_1"/>
             <memory name="SYSTEM_RAM" type="RAM" start="0x10000000" size="0x00200000" security=""/>
+            <memory name="CPU0_ATCM_VIA_AXIS" type="RAM" start="0x20000000" size="0x00080000" security=""/>
+            <memory name="CPU0_BTCM_VIA_AXIS" type="RAM" start="0x20100000" size="0x00010000" security=""/>
+            <memory name="CPU1_ATCM_VIA_AXIS" type="RAM" start="0x21000000" size="0x00080000" security=""/>
+            <memory name="CPU1_BTCM_VIA_AXIS" type="RAM" start="0x21100000" size="0x00010000" security=""/>
             <memory name="xSPI0_CS0_SPACE" type="ROM" start="0x40000000" size="0x08000000" security=""/>
             <memory name="xSPI0_CS1_SPACE" type="ROM" start="0x48000000" size="0x08000000" security=""/>
             <memory name="xSPI1_CS0_SPACE" type="ROM" start="0x50000000" size="0x08000000" security=""/>
@@ -25,26 +29,23 @@
             <memory name="CS5_SPACE" type="ROM" start="0x7C000000" size="0x04000000" security=""/>
             <memory name="PCIE0_MIRROR" type="RAM" start="0xA0000000" size="0x10000000" security=""/>
             <memory name="PCIE1_MIRROR" type="RAM" start="0xB0000000" size="0x10000000" security=""/>
-            <memory name="DDR_MIRROR0" type="RAM" start="0xC0000000" size="0x20000000" security="" Pname="CR52_0"/>
-            <memory name="DDR_MIRROR1" type="RAM" start="0xE0000000" size="0x20000000" security="" Pname="CR52_0"/>
-            <memory name="DDR_MIRROR0" type="RAM" start="0xC0000000" size="0x20000000" security="" Pname="CR52_1"/>
-            <memory name="DDR_MIRROR1" type="RAM" start="0xE0000000" size="0x20000000" security="" Pname="CR52_1"/>
-            <memory name="DDR_MIRROR0" type="RAM" start="0xC0000000" size="0x40000000" security="" Pname="CA55_0"/>
-            <memory name="DDR" type="RAM" start="0x200000000" size="0x200000000" security="" Pname="CA55_0"/>
-            <memory name="PCIE0" type="RAM" start="0x400000000" size="0x200000000" security="" Pname="CA55_0"/>
-            <memory name="PCIE1" type="RAM" start="0x600000000" size="0x200000000" security="" Pname="CA55_0"/>
-            <memory name="DDR_MIRROR0" type="RAM" start="0xC0000000" size="0x40000000" security="" Pname="CA55_1"/>
-            <memory name="DDR" type="RAM" start="0x200000000" size="0x200000000" security="" Pname="CA55_1"/>
-            <memory name="PCIE0" type="RAM" start="0x400000000" size="0x200000000" security="" Pname="CA55_1"/>
-            <memory name="PCIE1" type="RAM" start="0x600000000" size="0x200000000" security="" Pname="CA55_1"/>
-            <memory name="DDR_MIRROR0" type="RAM" start="0xC0000000" size="0x40000000" security="" Pname="CA55_2"/>
-            <memory name="DDR" type="RAM" start="0x200000000" size="0x200000000" security="" Pname="CA55_2"/>
-            <memory name="PCIE0" type="RAM" start="0x400000000" size="0x200000000" security="" Pname="CA55_2"/>
-            <memory name="PCIE1" type="RAM" start="0x600000000" size="0x200000000" security="" Pname="CA55_2"/>
-            <memory name="DDR_MIRROR0" type="RAM" start="0xC0000000" size="0x40000000" security="" Pname="CA55_3"/>
-            <memory name="DDR" type="RAM" start="0x200000000" size="0x200000000" security="" Pname="CA55_3"/>
-            <memory name="PCIE0" type="RAM" start="0x400000000" size="0x200000000" security="" Pname="CA55_3"/>
-            <memory name="PCIE1" type="RAM" start="0x600000000" size="0x200000000" security="" Pname="CA55_3"/>
+            <memory name="DDR_MIRROR0" type="RAM" start="0xC0000000" size="0x40000000" security=""/>
+            <memory name="DDR_MIRROR0_CR52_0" type="RAM" start="0xC0000000" size="0x20000000" security="" Pname="CR52_0"/>
+            <memory name="DDR_MIRROR0_CR52_1" type="RAM" start="0xC0000000" size="0x20000000" security="" Pname="CR52_1"/>
+            <memory name="DDR_MIRROR1" type="RAM" start="0xE0000000" size="0x20000000" security=""/>
+            <memory name="DDR_MIRROR1_CA55_0" type="RAM" start="0x00000000" size="0x00000000" security="" Pname="CA55_0"/>
+            <memory name="DDR_MIRROR1_CA55_1" type="RAM" start="0x00000000" size="0x00000000" security="" Pname="CA55_1"/>
+            <memory name="DDR_MIRROR1_CA55_2" type="RAM" start="0x00000000" size="0x00000000" security="" Pname="CA55_2"/>
+            <memory name="DDR_MIRROR1_CA55_3" type="RAM" start="0x00000000" size="0x00000000" security="" Pname="CA55_3"/>
+            <memory name="DDR" type="RAM" start="0x200000000" size="0x200000000" security=""/>
+            <memory name="DDR_CR52_0" type="RAM" start="0x00000000" size="0x00000000" security="" Pname="CR52_0"/>
+            <memory name="DDR_CR52_1" type="RAM" start="0x00000000" size="0x00000000" security="" Pname="CR52_1"/>
+            <memory name="PCIE0" type="RAM" start="0x400000000" size="0x200000000" security=""/>
+            <memory name="PCIE0_CR52_0" type="RAM" start="0x00000000" size="0x00000000" security="" Pname="CR52_0"/>
+            <memory name="PCIE0_CR52_1" type="RAM" start="0x00000000" size="0x00000000" security="" Pname="CR52_1"/>
+            <memory name="PCIE1" type="RAM" start="0x600000000" size="0x200000000" security=""/>
+            <memory name="PCIE1_CR52_0" type="RAM" start="0x00000000" size="0x00000000" security="" Pname="CR52_0"/>
+            <memory name="PCIE1_CR52_1" type="RAM" start="0x00000000" size="0x00000000" security="" Pname="CR52_1"/>
             <memory name="NONCACHE" type="RAM" start="0x10000000" size="0x00200000" security=""/>
             <memory name="eSD_eMMC_SPACE" type="ROM" start="0x88000000" size="0x0C000000" security=""/>
             <memory name="SECONDARY" type="RAM" start="0x00000000" size="0x00000001" security=""/>
@@ -241,25 +242,25 @@
                 <peripheral name="USBHC" start="0x92040000" size="0x0834"/>
                 <peripheral name="USBF" start="0x92041000" size="0x0724"/>
             </group>
-            <group name="SCI" info="Serial Communication Interface">
-                <peripheral name="SCI0" start="0x80005000" size="0x0078"/>
-                <peripheral name="SCI1" start="0x80005400" size="0x0078"/>
-                <peripheral name="SCI2" start="0x80005800" size="0x0078"/>
-                <peripheral name="SCI3" start="0x80005C00" size="0x0078"/>
-                <peripheral name="SCI4" start="0x80006000" size="0x0078"/>
-                <peripheral name="SCI5" start="0x81005000" size="0x0078"/>
-                <peripheral name="SCIE0" start="0x90030000" size="0x0078"/>
-                <peripheral name="SCIE1" start="0x90030400" size="0x0078"/>
-                <peripheral name="SCIE2" start="0x90030800" size="0x0078"/>
-                <peripheral name="SCIE3" start="0x90030C00" size="0x0078"/>
-                <peripheral name="SCIE4" start="0x90031000" size="0x0078"/>
-                <peripheral name="SCIE5" start="0x90031400" size="0x0078"/>
-                <peripheral name="SCIE6" start="0x90031800" size="0x0078"/>
-                <peripheral name="SCIE7" start="0x90031C00" size="0x0078"/>
-                <peripheral name="SCIE8" start="0x90130000" size="0x0078"/>
-                <peripheral name="SCIE9" start="0x90130400" size="0x0078"/>
-                <peripheral name="SCIE10" start="0x90130800" size="0x0078"/>
-                <peripheral name="SCIE11" start="0x90130C00" size="0x0078"/>
+            <group name="sci" info="Serial Communication Interface">
+                <peripheral name="sci0" start="0x80005000" size="0x0078"/>
+                <peripheral name="sci1" start="0x80005400" size="0x0078"/>
+                <peripheral name="sci2" start="0x80005800" size="0x0078"/>
+                <peripheral name="sci3" start="0x80005C00" size="0x0078"/>
+                <peripheral name="sci4" start="0x80006000" size="0x0078"/>
+                <peripheral name="sci5" start="0x81005000" size="0x0078"/>
+                <peripheral name="scie0" start="0x90030000" size="0x0078"/>
+                <peripheral name="scie1" start="0x90030400" size="0x0078"/>
+                <peripheral name="scie2" start="0x90030800" size="0x0078"/>
+                <peripheral name="scie3" start="0x90030C00" size="0x0078"/>
+                <peripheral name="scie4" start="0x90031000" size="0x0078"/>
+                <peripheral name="scie5" start="0x90031400" size="0x0078"/>
+                <peripheral name="scie6" start="0x90031800" size="0x0078"/>
+                <peripheral name="scie7" start="0x90031C00" size="0x0078"/>
+                <peripheral name="scie8" start="0x90130000" size="0x0078"/>
+                <peripheral name="scie9" start="0x90130400" size="0x0078"/>
+                <peripheral name="scie10" start="0x90130800" size="0x0078"/>
+                <peripheral name="scie11" start="0x90130C00" size="0x0078"/>
             </group>
             <group name="IIC" info="I2C Bus Interface">
                 <peripheral name="IIC0" start="0x80088000" size="0x0014"/>

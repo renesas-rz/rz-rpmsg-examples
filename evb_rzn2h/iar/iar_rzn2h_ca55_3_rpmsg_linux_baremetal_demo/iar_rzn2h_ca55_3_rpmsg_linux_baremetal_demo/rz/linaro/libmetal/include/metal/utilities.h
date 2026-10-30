@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2015, Xilinx Inc. and Contributors. All rights reserved.
+ * Copyright (c) 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
@@ -13,6 +14,7 @@
  #define __METAL_UTILITIES__H__
 
  #include <stdint.h>
+ #include <limits.h>
  #include <metal/assert.h>
 
  #ifdef __cplusplus
@@ -20,7 +22,8 @@ extern "C" {
  #endif
 
 /** \defgroup utilities Simple Utilities
- *  @{ */
+ *  @{
+ */
 
 /** Marker for unused function arguments/variables. */
  #define metal_unused(x)    do {(x) = (x);} while (0)
@@ -69,7 +72,7 @@ extern "C" {
  #define metal_container_of(ptr, structure, member) \
     (void *) ((uintptr_t) (ptr) - metal_offset_of(structure, member))
 
- #define METAL_BITS_PER_ULONG    (8 * sizeof(unsigned long))
+ #define METAL_BITS_PER_ULONG    (CHAR_BIT * sizeof(unsigned long))
 
  #define metal_bit(bit)           (1UL << (bit))
 
@@ -101,6 +104,7 @@ static inline int metal_bitmap_is_bit_clear (unsigned long * bitmap, int bit)
 static inline unsigned int metal_bitmap_next_set_bit (unsigned long * bitmap, unsigned int start, unsigned int max)
 {
     unsigned int bit;
+
     for (bit = start;
          bit < max && !metal_bitmap_is_bit_set(bitmap, bit);
          bit++)
@@ -119,14 +123,15 @@ static inline unsigned int metal_bitmap_next_set_bit (unsigned long * bitmap, un
 static inline unsigned int metal_bitmap_next_clear_bit (unsigned long * bitmap, unsigned int start, unsigned int max)
 {
     unsigned int bit;
+
     for (bit = start;
-         bit < max && !metal_bitmap_is_bit_clear(bitmap, bit);
+         bit < max + start && !metal_bitmap_is_bit_clear(bitmap, bit % max);
          bit++)
     {
         ;
     }
 
-    return bit;
+    return bit % max;
 }
 
  #define metal_bitmap_for_each_clear_bit(bitmap, bit, max)        \

@@ -32,7 +32,7 @@
 
 /* Parameter Information for the MBR (Master Boot Record).
  * When eSD boot mode, the MBR can be placed in the first sector of the eSD device.
- * See Section "eSD Boot Mode" in the RZ microprocessor User's Manual for more details.
+ * See Section "eSD Boot Mode" in the RZ microprocessor Hardware Manual for more details.
  *
  * - Dummy values are set to the bootstrap code area in the MBR (offset 0x00 - 0x1BD).
  *

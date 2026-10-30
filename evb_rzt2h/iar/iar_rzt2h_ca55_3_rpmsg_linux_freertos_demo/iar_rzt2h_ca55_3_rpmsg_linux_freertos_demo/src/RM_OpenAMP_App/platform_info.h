@@ -104,12 +104,6 @@ extern int printf_raw(const char * format, ...);
 #endif
 
 /*
- * If you want to support remoteproc framework to load CR52 FW,
- * you need to set ENABLE_REMOTEPROC to 1.
- */
-#define ENABLE_REMOTEPROC    (0U)
-
-/*
  * If you want to support BL2 boot of CA55,
  * you need to set ENABLE_BL2 to 1.
  */

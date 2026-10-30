@@ -35,22 +35,12 @@
 
 #ifdef __ICCARM__
  #pragma location=".resource_table"
- #if (ENABLE_REMOTEPROC == 0)
 struct remote_resource_table resources[2];
- #else
-struct remote_resource_table __resource resources[] =
- #endif
 #else
- #if (ENABLE_REMOTEPROC == 0)
 struct remote_resource_table __resource resources[2];
- #else
-struct remote_resource_table __resource resources[] =
- #endif
 #endif
 
-#if (ENABLE_REMOTEPROC == 0)
 struct remote_resource_table resources_init[] =
-#endif
 {
     {
         /* Version */
@@ -66,12 +56,7 @@ struct remote_resource_table resources_init[] =
 
         /* Offsets of rsc entries */
         {
-            offsetof(struct remote_resource_table, rproc_mem),
             offsetof(struct remote_resource_table, rpmsg_vdev)
-        },
-
-        {
-            RSC_RPROC_MEM, RPMSG_MEM_BASE, RPMSG_MEM_BASE, RPMSG_MEM_SIZE, 0
         },
 
 #ifdef __ICCARM__
@@ -125,12 +110,7 @@ struct remote_resource_table resources_init[] =
 
         /* Offsets of rsc entries */
         {
-            offsetof(struct remote_resource_table, rproc_mem),
             offsetof(struct remote_resource_table, rpmsg_vdev)
-        },
-
-        {
-            RSC_RPROC_MEM, RPMSG_MEM_BASE, RPMSG_MEM_BASE, RPMSG_MEM_SIZE, 0
         },
 
 #ifdef __ICCARM__
@@ -174,13 +154,7 @@ struct remote_resource_table resources_init[] =
 
 void init_resource_table (void)
 {
-#if (ENABLE_REMOTEPROC == 0)
     memcpy(resources, resources_init, sizeof(resources_init));
-#else
-
-    /* Force accessing to prevent compiler optimize .resource_table section */
-    __asm volatile ("" : : "r" (&resources[0]) : "memory");
-#endif
 }
 
 void * get_resource_table (int rsc_id, unsigned int * len)

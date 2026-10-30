@@ -1,14 +1,11 @@
 /*
  * Copyright (c) 2015, Xilinx Inc. and Contributors. All rights reserved.
- * Copyright (c) 2020, eForce.Co.Ltd
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-#include <metal/errno.h>
-
-// #include <errno.h>
 #include <limits.h>
+#include <metal/errno.h>
 #include <metal/io.h>
 #include <metal/sys.h>
 
@@ -16,11 +13,14 @@ void metal_io_init (struct metal_io_region    * io,
                     void                      * virt,
                     const metal_phys_addr_t   * physmap,
                     size_t                      size,
-                    unsigned                    page_shift,
+                    unsigned int                page_shift,
                     unsigned int                mem_flags,
                     const struct metal_io_ops * ops)
 {
-    const struct metal_io_ops nops = {NULL, NULL, NULL, NULL, NULL, NULL};
+    const struct metal_io_ops nops =
+    {
+        NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+    };
 
     io->virt       = virt;
     io->physmap    = physmap;
@@ -47,7 +47,7 @@ int metal_io_block_read (struct metal_io_region * io, unsigned long offset, void
     unsigned char * dest = dst;
     int             retlen;
 
-    if (offset > io->size)
+    if (!ptr)
     {
         return -ERANGE;
     }
@@ -99,7 +99,7 @@ int metal_io_block_write (struct metal_io_region * io, unsigned long offset, con
     const unsigned char * source = src;
     int retlen;
 
-    if (offset > io->size)
+    if (!ptr)
     {
         return -ERANGE;
     }
@@ -151,7 +151,7 @@ int metal_io_block_set (struct metal_io_region * io, unsigned long offset, unsig
     unsigned char * ptr    = metal_io_virt(io, offset);
     int             retlen = len;
 
-    if (offset > io->size)
+    if (!ptr)
     {
         return -ERANGE;
     }
@@ -173,7 +173,7 @@ int metal_io_block_set (struct metal_io_region * io, unsigned long offset, unsig
 
         for (i = 1; i < sizeof(int); i++)
         {
-            cint |= ((unsigned int) value << (8 * i));
+            cint |= ((unsigned int) value << (CHAR_BIT * i));
         }
 
         for ( ; len && ((uintptr_t) ptr % sizeof(int)); ptr++, len--)

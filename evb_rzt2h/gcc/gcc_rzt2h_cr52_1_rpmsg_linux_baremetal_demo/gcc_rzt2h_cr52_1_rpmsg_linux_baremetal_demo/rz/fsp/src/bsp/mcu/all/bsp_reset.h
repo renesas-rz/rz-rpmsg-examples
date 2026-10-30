@@ -5,7 +5,7 @@
 */
 
 #ifndef BSP_RESET_H
-#define BSP_RESET_H
+ #define BSP_RESET_H
 
 /***********************************************************************************************************************
  * Includes   <System Includes> , "Project Includes"
@@ -19,76 +19,77 @@ FSP_HEADER
  **********************************************************************************************************************/
 
 /* Key code for writing reset register. */
-#define BSP_PRV_RESET_KEY                 (0x4321A501U)
-#define BSP_PRV_RESET_KEY_AUTO_RELEASE    (0x4321A502U)
-#define BSP_PRV_RESET_RELEASE_KEY         (0x00000000U)
+ #define BSP_PRV_RESET_KEY                 (0x4321A501U)
+ #define BSP_PRV_RESET_KEY_AUTO_RELEASE    (0x4321A502U)
+ #define BSP_PRV_RESET_RELEASE_KEY         (0x00000000U)
 
 /* MRCTL register selection. Bits 16-20 assign values in order for the module control registers (A=0, E=4).
  * Bit 24 indicates whether MRCTLn register is in the safety region. */
-#define BSP_RESET_MRCTLA_SELECT           (0x00000000U)
-#define BSP_RESET_MRCTLE_SELECT           (0x00040000U)
-#define BSP_RESET_MRCTLI_SELECT           (0x00480000U)
-#define BSP_RESET_MRCTLJ_SELECT           (0x00090000U)
-#define BSP_RESET_MRCTLK_SELECT           (0x000A0000U)
-#define BSP_RESET_MRCTLM_SELECT           (0x000C0000U)
+ #define BSP_RESET_MRCTLA_SELECT           (0x00000000U)
+ #define BSP_RESET_MRCTLE_SELECT           (0x00040000U)
+ #define BSP_RESET_MRCTLH_SELECT           (0x00070000U)
+ #define BSP_RESET_MRCTLI_SELECT           (0x00480000U)
+ #define BSP_RESET_MRCTLJ_SELECT           (0x00090000U)
+ #define BSP_RESET_MRCTLK_SELECT           (0x000A0000U)
+ #define BSP_RESET_MRCTLM_SELECT           (0x000C0000U)
 
 /* MRCTL register bit number.  */
-#define BSP_RESET_MRCTL_BIT0_SHIFT        (0x00000000U)
-#define BSP_RESET_MRCTL_BIT1_SHIFT        (0x00000001U)
-#define BSP_RESET_MRCTL_BIT2_SHIFT        (0x00000002U)
-#define BSP_RESET_MRCTL_BIT3_SHIFT        (0x00000003U)
-#define BSP_RESET_MRCTL_BIT4_SHIFT        (0x00000004U)
-#define BSP_RESET_MRCTL_BIT5_SHIFT        (0x00000005U)
-#define BSP_RESET_MRCTL_BIT6_SHIFT        (0x00000006U)
-#define BSP_RESET_MRCTL_BIT7_SHIFT        (0x00000007U)
-#define BSP_RESET_MRCTL_BIT8_SHIFT        (0x00000008U)
-#define BSP_RESET_MRCTL_BIT9_SHIFT        (0x00000009U)
-#define BSP_RESET_MRCTL_BIT10_SHIFT       (0x0000000AU)
-#define BSP_RESET_MRCTL_BIT11_SHIFT       (0x0000000BU)
-#define BSP_RESET_MRCTL_BIT12_SHIFT       (0x0000000CU)
-#define BSP_RESET_MRCTL_BIT13_SHIFT       (0x0000000DU)
-#define BSP_RESET_MRCTL_BIT14_SHIFT       (0x0000000EU)
-#define BSP_RESET_MRCTL_BIT15_SHIFT       (0x0000000FU)
-#define BSP_RESET_MRCTL_BIT16_SHIFT       (0x00000010U)
-#define BSP_RESET_MRCTL_BIT17_SHIFT       (0x00000011U)
-#define BSP_RESET_MRCTL_BIT18_SHIFT       (0x00000012U)
-#define BSP_RESET_MRCTL_BIT19_SHIFT       (0x00000013U)
-#define BSP_RESET_MRCTL_BIT20_SHIFT       (0x00000014U)
-#define BSP_RESET_MRCTL_BIT21_SHIFT       (0x00000015U)
-#define BSP_RESET_MRCTL_BIT22_SHIFT       (0x00000016U)
-#define BSP_RESET_MRCTL_BIT23_SHIFT       (0x00000017U)
-#define BSP_RESET_MRCTL_BIT24_SHIFT       (0x00000018U)
-#define BSP_RESET_MRCTL_BIT25_SHIFT       (0x00000019U)
-#define BSP_RESET_MRCTL_BIT26_SHIFT       (0x0000001AU)
-#define BSP_RESET_MRCTL_BIT27_SHIFT       (0x0000001BU)
-#define BSP_RESET_MRCTL_BIT28_SHIFT       (0x0000001CU)
-#define BSP_RESET_MRCTL_BIT29_SHIFT       (0x0000001DU)
-#define BSP_RESET_MRCTL_BIT30_SHIFT       (0x0000001EU)
-#define BSP_RESET_MRCTL_BIT31_SHIFT       (0x0000001FU)
+ #define BSP_RESET_MRCTL_BIT0_SHIFT        (0x00000000U)
+ #define BSP_RESET_MRCTL_BIT1_SHIFT        (0x00000001U)
+ #define BSP_RESET_MRCTL_BIT2_SHIFT        (0x00000002U)
+ #define BSP_RESET_MRCTL_BIT3_SHIFT        (0x00000003U)
+ #define BSP_RESET_MRCTL_BIT4_SHIFT        (0x00000004U)
+ #define BSP_RESET_MRCTL_BIT5_SHIFT        (0x00000005U)
+ #define BSP_RESET_MRCTL_BIT6_SHIFT        (0x00000006U)
+ #define BSP_RESET_MRCTL_BIT7_SHIFT        (0x00000007U)
+ #define BSP_RESET_MRCTL_BIT8_SHIFT        (0x00000008U)
+ #define BSP_RESET_MRCTL_BIT9_SHIFT        (0x00000009U)
+ #define BSP_RESET_MRCTL_BIT10_SHIFT       (0x0000000AU)
+ #define BSP_RESET_MRCTL_BIT11_SHIFT       (0x0000000BU)
+ #define BSP_RESET_MRCTL_BIT12_SHIFT       (0x0000000CU)
+ #define BSP_RESET_MRCTL_BIT13_SHIFT       (0x0000000DU)
+ #define BSP_RESET_MRCTL_BIT14_SHIFT       (0x0000000EU)
+ #define BSP_RESET_MRCTL_BIT15_SHIFT       (0x0000000FU)
+ #define BSP_RESET_MRCTL_BIT16_SHIFT       (0x00000010U)
+ #define BSP_RESET_MRCTL_BIT17_SHIFT       (0x00000011U)
+ #define BSP_RESET_MRCTL_BIT18_SHIFT       (0x00000012U)
+ #define BSP_RESET_MRCTL_BIT19_SHIFT       (0x00000013U)
+ #define BSP_RESET_MRCTL_BIT20_SHIFT       (0x00000014U)
+ #define BSP_RESET_MRCTL_BIT21_SHIFT       (0x00000015U)
+ #define BSP_RESET_MRCTL_BIT22_SHIFT       (0x00000016U)
+ #define BSP_RESET_MRCTL_BIT23_SHIFT       (0x00000017U)
+ #define BSP_RESET_MRCTL_BIT24_SHIFT       (0x00000018U)
+ #define BSP_RESET_MRCTL_BIT25_SHIFT       (0x00000019U)
+ #define BSP_RESET_MRCTL_BIT26_SHIFT       (0x0000001AU)
+ #define BSP_RESET_MRCTL_BIT27_SHIFT       (0x0000001BU)
+ #define BSP_RESET_MRCTL_BIT28_SHIFT       (0x0000001CU)
+ #define BSP_RESET_MRCTL_BIT29_SHIFT       (0x0000001DU)
+ #define BSP_RESET_MRCTL_BIT30_SHIFT       (0x0000001EU)
+ #define BSP_RESET_MRCTL_BIT31_SHIFT       (0x0000001FU)
 
 /* RSTSR0 register bit mask.  */
-#define BSP_RESET_RSTSR0_CLEAR_ALL        (0x00000000U)
-#define BSP_RESET_RSTSR0_TRF_MASK         (0x00000002U)
-#define BSP_RESET_RSTSR0_ERRF_MASK        (0x00000004U)
-#define BSP_RESET_RSTSR0_SWRSF_MASK       (0x00000008U)
-#define BSP_RESET_RSTSR0_SWR0F_MASK       (0x00000010U)
-#define BSP_RESET_RSTSR0_SWR1F_MASK       (0x00000020U)
-#define BSP_RESET_RSTSR0_SWR55C_MASK      (0x00000040U)
-#define BSP_RESET_RSTSR0_SWR550_MASK      (0x00000080U)
-#define BSP_RESET_RSTSR0_SWR551_MASK      (0x00000100U)
-#define BSP_RESET_RSTSR0_SWR552_MASK      (0x00000200U)
-#define BSP_RESET_RSTSR0_SWR553_MASK      (0x00000400U)
+ #define BSP_RESET_RSTSR0_CLEAR_ALL        (0x00000000U)
+ #define BSP_RESET_RSTSR0_TRF_MASK         (0x00000002U)
+ #define BSP_RESET_RSTSR0_ERRF_MASK        (0x00000004U)
+ #define BSP_RESET_RSTSR0_SWRSF_MASK       (0x00000008U)
+ #define BSP_RESET_RSTSR0_SWR0F_MASK       (0x00000010U)
+ #define BSP_RESET_RSTSR0_SWR1F_MASK       (0x00000020U)
+ #define BSP_RESET_RSTSR0_SWR55C_MASK      (0x00000040U)
+ #define BSP_RESET_RSTSR0_SWR550_MASK      (0x00000080U)
+ #define BSP_RESET_RSTSR0_SWR551_MASK      (0x00000100U)
+ #define BSP_RESET_RSTSR0_SWR552_MASK      (0x00000200U)
+ #define BSP_RESET_RSTSR0_SWR553_MASK      (0x00000400U)
 
 /***********************************************************************************************************************
  * Typedef definitions
  **********************************************************************************************************************/
 
-#ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __FOR_FSP_DOCUMENT__
+  #ifdef __cplusplus
 namespace RZT
 {
-#endif
-#endif
+  #endif
+ #endif
 
 /*******************************************************************************************************************//**
  * @addtogroup RZT_BSP_MCU
@@ -155,6 +156,24 @@ typedef enum e_bsp_module_reset
 
     /** Enables writing to the registers related to GMAC Unit 2 (PCLKAM clock domain) reset control. */
     BSP_MODULE_RESET_GMAC2_HCLK = (BSP_RESET_MRCTLE_SELECT | BSP_RESET_MRCTL_BIT19_SHIFT),
+
+    /** Enables writing to the registers related to ESWM reset control. */
+    BSP_MODULE_RESET_ESWM = (BSP_RESET_MRCTLE_SELECT | BSP_RESET_MRCTL_BIT20_SHIFT),
+
+    /** Enables writing to the registers related to HPSW reset control. */
+    BSP_MODULE_RESET_HPSW = (BSP_RESET_MRCTLE_SELECT | BSP_RESET_MRCTL_BIT21_SHIFT),
+
+    /** Enables writing to the registers related to NANDC System reset control. */
+    BSP_MODULE_RESET_NANDC_SYSTEM = (BSP_RESET_MRCTLH_SELECT | BSP_RESET_MRCTL_BIT4_SHIFT),
+
+    /** Enables writing to the registers related to NANDC Slave/PHY Registers reset control. */
+    BSP_MODULE_RESET_NANDC_SLAVE_PHY_REGISTERS = (BSP_RESET_MRCTLH_SELECT | BSP_RESET_MRCTL_BIT5_SHIFT),
+
+    /** Enables writing to the registers related to NANDC Protect Registers reset control. */
+    BSP_MODULE_RESET_NANDC_PROTECT_REGISTERS = (BSP_RESET_MRCTLH_SELECT | BSP_RESET_MRCTL_BIT6_SHIFT),
+
+    /** Enables writing to the registers related to PHOSTIF reset control. */
+    BSP_MODULE_RESET_PHOSTIF_CLOCK = (BSP_RESET_MRCTLI_SELECT | BSP_RESET_MRCTL_BIT0_SHIFT),
 
     /** Enables writing to the registers related to SHOSTIF (Master bus clock domain) reset control. */
     BSP_MODULE_RESET_SHOSTIF_MASTER_BUS_CLOCK = (BSP_RESET_MRCTLI_SELECT | BSP_RESET_MRCTL_BIT1_SHIFT),
@@ -224,11 +243,11 @@ typedef enum e_bsp_module_reset
 } bsp_module_reset_t;
 
 /** @} (end addtogroup BSP_MCU) */
-#ifdef __FOR_FSP_DOCUMENT__
-#ifdef __cplusplus
+ #ifdef __FOR_FSP_DOCUMENT__
+  #ifdef __cplusplus
 }
-#endif
-#endif
+  #endif
+ #endif
 
 /***********************************************************************************************************************
  * Exported global variables

@@ -5,8 +5,8 @@
  */
 
 /*
- * @file    io.c
- * @brief   libmetal io operations
+ * @file    generic/io.c
+ * @brief   Generic libmetal io operations
  */
 
 #include <metal/io.h>

@@ -6,20 +6,23 @@
 
 /*
  * @file    generic/io.h
- * @brief   generic specific io definitions.
+ * @brief   Generic specific io definitions.
  */
 
 #ifndef __METAL_IO__H__
- #error "Include metal/io.h instead of generic/io.h"
+ #error "Include metal/io.h instead of metal/generic/io.h"
 #endif
 
-#include <stdlib.h>
+#ifndef __METAL_GENERIC_IO__H__
+ #define __METAL_GENERIC_IO__H__
 
-#ifdef __cplusplus
+ #include <stdlib.h>
+
+ #ifdef __cplusplus
 extern "C" {
-#endif
+ #endif
 
-#ifdef METAL_INTERNAL
+ #ifdef METAL_INTERNAL
 
 /**
  * @brief memory mapping for an I/O region
@@ -31,8 +34,10 @@ void metal_sys_io_mem_map(struct metal_io_region * io);
  */
 void * metal_machine_io_mem_map(void * va, metal_phys_addr_t pa, size_t size, unsigned int flags);
 
-#endif
+ #endif
 
-#ifdef __cplusplus
+ #ifdef __cplusplus
 }
-#endif
+ #endif
+
+#endif                                 /* __METAL_GENERIC_IO__H__ */
